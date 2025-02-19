@@ -39,22 +39,22 @@ const CallToAction = () => {
     if (formData.solutionTechnique === "Sono Complete") {
       switch (formData.tailleEvenement) {
         case "20-50":
-          router.push("http://localhost:3000/single-page/pack-standard");
+          router.push("https://www.guylocationevents.com/single-page/pack-standard");
           return;
         case "50-100":
-          router.push("http://localhost:3000/single-page/pack-essentiel");
+          router.push("https://www.guylocationevents.com/single-page/pack-essentiel");
           return;
         case "100-150":
-          router.push("http://localhost:3000/single-page/pack-confort");
+          router.push("https://www.guylocationevents.com/single-page/pack-confort");
           return;
         case "150-200":
-          router.push("http://localhost:3000/single-page/pack-premium");
+          router.push("https://www.guylocationevents.com/single-page/pack-premium");
           return;
         case "200-250":
-          router.push("http://localhost:3000/single-page/pack-prestige");
+          router.push("https://www.guylocationevents.com/single-page/pack-prestige");
           return;
         case "250-300":
-          router.push("http://localhost:3000/single-page/pack-grand-event");
+          router.push("https://www.guylocationevents.com/single-page/pack-grand-event");
           return;
         default:
           setError(true);
