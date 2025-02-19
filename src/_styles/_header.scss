@@ -1,0 +1,215 @@
+.header-area {
+  .header-top {
+    background: $black;
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 991px) {
+      padding: 15px 0;
+    }
+
+    .top-text {
+      @media (max-width: 991px) {
+        text-align: center;
+      }
+    }
+    .header-top-wrap {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      p {
+        a {
+          color: $themeColor;
+        }
+      }
+    }
+    p,
+    .phone {
+      font-size: 25px;
+      color: #ffffff;
+      font-weight: 700;
+      font-family: $montserratFont;
+      display: inline-flex;
+      align-items: center;
+      column-gap: 15px;
+      flex-wrap: wrap;
+      @media (max-width: 1200px) {
+        font-size: 18px;
+      }
+
+      @media (max-width: 991px) {
+        font-size: 16px;
+
+        img {
+          max-width: 25px;
+          max-height: 25px;
+        }
+      }
+    }
+
+    .text-end {
+      text-align: right;
+
+      @media (max-width: 991px) {
+        text-align: center;
+      }
+    }
+  }
+
+  .logo {
+    @media (max-width: 1200px) {
+      img {
+        max-width: 200px;
+        max-height: 65px;
+      }
+    }
+  }
+
+  .main-header {
+    padding: 25px 0 35px;
+    background: $whiteColor;
+
+    @media (max-width: 991px) {
+      padding: 20px 0;
+    }
+
+    ul.main-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 40px;
+
+      @media (max-width: 1200px) {
+        column-gap: 40px;
+      }
+
+      li {
+        position: relative;
+        &:hover {
+          .submenu {
+            visibility: visible;
+            opacity: 1;
+            transform: scaleY(1);
+          }
+        }
+        .submenu {
+          position: absolute;
+          left: 0;
+          top: 100%;
+          background: #fff;
+          z-index: 11;
+          box-shadow: 0px 2px 15px rgba($color: #000000, $alpha: 0.1);
+          min-width: 160px;
+          visibility: hidden;
+          opacity: 0;
+          transform: scaleY(0);
+          transform-origin: top;
+          transition: all 0.4s ease-in-out 0s;
+
+          li {
+            a {
+              font-size: 17px;
+              padding: 5px 10px;
+              border-bottom: 1px solid #999;
+              display: block;
+              font-weight: 600;
+            }
+          }
+        }
+        a,
+        span {
+          display: inline-block;
+          font-size: 22px;
+          color: #000000;
+          font-weight: 700;
+          font-family: $montserratFont;
+          transition: all 0.3s ease-in-out;
+          cursor: pointer;
+          &.active {
+            color: $themeColor;
+          }
+          @media (max-width: 1200px) {
+            font-size: 18px;
+          }
+
+          &:hover {
+            color: $themeColor;
+          }
+        }
+      }
+    }
+  }
+
+  .header-button {
+    text-align: right;
+  }
+
+  .main-header {
+    position: relative;
+
+    .mobile-menu-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @media (min-width: 992px) {
+        display: none;
+      }
+    }
+
+    .text-end {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .mobile-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      padding: 20px;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+          margin-bottom: 15px;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          a {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000000;
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: $themeColor;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+    .mobile-menu {
+      display: none;
+    }
+  }
+}
