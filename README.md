@@ -1,4 +1,4 @@
-# 🧡 **Guy Location Events** 🧡  
+# **Guy Location Events**  
  
 ![Event Setup GIF](./public/images/captu1.gif)  
 
