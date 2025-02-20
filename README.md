@@ -1,5 +1,5 @@
 # 🧡 **Guy Location Events** 🧡  
-  
+ 
 ![Event Setup GIF](./public/images/captu1.gif)  
 
 **_"Your event, our passion."_**  
