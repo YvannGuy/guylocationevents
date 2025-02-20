@@ -26,8 +26,8 @@ const Header = () => {
                 height="30"
                 alt="icon"
               />
-              7J/7 de 9H30 à 21H30 et pour les <Link href="/">urgences</Link> de
-              21h30 à minuit
+              7J/7 de 9h30 à 19h30 et<Link href="/">urgences</Link> de
+              19h30 à 21h30
             </p>
             <a className="phone" href="tel:+33 6 51 08 49 94">
               <Image

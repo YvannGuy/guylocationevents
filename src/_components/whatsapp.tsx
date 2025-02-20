@@ -92,7 +92,7 @@ const WhatsAppButton: React.FC = () => {
               variant="body2"
               sx={{ color: "green", fontWeight: "bold", mb: 1 }}
             >
-              Disponible de 9h30 à 21h30
+              Disponible de 9h30 à 21h00
             </Typography>
             <Typography variant="body2" sx={{ color: "gray" }}>
               Service client expert :
@@ -101,7 +101,7 @@ const WhatsAppButton: React.FC = () => {
             </Typography>
 
             <Button
-              href="https://wa.me/+33612345678"
+              href="https://wa.me/+33651084994"
               target="_blank"
               variant="contained"
               fullWidth
