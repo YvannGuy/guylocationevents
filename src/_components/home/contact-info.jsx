@@ -38,7 +38,7 @@ const ContactInfo = () => {
                   </a>
                 </p>
                 <p className="info">
-                  Du lundi au dimanche de 0h30 à 21h30 et urgences de 21h30 à minuit
+                  Du lundi au dimanche - 9h30 à 19h30 et urgences 19h30-21h00
                 </p>
               </div>
             </div>
@@ -48,9 +48,9 @@ const ContactInfo = () => {
               <span className="icon">
                 <LocalShippingIcon />
               </span>
-                <p className="label">Livraison en Île-de-France par coursier</p>
+                <p className="label">Livraison Île-de-France et paris intra-muros</p>
                 <p className="info">
-                  Nous livrons en Île-de-France, 80€ TTC la course et en dehors, tarif sur devis
+                  Paris Intra-muros 40€ TTC la course et Île-de-france 80€
                 </p>
               </div>
             </div>
