@@ -12,7 +12,7 @@ interface LanguageProps {
 }
 const languages = [
   { code: "en", label: "En" },
-  { code: "pt", label: "Pt" },
+  { code: "fr", label: "Fr" },
 ];
 
 const Language: FC<LanguageProps> = ({ className = "" }) => {

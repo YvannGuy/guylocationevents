@@ -3,10 +3,12 @@
 import { useState, useRef, useEffect } from "react";
 import { Box, Button, Paper, Typography, Grow } from "@mui/material";
 import { WhatsApp, Close } from "@mui/icons-material";
+import { useTranslations } from "next-intl";
 
 const WhatsAppButton: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement | null>(null);
+  const t = useTranslations();
 
   const toggleModal = () => {
     setOpen((prev) => !prev);
@@ -82,7 +84,7 @@ const WhatsAppButton: React.FC = () => {
             }}
           >
             <Typography variant="h6" sx={{ fontSize: 16, fontWeight: "bold" }}>
-              Contact WhatsApp
+              {t("Contact WhatsApp")}
             </Typography>
           </Box>
 
@@ -92,12 +94,12 @@ const WhatsAppButton: React.FC = () => {
               variant="body2"
               sx={{ color: "green", fontWeight: "bold", mb: 1 }}
             >
-              Disponible de 9h30 à 21h00
+              {t("Disponible de 9h30 à 21h00")}
             </Typography>
             <Typography variant="body2" sx={{ color: "gray" }}>
-              Service client expert :
-              <br />• Conseil technique personnalisé
-              <br />• Support installation/réparation
+              {t("Service client expert")} :
+              <br />• {t("Conseil technique personnalisé")}
+              <br />• {t("Support installation/réparation")}
             </Typography>
 
             <Button
@@ -112,7 +114,7 @@ const WhatsAppButton: React.FC = () => {
               }}
               startIcon={<WhatsApp />}
             >
-              Contactez-nous
+              {t("Contactez-nous")}
             </Button>
           </Box>
         </Paper>

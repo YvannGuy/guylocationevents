@@ -1,6 +1,10 @@
 "use client";
+
+import { useTranslations } from "next-intl";
+
 export default function ProgressBar({ currentStep, totalSteps }) {
   const percentage = (currentStep / totalSteps) * 100;
+  const t = useTranslations();
 
   return (
     <div className="mb-6">
@@ -12,7 +16,7 @@ export default function ProgressBar({ currentStep, totalSteps }) {
       </div>
 
       <p className="text-sm text-gray-600 mt-2 text-center">
-        Étape {currentStep} sur {totalSteps}
+        {t("Étape")} {currentStep} {t("sur")} {totalSteps}
       </p>
     </div>
   );

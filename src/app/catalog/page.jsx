@@ -1,4 +1,3 @@
-
 import PublicLayout from "@/_components/layouts";
 import CatalogList from "@/_components/home/catelog-llist";
 import { Fragment } from "react";
@@ -18,7 +17,7 @@ const CatalogPage = async () => {
       <PublicLayout>
         <div className="catalog">
           <CommonHero slides={slides} />
-          <CatalogList cards={packages} className={"catalogpage"} />
+          <CatalogList cards={packages} className="catalogpage" />
         </div>
       </PublicLayout>
     </Fragment>

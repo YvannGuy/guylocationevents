@@ -13,8 +13,10 @@ import DateRangePicker from "@wojtekmaj/react-daterange-picker";
 import { useState } from "react";
 import "@wojtekmaj/react-daterange-picker/dist/DateRangePicker.css";
 import "react-calendar/dist/Calendar.css";
+import { useTranslations } from "next-intl";
 const ReservationForm = () => {
   const [value, onChange] = useState([]);
+  const t = useTranslations();
 
   return (
     <Grid className="form-reservation-area">
@@ -35,8 +37,8 @@ const ReservationForm = () => {
           <PlayArrowIcon />
         </IconButton> */}
         <h1>
-          <span> Tout ce dont vous avez besoin</span> pour vos événements en
-          quelques clics!
+          <span> {t("Tout ce dont vous avez besoin")}</span>{" "}
+          {t("pour vos événements en quelques clics")}!
         </h1>
       </Grid>
       <form className="right-side-form">
@@ -44,15 +46,15 @@ const ReservationForm = () => {
           <h2 className="title">
             <Image
               src="/images/form.png"
-              alt="Informations de réservation"
+              alt={t("Informations de réservation")}
               width={30}
               height={30}
             />{" "}
-            Informations de réservation
+            {t("Informations de réservation")}
           </h2>
           <div className="input-style">
             <label htmlFor="first_name" className="label">
-              Nom
+              {t("Nom")}
             </label>
             <div className="input">
               <input type="text" id="first_name" name="first_name" />
@@ -60,7 +62,7 @@ const ReservationForm = () => {
           </div>
           <div className="input-style">
             <label htmlFor="last_name" className="label">
-              Prénom
+              {t("Prénom")}
             </label>
             <div className="input">
               <input type="text" id="last_name" name="last_name" />
@@ -68,7 +70,7 @@ const ReservationForm = () => {
           </div>
           <div className="input-style">
             <label htmlFor="email" className="label">
-              Email
+              {t("Email")}
             </label>
             <div className="input">
               <input type="email" id="email" name="email" />
@@ -83,7 +85,7 @@ const ReservationForm = () => {
 
           <div className="input-style">
             <label htmlFor="address" className="label">
-              Addresse
+              {t("Addresse")}
             </label>
             <div className="input">
               <input type="text" id="address" name="address" />
@@ -91,7 +93,7 @@ const ReservationForm = () => {
           </div>
           <div className="input-style">
             <label htmlFor="address" className="label">
-              Vous êtes
+              {t("Vous êtes")}
             </label>
             <div className="input">
               <FormControl>
@@ -106,7 +108,7 @@ const ReservationForm = () => {
                         }}
                       />
                     }
-                    label="Particulier"
+                    label={t("Particulier")}
                   />
                   <FormControlLabel
                     value="professionnel"
@@ -118,7 +120,7 @@ const ReservationForm = () => {
                         }}
                       />
                     }
-                    label="Professionnel"
+                    label={t("Professionnel")}
                     sx={{ marginLeft: "50px" }}
                   />
                 </RadioGroup>
@@ -127,7 +129,7 @@ const ReservationForm = () => {
           </div>
           <div className="input-style">
             <label htmlFor="address" className="label">
-              Votre âge
+              {t("Votre âge")}
             </label>
             <div className="input">
               <input type="text" id="address" name="address" />
@@ -148,7 +150,7 @@ const ReservationForm = () => {
           </div>
           <div className="input-style">
             <label htmlFor="address" className="label">
-              Date <br /> d’évenement
+              {t("Date")} <br /> {t("d’évenement")}
             </label>
             <div className="input-box">
               <DateRangePicker onChange={onChange} value={value} />
@@ -156,7 +158,7 @@ const ReservationForm = () => {
           </div>
           <div className="input-style">
             <label htmlFor="address" className="label">
-              Retrait ou livraison
+              {t("Retrait ou livraison")}
             </label>
             <div className="input">
               <FormControl>
@@ -171,7 +173,7 @@ const ReservationForm = () => {
                         }}
                       />
                     }
-                    label="Retrait"
+                    label={t("Retrait")}
                   />
                   <FormControlLabel
                     value="professionnel"
@@ -185,10 +187,11 @@ const ReservationForm = () => {
                     }
                     label={
                       <span className="label-info">
-                        Livraison
+                        {t("Livraison")}
                         <span>
-                          Pour la livraison, le prix sera calculé en fonction de
-                          la dist
+                          {t(
+                            "Pour la livraison, le prix sera calculé en fonction de la dist"
+                          )}
                         </span>
                       </span>
                     }
@@ -200,7 +203,7 @@ const ReservationForm = () => {
           </div>
           <div className="input-style">
             <label htmlFor="address" className="label">
-              Option Technicien
+              {t("Option Technicien")}
             </label>
             <div className="input">
               <FormControl>
@@ -215,7 +218,7 @@ const ReservationForm = () => {
                         }}
                       />
                     }
-                    label="Oui"
+                    label={t("Oui")}
                   />
                   <FormControlLabel
                     value="Non"
@@ -229,8 +232,8 @@ const ReservationForm = () => {
                     }
                     label={
                       <span className="label-info">
-                        Non
-                        <span>90€/Jour</span>
+                        {t("Non")}
+                        <span>90€/{t("Jour")}</span>
                       </span>
                     }
                     sx={{ marginLeft: "50px" }}
@@ -241,7 +244,7 @@ const ReservationForm = () => {
           </div>
           <div className="input-style">
             <label htmlFor="address" className="label">
-              Choix du pack
+              {t("Choix du pack")}
             </label>
             <div className="input">
               <FormControl>
@@ -256,7 +259,7 @@ const ReservationForm = () => {
                         }}
                       />
                     }
-                    label="Standard"
+                    label={t("Standard")}
                   />
                   <FormControlLabel
                     value="Premium"
@@ -268,7 +271,7 @@ const ReservationForm = () => {
                         }}
                       />
                     }
-                    label="Premium"
+                    label={t("Premium")}
                   />
                   <FormControlLabel
                     value="Deluxe"
@@ -280,7 +283,7 @@ const ReservationForm = () => {
                         }}
                       />
                     }
-                    label="Deluxe"
+                    label={t("Deluxe")}
                   />
                   <FormControlLabel
                     value="sur-mesure"
@@ -292,7 +295,7 @@ const ReservationForm = () => {
                         }}
                       />
                     }
-                    label="sur-mesure"
+                    label={t("sur-mesure")}
                   />
                   <FormControlLabel
                     value="vidéo"
@@ -304,21 +307,20 @@ const ReservationForm = () => {
                         }}
                       />
                     }
-                    label="Vidéo"
+                    label={t("Vidéo")}
                   />
                 </RadioGroup>
               </FormControl>
             </div>
           </div>
           <p>
-            En fonction du choix du pack (sauf pour le sur-mesure) et des
-            options, vous recevrez un mail contenant un lien pour télecharger
-            vos documents, le lien pour la caution, le lien de paiement, ainsi
-            que le contrat{" "}
+            {t(
+              "En fonction du choix du pack (sauf pour le sur-mesure) et des options, vous recevrez un mail contenant un lien pour télecharger vos documents, le lien pour la caution, le lien de paiement, ainsi que le contrat"
+            )}{" "}
           </p>
         </div>
 
-        <Button className="submit-btn">Réservez</Button>
+        <Button className="submit-btn">{t("Réservez")}</Button>
       </form>
     </Grid>
   );

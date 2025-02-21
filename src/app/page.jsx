@@ -15,73 +15,74 @@ import AccordionContent from "@/_components/home/faq";
 import CallToAction from "@/_components/home/cta";
 import ContactInfo from "@/_components/home/contact-info";
 import { packages } from "@/_utils/packages";
-const slides = [
-  {
-    backgroundImage: "/images/hero-bg1.jpg",
-    subtitle: "Louez facilement, profitez pleinement !",
-    titleHighlight: "Tout ce dont vous avez besoin",
-    title: "pour vos événements en quelques clics !",
-  },
-  // {
-  //   backgroundImage: "/images/hero-bg1.jpg",
-  //   subtitle: "Louez facilement, profitez pleinement !",
-  //   titleHighlight: "Tout ce dont vous avez besoin",
-  //   title: "pour vos événements en quelques clics !",
-  // },
-  // {
-  //   backgroundImage: "/images/hero-bg1.jpg",
-  //   subtitle: "Louez facilement, profitez pleinement !",
-  //   titleHighlight: "Tout ce dont vous avez besoin",
-  //   title: "pour vos événements en quelques clics !",
-  // },
-];
-
-const faqData = [
-  {
-    id: 1,
-    question: "Comment choisir l’équipement qui convient à mon événement ?",
-    answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
-  },
-  {
-    id: 2,
-    question: "Dois-je verser une caution pour la location ?",
-    answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
-  },
-  {
-    id: 3,
-    question: "Proposez-vous un service de livraison?",
-    answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
-  },
-  {
-    id: 3,
-    question: "Si je rencontre un problème technique avec le matériel ?",
-    answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
-  },
-  {
-    id: 3,
-    question: "Quels sont les modes de paiement acceptés ?",
-    answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
-  },
-  {
-    id: 3,
-    question:
-      "Dois-je vérifier le matériel au moment du retrait ou de la livraison?",
-    answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
-  },
-  {
-    id: 3,
-    question: "Le matériel est-il assuré en cas de dommage ?",
-    answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
-  },
-];
 const Home = async () => {
+  
+  const slides = [
+    {
+      backgroundImage: "/images/hero-bg1.jpg",
+      subtitle: "Louez facilement, profitez pleinement !",
+      titleHighlight: "Tout ce dont vous avez besoin",
+      title: "pour vos événements en quelques clics !",
+    },
+    // {
+    //   backgroundImage: "/images/hero-bg1.jpg",
+    //   subtitle: "Louez facilement, profitez pleinement !",
+    //   titleHighlight: "Tout ce dont vous avez besoin",
+    //   title: "pour vos événements en quelques clics !",
+    // },
+    // {
+    //   backgroundImage: "/images/hero-bg1.jpg",
+    //   subtitle: "Louez facilement, profitez pleinement !",
+    //   titleHighlight: "Tout ce dont vous avez besoin",
+    //   title: "pour vos événements en quelques clics !",
+    // },
+  ];
+
+  const faqData = [
+    {
+      id: 1,
+      question: "Comment choisir l’équipement qui convient à mon événement ?",
+      answer:
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+    },
+    {
+      id: 2,
+      question: "Dois-je verser une caution pour la location ?",
+      answer:
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+    },
+    {
+      id: 3,
+      question: "Proposez-vous un service de livraison?",
+      answer:
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+    },
+    {
+      id: 3,
+      question: "Si je rencontre un problème technique avec le matériel ?",
+      answer:
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+    },
+    {
+      id: 3,
+      question: "Quels sont les modes de paiement acceptés ?",
+      answer:
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+    },
+    {
+      id: 3,
+      question:
+        "Dois-je vérifier le matériel au moment du retrait ou de la livraison?",
+      answer:
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+    },
+    {
+      id: 3,
+      question: "Le matériel est-il assuré en cas de dommage ?",
+      answer:
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+    },
+  ];
   return (
     <Fragment>
       <PublicLayout>

@@ -1,8 +1,11 @@
+"use client";
 import ReservationStep from "./components/details";
 import PublicLayout from "@/_components/layouts";
 import Grid from "@mui/material/Grid2";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 export default function Reservation() {
+  const t = useTranslations();
   return (
     <PublicLayout>
       <Grid
@@ -30,7 +33,7 @@ export default function Reservation() {
         />
         <div className="container">
           <div className="hero-content-wrap">
-            <h1 className="title">Reservation</h1>
+            <h1 className="title">{t("Reservation")}</h1>
             <div className="title-image">
               <Image
                 src="/images/title-border.png"
@@ -40,9 +43,9 @@ export default function Reservation() {
               />
             </div>
             <p className="subtitle">
-              Offrez une expérience visuelle immersive avec nos vidéoprojecteurs
-              et écrans sur trépied ! Parfait pour vos conférences, mariages,
-              soirées cinéma ou présentations professionnelles
+              {t(
+                "Offrez une expérience visuelle immersive avec nos vidéoprojecteurs et écrans sur trépied ! Parfait pour vos conférences, mariages, soirées cinéma ou présentations professionnelles"
+              )}
             </p>
           </div>
         </div>

@@ -1,16 +1,21 @@
+"use client";
 import Grid from "@mui/material/Grid2";
 import Link from "next/link";
 import Image from "next/image";
 import { slugify } from "@/_utils/commonFunction";
+import { useTranslations } from "next-intl";
 
 const CatalogList = ({ cards, className }) => {
+  const t = useTranslations();
   return (
     <section className={`catalog-list-area ${className}`}>
       <Grid className="container">
         <Grid className="row">
           <Grid className="col-lg-12">
             <Grid className="section-title">
-              <h2>NOS MEILLEURS PRODUITS EN LOCATION DE SONORISATION</h2>
+              <h2>
+                {t("NOS MEILLEURS PRODUITS EN LOCATION DE SONORISATION")}
+              </h2>
               <Image
                 src="/images/title-border.png"
                 width="130"

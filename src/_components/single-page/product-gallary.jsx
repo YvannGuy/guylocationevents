@@ -21,7 +21,8 @@ const SliderBlock = ({ items }) => {
         thumbs={{ swiper: thumbsSwiper }}
         spaceBetween={10}
         slidesPerView={1}
-        className="images-slider">
+        className="images-slider"
+      >
         {items.map((item, index) => (
           <SwiperSlide key={index} className="full-image">
             <img
@@ -40,7 +41,8 @@ const SliderBlock = ({ items }) => {
         spaceBetween={20}
         slidesPerView={5}
         watchSlidesProgress
-        className="thumbnails-slider mt-4">
+        className="thumbnails-slider mt-4"
+      >
         {items.map((item, index) => (
           <SwiperSlide key={index} className="thumbnile-image">
             <img

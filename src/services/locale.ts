@@ -13,7 +13,7 @@ export async function getUserLocale(): Promise<Locale> {
   // Fallback to a valid locale or default to 'en'
   const resolvedLocale = locales.includes(systemLanguage as Locale)
     ? (systemLanguage as Locale)
-    : "en";
+    : "fr";
 
   const cookieStore = await cookies();
   return (cookieStore.get(COOKIE_NAME)?.value as Locale) || resolvedLocale;

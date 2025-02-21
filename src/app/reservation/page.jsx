@@ -1,8 +1,12 @@
+"use client";
 import ReservationStep from "./components/details";
 import PublicLayout from "@/_components/layouts";
 import Grid from "@mui/material/Grid2";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 export default function Reservation() {
+  const t = useTranslations();
+
   return (
     <PublicLayout>
       <Grid
@@ -30,7 +34,7 @@ export default function Reservation() {
         />
         <div className="container">
           <div className="hero-content-wrap">
-            <h1 className="title">Réservation</h1>
+            <h1 className="title">{t("Réservation")}</h1>
             <div className="title-image">
               <Image
                 src="/images/title-border.png"
@@ -40,7 +44,10 @@ export default function Reservation() {
               />
             </div>
             <p className="subtitle">
-                Réservez facilement votre matériel et services avec Guy Location Events ! Remplissez le formulaire avec les détails de votre événement, choisissez vos options, et recevez un devis personnalisé sous 24h. 🎉
+              {t(
+                "Réservez facilement votre matériel et services avec Guy Location Events ! Remplissez le formulaire avec les détails de votre événement, choisissez vos options, et recevez un devis personnalisé sous 24h."
+              )}{" "}
+              🎉
             </p>
           </div>
         </div>

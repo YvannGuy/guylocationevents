@@ -21,6 +21,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import SliderBlock from "@/_components/single-page/product-gallary";
+import { useTranslations } from "next-intl";
 const slides = [
   {
     backgroundImage: "/images/catalog-bg.png",
@@ -75,20 +76,21 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 // Data for two columns and four rows
-const rows = [
-  { name: "Weight:", value: "5710kg" },
-  { name: "Rated power:", value: "36.9kW / 2200rpm" },
-  { name: "Standard bucket capacity:", value: "0.2m³" },
-  { name: "Standard bucket width:", value: "775mm" },
-  { name: "Operation Hydraulic Pressure:", value: "24.5Mpa" },
-  { name: "Maximum Digging Force:", value: "37.4kN" },
-  { name: "Gradeability:", value: "30°" },
-  { name: "Pressure To The Ground:", value: "31.4kPa" },
-  { name: "Walking Speed:", value: "2.8 / 4.7 km/h" },
-  { name: "Maximum Hauling Force:", value: "44kN" },
-];
 
-const ProductDetails = async () => {
+const ProductDetails = () => {
+  const t = useTranslations();
+  const rows = [
+    { name: t("Weight"), value: "5710kg" },
+    { name: t("Rated power"), value: "36.9kW / 2200rpm" },
+    { name: t("Standard bucket capacity"), value: "0.2m³" },
+    { name: t("Standard bucket width"), value: "775mm" },
+    { name: t("Operation Hydraulic Pressure"), value: "24.5Mpa" },
+    { name: t("Maximum Digging Force"), value: "37.4kN" },
+    { name: t("Gradeability"), value: "30°" },
+    { name: t("Pressure To The Ground"), value: "31.4kPa" },
+    { name: t("Walking Speed"), value: "2.8 / 4.7 km/h" },
+    { name: t("Maximum Hauling Force"), value: "44kN" },
+  ];
   return (
     <Fragment>
       <PublicLayout>
@@ -118,7 +120,7 @@ const ProductDetails = async () => {
             />
             <div className="container">
               <div className="hero-content-wrap">
-                <h1 className="title">Photobooth</h1>
+                <h1 className="title">{t("Photobooth")}</h1>
                 <div className="title-image">
                   <Image
                     src="/images/title-border.png"
@@ -147,40 +149,46 @@ const ProductDetails = async () => {
                   <SliderBlock items={items} />
                   {/* product image */}
                   <Grid className="product-content">
-                    <h2 className="name">Caterpillar 345 GC Excavator</h2>
+                    <h2 className="name">
+                      {t("Caterpillar 345 GC Excavator")}
+                    </h2>
                     <Grid className="description-box">
                       <h3 className="common-title">
-                        Description
+                        {t("Description")}
                         <span className="border border-short"></span>
                         <span className="border border-long"></span>
                         <span className="border border-middle"></span>
                       </h3>
-                      <h4>Best Yanmar powered hydraulic excavator for rent.</h4>
+                      <h4>
+                        {t("Best Yanmar powered hydraulic excavator for rent")}.
+                      </h4>
                       <p>
-                        Sed ut perspiciatis unde omnis iste natus error sit
-                        voluptatem accusantium dolore mque laud antium, totam
-                        rem aperiam, eaque ipsa quae ab illo inventore veritatis
-                        et quasi architecto be atae vitae dicta sunt explicabo.
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-                        aut odit aut fugit, sed quia consequuntur magni dolores.
+                        {t(
+                          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laud antium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto be atae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores."
+                        )}
                       </p>
                       <p>
-                        Eos qui ratione voluptatem sequi nesciunt. Neque porro
-                        quisquam es qui dolorem ipsum quia dolor sit amet
-                        consectetur, adipisci velit sed quia non numquam eius
-                        modi.
+                        {t(
+                          "Eos qui ratione voluptatem sequi nesciunt. Neque porro  es qui dolorem ipsum quia dolor sit amet consectetur, adipisci velit sed quia non numquam eius modi."
+                        )}
                       </p>
 
                       <ul className="product-key-points">
-                        <li>Nostrud exercitation ullamco laboris</li>
-                        <li>Ut aliquip ex ea reprehenderitin voluptate</li>
-                        <li>Adipisicing elit sed eiusmod tempor incididunt</li>
-                        <li>Labore dolore magna aliqua veniam nostrud</li>
+                        <li>{t("Nostrud exercitation ullamco laboris")}</li>
+                        <li>
+                          {t("Ut aliquip ex ea reprehenderitin voluptate")}
+                        </li>
+                        <li>
+                          {t("Adipisicing elit sed eiusmod tempor incididunt")}
+                        </li>
+                        <li>
+                          {t("Labore dolore magna aliqua veniam nostrud")}
+                        </li>
                       </ul>
                     </Grid>
                     <Grid className="specification-box">
                       <h3 className="common-title">
-                        Specification
+                        {t("Specification")}
                         <span className="border border-short"></span>
                         <span className="border border-long"></span>
                         <span className="border border-middle"></span>
@@ -217,11 +225,11 @@ const ProductDetails = async () => {
                       <span className="border border-short-right"></span>
                       <span className="border border-long-right"></span>
                     </h5>
-                    <p>Per Day</p>
+                    <p>{t("Per Day")}</p>
                   </Grid>
                   <Grid className="book-btn">
                     <Link href="/reservation" className="view-more-btn">
-                      Book Now
+                      {t("Book Now")}
                       <EastIcon />
                     </Link>
                   </Grid>
