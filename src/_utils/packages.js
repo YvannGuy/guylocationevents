@@ -34,17 +34,17 @@ export const packages = [
   {
     image: "/images/packprestige.jpg",
     link: "/single-page",
-    alt: "200-300 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles",
+    alt: "200-250 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles",
     title:
-      "200-300 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles",
+      "200-250 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles",
     tag: "PACK PRESTIGE",
   },
   {
     image: "/images/packgrandevent.jpg",
     link: "/single-page",
-    alt: "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !",
+    alt: "250-300 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !",
     title:
-      "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !",
+      "250-300 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !",
     tag: "PACK GRAND EVENT",
   },
   // {
