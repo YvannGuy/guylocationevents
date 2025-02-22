@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/lib/*": ["./lib/*"]
     },
     "typeRoots": ["./node_modules/@types", "./types"]
   },
@@ -31,7 +32,8 @@
     "src/_components/layouts/index.jsx",
     "src/app/page.jsx",
     "src/_components/home/cta.jsx",
-    "src/app/client-reservation/components/details.jsx"
+    "src/app/client-reservation/components/details.jsx",
+    "lib/supabaseClient.js"
   ],
   "exclude": ["node_modules"]
 }
