@@ -11,7 +11,7 @@ interface LanguageProps {
   className?: string;
 }
 const languages = [
-  { code: "en", label: "En" },
+  { code: "en", label: "Eng" },
   { code: "fr", label: "Fr" },
 ];
 
@@ -49,19 +49,6 @@ const Language: FC<LanguageProps> = ({ className = "" }) => {
         disableFocusRipple
         disableRipple
       >
-        <Image
-          src={`/images/flags/${
-            languages.find((item) => item.code == currentLocale)?.code
-          }.svg`}
-          width={25}
-          height={15}
-          alt={
-            languages.find((item) => item.code == currentLocale)?.label ?? ""
-          }
-          style={{
-            marginRight: "7px",
-          }}
-        />
         {languages.find((item) => item.code == currentLocale)?.label}
         <KeyboardArrowDownIcon />
       </Button>
@@ -72,15 +59,6 @@ const Language: FC<LanguageProps> = ({ className = "" }) => {
             onClick={() => handleClickChangeLanguage(item.code)}
             selected={locale == item.code}
           >
-            <Image
-              src={`/images/flags/${item.code}.svg`}
-              width={20}
-              height={18}
-              alt={item.label}
-              style={{
-                marginRight: "7px",
-              }}
-            />
             {item.label}
           </MenuItem>
         ))}

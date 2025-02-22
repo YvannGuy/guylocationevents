@@ -11,8 +11,7 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import WhatsAppButton from "../whatsapp";
 import ChatBox from "@/_components/Chatbox";
 import { useTranslations } from "next-intl";
-// import ChatBox from '../Chatbox'; // Importation du composant ChatBox
-
+import LanguageFooter from "../language-footer";
 const Footer = () => {
   const [visible, setVisible] = useState(false);
   const t = useTranslations();
@@ -35,9 +34,9 @@ const Footer = () => {
       <Grid className="footer-top">
         <Grid className="container">
           <Grid className="row">
-            <Grid className="col-lg-4">
+            <Grid className="col-lg-4 col-12">
               <Grid className="left-wrap">
-                <Link href="#">
+                <Link href="/">
                   <Image
                     src="/images/logo-white.png"
                     width="235"
@@ -60,9 +59,10 @@ const Footer = () => {
                     <FaTiktok />
                   </a>
                 </Grid>
+                <LanguageFooter />
               </Grid>
             </Grid>
-            <Grid className="col-lg-5">
+            <Grid className="col-lg-5 col-12">
               <ul className="footer-menu">
                 <li>
                   <Link href="/faqs">{t("Faq")}</Link>
@@ -77,7 +77,7 @@ const Footer = () => {
                 </li>
               </ul>
             </Grid>
-            <Grid className="col-lg-3">
+            <Grid className="col-lg-3 col-12">
               <Grid className="widget">
                 <span className="title">
                   {t("Vous avez trouvé ce qu’il vous plaît?")}

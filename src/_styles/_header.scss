@@ -143,7 +143,10 @@
   }
 
   .header-button {
-    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    column-gap: 20px;
   }
 
   .main-header {
@@ -211,5 +214,12 @@
     .mobile-menu {
       display: none;
     }
+  }
+}
+.language-switcher {
+  &.MuiButton-root {
+    text-transform: capitalize;
+    color: $titleColor;
+    font-weight: 600;
   }
 }

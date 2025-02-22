@@ -21,7 +21,6 @@ const Header = () => {
     <Grid className="header-area">
       <Grid className="header-top">
         <Grid className="container">
-          <Language />
           <Grid className="header-top-wrap">
             <p>
               <Image
@@ -104,6 +103,7 @@ const Header = () => {
 
             <Grid className="col-lg-3 col-5 d-none d-lg-block">
               <Grid className="header-button">
+                <Language />
                 <Link href="/reservation" className="button theme">
                   {t("Réservez")}
                 </Link>

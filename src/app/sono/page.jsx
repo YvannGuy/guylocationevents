@@ -4,14 +4,83 @@
  * Author: Kaji Hasibur Rahman
  * Date: 2025-01-03
  */
-
+"use client";
 import PublicLayout from "@/_components/layouts";
 import CatalogList from "@/_components/home/catelog-llist";
 import { Fragment } from "react";
 import Grid from "@mui/material/Grid2";
 import Image from "next/image";
-import { packages } from "@/_utils/packages";
-const CatalogPage = async () => {
+import { useTranslations } from "next-intl";
+const CatalogPage = () => {
+  const t = useTranslations();
+  const packages = [
+    {
+      image: "/images/c-1.png",
+      slug: "/pack-standard",
+      alt: t(
+        "20-50 Personnes, Idéal pour les petites soirées privées, anniversaires ou réunions professionnelles"
+      ),
+      title: t(
+        "20-50 Personnes, Idéal pour les petites soirées privées, anniversaires ou réunions professionnelles"
+      ),
+      tag: t("PACK STANDARD"),
+    },
+    {
+      image: "/images/c-2.png",
+      slug: "/pack-essentiel",
+      alt: t(
+        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne !"
+      ),
+      title: t(
+        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne !"
+      ),
+      tag: t("PACK ESSENTIEL"),
+    },
+    {
+      image: "/images/c-3.png",
+      slug: "/pack-confort",
+      alt: t(
+        "80-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !"
+      ),
+      title: t(
+        "80-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !"
+      ),
+      tag: t("PACK CONFORT"),
+    },
+    {
+      image: "/images/c-3.png",
+      slug: "/pack-premium",
+      alt: t(
+        "120-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles"
+      ),
+      title: t(
+        "120-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles"
+      ),
+      tag: t("PACK PREMIUM"),
+    },
+    {
+      image: "/images/c-3.png",
+      slug: "/pack-prestige",
+      alt: t(
+        "200-300 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
+      ),
+      title: t(
+        "200-300 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
+      ),
+      tag: t("PACK PRESTIGE"),
+    },
+    {
+      image: "/images/c-3.png",
+      slug: "/pack-grand-event",
+      alt: t(
+        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !"
+      ),
+      title: t(
+        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !"
+      ),
+      tag: t("PACK GRAND EVENT"),
+    },
+  ];
   return (
     <Fragment>
       <PublicLayout>
@@ -40,7 +109,7 @@ const CatalogPage = async () => {
           />
           <div className="container">
             <div className="hero-content-wrap">
-              <h1 className="title">Sono</h1>
+              <h1 className="title">{t("Sono")}</h1>
               <div className="title-image">
                 <Image
                   src="/images/title-border.png"
@@ -50,11 +119,9 @@ const CatalogPage = async () => {
                 />
               </div>
               <p className="subtitle">
-                Découvrez nos packs d’enceintes adaptés à tous vos besoins ! Que
-                ce soit pour une petite réunion, un mariage grandiose ou un
-                concert en plein air, nous avons la solution idéale. Profitez
-                d’un son puissant et clair avec des équipements de qualité
-                professionnelle
+                {t(
+                  "Découvrez nos packs d’enceintes adaptés à tous vos besoins ! Que ce soit pour une petite réunion, un mariage grandiose ou un concert en plein air, nous avons la solution idéale. Profitez d’un son puissant et clair avec des équipements de qualité professionnelle"
+                )}
               </p>
             </div>
           </div>
