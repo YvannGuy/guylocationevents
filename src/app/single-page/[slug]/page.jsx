@@ -90,9 +90,9 @@ const ProductDetails = async (props) => {
       : {
           image: "/images/c-1.png",
           link: "/single-page",
-          alt: "Instrument de base pour petits évènements",
+          alt: "Pack vidéo complet : vidéoprojecteur, écran de projection et trépied pour présentations et événements",
           title:
-            "Plongez votre audience dans une expérience visuelle exceptionnelle",
+            "Faites vivre à votre audience une immersion visuelle inédite, où chaque projection devient une aventure captivante",
           tag: "PACK VIDÉO",
         };
   return (
