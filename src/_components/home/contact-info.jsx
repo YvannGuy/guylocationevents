@@ -30,7 +30,7 @@ const ContactInfo = () => {
               </span>
                 <p className="label">
                   Contactez-nous au{" "}
-                  <a
+                  <br/><a
                       href="tel:+33651084994"
                       style={{ color: 'inherit', textDecoration: 'none' }}
                   >
@@ -38,7 +38,7 @@ const ContactInfo = () => {
                   </a>
                 </p>
                 <p className="info">
-                  Du lundi au dimanche - 9h30 à 19h30 et urgences 19h30-21h00
+                  Du lundi au dimanche <br/> 9h30 à 19h30 <br/>et urgences 19h30-21h00
                 </p>
               </div>
             </div>
@@ -50,7 +50,7 @@ const ContactInfo = () => {
               </span>
                 <p className="label">Livraison Île-de-France et paris intra-muros</p>
                 <p className="info">
-                  Paris Intra-muros 40€ TTC la course et Île-de-france 80€
+                  Paris Intra-muros <br/>40€ ttc la course <br/>et Île-de-france 80€
                 </p>
               </div>
             </div>
