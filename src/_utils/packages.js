@@ -18,17 +18,17 @@ export const packages = [
   {
     image: "/images/packconfort.jpg",
     link: "/single-page",
-    alt: "80-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !",
+    alt: "100-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !",
     title:
-      "80-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !",
+      "100-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !",
     tag: "PACK CONFORT",
   },
   {
     image: "/images/packpremium.jpg",
     link: "/single-page",
-    alt: "120-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles",
+    alt: "150-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles",
     title:
-      "120-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles",
+      "150-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles",
     tag: "PACK PREMIUM",
   },
   {
