@@ -49,6 +49,17 @@ const Language: FC<LanguageProps> = ({ className = "" }) => {
         disableFocusRipple
         disableRipple
       >
+        <Image
+          src={`/images/flags/${
+            languages.find((item) => item.code == currentLocale)?.code
+          }.svg`}
+          width={25}
+          height={15}
+          alt={
+            languages.find((item) => item.code == currentLocale)?.label ?? ""
+          }
+          style={{ marginRight: "10px" }}
+        />
         {languages.find((item) => item.code == currentLocale)?.label}
         <KeyboardArrowDownIcon />
       </Button>
@@ -59,6 +70,16 @@ const Language: FC<LanguageProps> = ({ className = "" }) => {
             onClick={() => handleClickChangeLanguage(item.code)}
             selected={locale == item.code}
           >
+            <Image
+              src={`/images/flags/${item.code}.svg`}
+              width={25}
+              height={15}
+              alt={
+                languages.find((item) => item.code == currentLocale)?.label ??
+                ""
+              }
+              style={{ marginRight: "10px" }}
+            />
             {item.label}
           </MenuItem>
         ))}

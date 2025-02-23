@@ -81,8 +81,8 @@
       justify-content: center;
       column-gap: 40px;
 
-      @media (max-width: 1200px) {
-        column-gap: 40px;
+      @media (max-width: 1300px) {
+        column-gap: 30px;
       }
 
       li {
@@ -218,7 +218,6 @@
 }
 .language-switcher {
   &.MuiButton-root {
-    text-transform: capitalize;
     color: $titleColor;
     font-weight: 600;
   }
