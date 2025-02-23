@@ -8,7 +8,7 @@ export default function Step2({ formData, onPrev, onNext }) {
   return (
     <section>
       <h2 className="text-2xl font-bold mb-4">
-        {t("Étape 2 : Récapitulatif & Paiement")} 💳
+        {t("Étape 2 Récapitulatif & Paiement")} 💳
       </h2>
       <div className="bg-white shadow rounded-lg p-6 mb-6">
         <h3 className="text-xl font-bold mb-4">

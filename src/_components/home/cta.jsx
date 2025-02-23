@@ -140,7 +140,7 @@ const CallToAction = () => {
                   <MenuItem value="0">{t("Sélectionnez")}</MenuItem>
                   <MenuItem value="Anniversaire">{t("Anniversaire")}</MenuItem>
                   <MenuItem value="Mariage">{t("Mariage")}</MenuItem>
-                  <MenuItem value="concert/show">{t("Concert/Show")}</MenuItem>
+                  <MenuItem value="concert/show">{t("Concert Show")}</MenuItem>
                   <MenuItem value="conférence">{t("Conférence")}</MenuItem>
                 </TextField>
               </Box>
@@ -220,32 +220,32 @@ const CallToAction = () => {
         <div className="call-to-content">
           <p>
             {t(
-              "Guy Location Events met à votre disposition du matériel de sonorisation, vidéo et photobooth pour tous vos événements"
+              "Guy Location Events met à votre disposition du matériel de sonorisation vidéo et photobooth pour tous vos événements"
             )}{" "}
             ! 🎉
           </p>
           <p>
             📢{" "}
             {t(
-              "Un large choix de matériel de qualité. Nous avons soigneusement développé notre catalogue en fonction des besoins de nos clients afin de vous proposer des équipements performants, fiables et accessibles"
+              "Un large choix de matériel de qualité Nous avons soigneusement développé notre catalogue en fonction des besoins de nos clients afin de vous proposer des équipements performants fiables et accessibles"
             )}
             .
           </p>
           <ul>
             <li>
               {t(
-                "Location de Sono : enceintes, micros, mixeurs… pour une qualité sonore optimale"
+                "Location de Sono enceintes micros mixeurs pour une qualité sonore optimale"
               )}
               .
             </li>
             <li>
               {t(
-                "Location de Vidéo : vidéoprojecteurs, écrans, supports pour toutes vos présentations et projections."
+                "Location de Vidéo vidéoprojecteurs écrans supports pour toutes vos présentations et projections"
               )}
             </li>
             <li>
               {t(
-                "Photobooth : Immortalisez vos souvenirs avec nos bornes photos interactives"
+                "Photobooth Immortalisez vos souvenirs avec nos bornes photos interactives"
               )}
             </li>
           </ul>

@@ -7,7 +7,7 @@ export default function Step4({ onPrev, onNext }) {
   return (
     <section>
       <h2 className="text-2xl font-bold mb-4">
-        {t("Étape 4 : Empreinte Bancaire via Swikly")}
+        {t("Étape 4 Empreinte Bancaire via Swikly")}
       </h2>
       <p className="mb-4 text-gray-600">
         {t("Veuillez sélectionner un montant pour l'empreinte bancaire")}.

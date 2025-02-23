@@ -82,7 +82,7 @@ const ProductDetails = (props) => {
       image: "/images/c-2.png",
       slug: "/pack-essentiel",
       title: t(
-        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne !"
+        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
       ),
       tag: t("PACK ESSENTIEL"),
     },
@@ -90,7 +90,7 @@ const ProductDetails = (props) => {
       image: "/images/c-3.png",
       slug: "/pack-confort",
       title: t(
-        "80-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !"
+        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
       ),
       tag: t("PACK CONFORT"),
     },
@@ -114,7 +114,7 @@ const ProductDetails = (props) => {
       image: "/images/c-3.png",
       slug: "/pack-grand-event",
       title: t(
-        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !"
+        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
       ),
       tag: t("PACK GRAND EVENT"),
     },
@@ -132,8 +132,8 @@ const ProductDetails = (props) => {
     { name: t("Maximum Hauling Force"), value: "44kN" },
   ];
   const packageData =
-    props.params.slug !== "pack-vido"
-      ? packages.find((item) => item.slug == `/${props.params.slug}`)
+    props.params?.slug !== "pack-vido"
+      ? packages.find((item) => item.slug == `/${props.params?.slug}`)
       : {
           image: "/images/c-1.png",
           slug: "/pack-vido",
@@ -212,12 +212,12 @@ const ProductDetails = (props) => {
                       </h4>
                       <p>
                         {t(
-                          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laud antium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto be atae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores."
+                          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laud antium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto be atae vitae dicta sunt explicabo Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores"
                         )}
                       </p>
                       <p>
                         {t(
-                          "Eos qui ratione voluptatem sequi nesciunt. Neque porro  es qui dolorem ipsum quia dolor sit amet consectetur, adipisci velit sed quia non numquam eius modi."
+                          "Eos qui ratione voluptatem sequi nesciunt Neque porro  es qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi"
                         )}
                       </p>
 

@@ -190,7 +190,7 @@ const ReservationForm = () => {
                         {t("Livraison")}
                         <span>
                           {t(
-                            "Pour la livraison, le prix sera calculé en fonction de la dist"
+                            "Pour la livraison le prix sera calculé en fonction de la dist"
                           )}
                         </span>
                       </span>
@@ -315,7 +315,7 @@ const ReservationForm = () => {
           </div>
           <p>
             {t(
-              "En fonction du choix du pack (sauf pour le sur-mesure) et des options, vous recevrez un mail contenant un lien pour télecharger vos documents, le lien pour la caution, le lien de paiement, ainsi que le contrat"
+              "En fonction du choix du pack sauf pour le sur-mesure et des options vous recevrez un mail contenant un lien pour télecharger vos documents le lien pour la caution le lien de paiement ainsi que le contrat"
             )}{" "}
           </p>
         </div>

@@ -101,7 +101,7 @@ export default function UrgenceLocation() {
           </h1>
           <p className="text-xl text-gray-700">
             {t(
-              "Panique technique ? Besoin last minute ? Nous sommes là pour répondre à vos besoins en location d'équipements sono, vidéo et photobooth pour mariages, concerts, conférences et autres événements."
+              "Panique technique ? Besoin last minute Nous sommes là pour répondre à vos besoins en location d'équipements sono, vidéo et photobooth pour mariages, concerts, conférences et autres événements"
             )}
           </p>
         </div>

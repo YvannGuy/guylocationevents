@@ -17,10 +17,10 @@ const ContactInfo = () => {
               <span className="icon">
                 <HomeIcon />
               </span>
-              <p className="label">{t("78 avenue des Champs-Élysées 75008")}</p>
+              <p className="label">{t("78 avenue des Champs Élysées 75008")}</p>
               <p className="info">
                 {t(
-                  "Paris – Pour le retrait : chaque lundi, mercredi et vendredi (14h-00h)"
+                  "Paris Pour le retrait chaque lundi mercredi et vendredi 14h 00h"
                 )}
               </p>
             </div>
@@ -43,9 +43,7 @@ const ContactInfo = () => {
                 </a>
               </p>
               <p className="info">
-                {t(
-                  "Du lundi au dimanche - 9h30 à 19h30 et urgences 19h30-21h00"
-                )}
+                {t("Du lundi au dimanche 9h30 à 19h30 et urgences 19h30 21h00")}
               </p>
             </div>
           </div>
@@ -59,7 +57,7 @@ const ContactInfo = () => {
                 {t("Livraison Île-de-France et paris intra-muros")}
               </p>
               <p className="info">
-                {t("Paris Intra-muros 40€ TTC la course et Île-de-france 80€")}
+                {t("Paris Intra-muros TTC la course et Île-de-france")}
               </p>
             </div>
           </div>

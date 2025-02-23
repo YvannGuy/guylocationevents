@@ -33,10 +33,10 @@ const Home = async () => {
       image: "/images/c-2.png",
       slug: "/pack-essentiel",
       alt: t(
-        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne !"
+        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
       ),
       title: t(
-        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne !"
+        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
       ),
       tag: t("PACK ESSENTIEL"),
     },
@@ -44,10 +44,10 @@ const Home = async () => {
       image: "/images/c-3.png",
       slug: "/pack-confort",
       alt: t(
-        "80-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !"
+        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
       ),
       title: t(
-        "80-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !"
+        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
       ),
       tag: t("PACK CONFORT"),
     },
@@ -77,10 +77,10 @@ const Home = async () => {
       image: "/images/c-3.png",
       slug: "/pack-grand-event",
       alt: t(
-        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !"
+        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
       ),
       title: t(
-        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !"
+        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
       ),
       tag: t("PACK GRAND EVENT"),
     },
@@ -90,7 +90,7 @@ const Home = async () => {
       backgroundImage: "/images/hero-bg1.jpg",
       subtitle: t("Louez facilement, profitez pleinement"),
       titleHighlight: t("Tout ce dont vous avez besoin"),
-      title: t("pour vos événements en quelques clics !"),
+      title: t("pour vos événements en quelques clics"),
     },
   ];
 
@@ -99,51 +99,51 @@ const Home = async () => {
       id: 1,
       question: t("Comment choisir l’équipement qui convient à mon événement"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus."
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
       ),
     },
     {
       id: 2,
       question: t("Dois-je verser une caution pour la location"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus."
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
       ),
     },
     {
       id: 3,
-      question: t("Proposez-vous un service de livraison?"),
+      question: t("Proposez-vous un service de livraison"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus."
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
       ),
     },
     {
       id: 3,
-      question: t("Si je rencontre un problème technique avec le matériel?"),
+      question: t("Si je rencontre un problème technique avec le matériel"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus."
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
       ),
     },
     {
       id: 3,
-      question: t("Quels sont les modes de paiement acceptés?"),
+      question: t("Quels sont les modes de paiement acceptés"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus."
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
       ),
     },
     {
       id: 3,
       question: t(
-        "Dois-je vérifier le matériel au moment du retrait ou de la livraison?"
+        "Dois-je vérifier le matériel au moment du retrait ou de la livraison"
       ),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus."
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
       ),
     },
     {
       id: 3,
-      question: t("Le matériel est-il assuré en cas de dommage?"),
+      question: t("Le matériel est-il assuré en cas de dommage"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus."
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
       ),
     },
   ];

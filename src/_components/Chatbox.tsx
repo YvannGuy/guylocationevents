@@ -39,9 +39,9 @@ export default function ChatBox() {
   const presetQuestions = [
     t("Bonjour"),
     t("Quels sont vos horaires?"),
-    t("Quels équipements proposez-vous?"),
-    t("Qu'est-ce qu'un photobooth?"),
-    t("Comment réserver?"),
+    t("Quels équipements proposez-vous"),
+    t("Qu'est-ce qu'un photobooth"),
+    t("Comment réserver"),
   ];
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
@@ -82,7 +82,7 @@ export default function ChatBox() {
         {
           sender: "bot",
           text: `${t(
-            "Service temporairement indisponible - Veuillez réessayer"
+            "Service temporairement indisponible Veuillez réessayer"
           )}`,
         },
       ]);

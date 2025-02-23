@@ -29,10 +29,10 @@ const CatalogPage = () => {
       image: "/images/c-2.png",
       slug: "/pack-essentiel",
       alt: t(
-        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne !"
+        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
       ),
       title: t(
-        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne !"
+        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
       ),
       tag: t("PACK ESSENTIEL"),
     },
@@ -40,10 +40,10 @@ const CatalogPage = () => {
       image: "/images/c-3.png",
       slug: "/pack-confort",
       alt: t(
-        "80-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !"
+        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
       ),
       title: t(
-        "80-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !"
+        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
       ),
       tag: t("PACK CONFORT"),
     },
@@ -73,10 +73,10 @@ const CatalogPage = () => {
       image: "/images/c-3.png",
       slug: "/pack-grand-event",
       alt: t(
-        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !"
+        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
       ),
       title: t(
-        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !"
+        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
       ),
       tag: t("PACK GRAND EVENT"),
     },
@@ -120,7 +120,7 @@ const CatalogPage = () => {
               </div>
               <p className="subtitle">
                 {t(
-                  "Découvrez nos packs d’enceintes adaptés à tous vos besoins ! Que ce soit pour une petite réunion, un mariage grandiose ou un concert en plein air, nous avons la solution idéale. Profitez d’un son puissant et clair avec des équipements de qualité professionnelle"
+                  "Découvrez nos packs d’enceintes adaptés à tous vos besoins Que ce soit pour une petite réunion un mariage grandiose ou un concert en plein air nous avons la solution idéale Profitez d’un son puissant et clair avec des équipements de qualité professionnelle"
                 )}
               </p>
             </div>

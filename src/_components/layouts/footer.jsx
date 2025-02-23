@@ -80,7 +80,7 @@ const Footer = () => {
             <Grid className="col-lg-3 col-12">
               <Grid className="widget">
                 <span className="title">
-                  {t("Vous avez trouvé ce qu’il vous plaît?")}
+                  {t("Vous avez trouvé ce qu’il vous plaît")}
                 </span>
                 <Link href="/reservation" className="button">
                   {t("Réservez")}
@@ -96,7 +96,7 @@ const Footer = () => {
             <Grid className="col-12">
               <p className="text-center">
                 &copy; {new Date().getFullYear()}{" "}
-                {t("GUY LOCATION ÉVÈNEMENTS. Tous droits réservés.")}
+                {t("GUY LOCATION ÉVÈNEMENTS Tous droits réservés")}
               </p>
             </Grid>
           </Grid>

@@ -14,7 +14,7 @@ export default function Step5({ onPrev, onFinish }) {
   return (
     <section>
       <h2 className="text-2xl font-bold mb-4">
-        {t("Étape 5 : Signature du Contrat")} 📝
+        {t("Étape 5 Signature du Contrat")} 📝
       </h2>
       <canvas
         ref={canvasRef}

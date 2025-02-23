@@ -44,7 +44,7 @@ export default function Reservation() {
             </div>
             <p className="subtitle">
               {t(
-                "Offrez une expérience visuelle immersive avec nos vidéoprojecteurs et écrans sur trépied ! Parfait pour vos conférences, mariages, soirées cinéma ou présentations professionnelles"
+                "Offrez une expérience visuelle immersive avec nos vidéoprojecteurs et écrans sur trépied Parfait pour vos conférences mariages soirées cinéma ou présentations professionnelles"
               )}
             </p>
           </div>

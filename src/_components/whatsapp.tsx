@@ -99,7 +99,7 @@ const WhatsAppButton: React.FC = () => {
             <Typography variant="body2" sx={{ color: "gray" }}>
               {t("Service client expert")} :
               <br />• {t("Conseil technique personnalisé")}
-              <br />• {t("Support installation/réparation")}
+              <br />• {t("Support installation réparation")}
             </Typography>
 
             <Button

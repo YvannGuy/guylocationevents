@@ -2,10 +2,10 @@ import PublicLayout from "@/_components/layouts";
 import CatalogList from "@/_components/home/catelog-llist";
 import { Fragment } from "react";
 import CommonHero from "@/_components/home/hero";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 const CatalogPage = async () => {
-  const t = useTranslations();
+  const t = await getTranslations();
 
   const slides = [
     {
@@ -29,10 +29,10 @@ const CatalogPage = async () => {
       image: "/images/c-2.png",
       slug: "/pack-essentiel",
       alt: t(
-        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne !"
+        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
       ),
       title: t(
-        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne !"
+        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
       ),
       tag: t("PACK ESSENTIEL"),
     },
@@ -40,10 +40,10 @@ const CatalogPage = async () => {
       image: "/images/c-3.png",
       slug: "/pack-confort",
       alt: t(
-        "80-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !"
+        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
       ),
       title: t(
-        "80-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !"
+        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
       ),
       tag: t("PACK CONFORT"),
     },
@@ -73,10 +73,10 @@ const CatalogPage = async () => {
       image: "/images/c-3.png",
       slug: "/pack-grand-event",
       alt: t(
-        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !"
+        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
       ),
       title: t(
-        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !"
+        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
       ),
       tag: t("PACK GRAND EVENT"),
     },

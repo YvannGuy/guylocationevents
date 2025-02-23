@@ -7,7 +7,7 @@ export default function Step3({ onPrev, onNext }) {
   return (
     <section>
       <h2 className="text-2xl font-bold mb-4">
-        {t("Étape 3 : Upload des documents")} 📄
+        {t("Étape 3 Upload des documents")} 📄
       </h2>
       <p className="mb-4 text-gray-600">
         {t("Veuillez télécharger les documents requis pour la location")}.

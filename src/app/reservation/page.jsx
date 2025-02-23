@@ -45,7 +45,7 @@ export default function Reservation() {
             </div>
             <p className="subtitle">
               {t(
-                "Réservez facilement votre matériel et services avec Guy Location Events ! Remplissez le formulaire avec les détails de votre événement, choisissez vos options, et recevez un devis personnalisé sous 24h."
+                "Réservez facilement votre matériel et services avec Guy Location Events Remplissez le formulaire avec les détails de votre événement, choisissez vos options, et recevez un devis personnalisé sous 24h"
               )}{" "}
               🎉
             </p>
