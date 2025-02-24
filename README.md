@@ -1,6 +1,6 @@
 # **Guy Location Events**  
  
-![Event Setup GIF](./public/images/captu1.gif)  
+![Event Setup GIF](./public/images/captu1.png)  
 
 **_"Your event, our passion."_**  
 

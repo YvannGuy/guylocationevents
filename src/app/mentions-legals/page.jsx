@@ -85,8 +85,7 @@ const CatalogPage = async () => {
                     <h3>3. Hébergement du site internet</h3>
                     <p>
                       Hébergeur : Hostinger <br />
-                      Adresse de l’hébergeur : [Adresse complète d’Hostinger à
-                      ajouter, ex. Hostinger International Ltd, 61 Lordou
+                      Adresse de l’hébergeur : Hostinger International Ltd, 61 Lordou
                       Vironos Street, Larnaca, 6023, Chypre
                     </p>
 
