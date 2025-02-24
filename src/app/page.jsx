@@ -41,44 +41,44 @@ const faqData = [
     id: 1,
     question: "Comment choisir l’équipement qui convient à mon événement ?",
     answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+      "Le choix dépend du type d’événement, de la taille du lieu et du nombre de participants. Notre équipe peut vous conseiller pour trouver le pack le plus adapté.",
   },
   {
     id: 2,
-    question: "Dois-je verser une caution pour la location ?",
+    question: "Proposez-vous la livraison et l’installation du matériel ?",
     answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+      "Oui, nous livrons et installons le matériel en Île-de-France, y compris Paris. Un technicien peut également rester sur place si nécessaire.",
   },
   {
     id: 3,
-    question: "Proposez-vous un service de livraison?",
+    question: "Fournissez-vous les câbles et accessoires nécessaires ?",
     answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+      "Oui, tous les câbles et accessoires nécessaires au bon fonctionnement du matériel sont inclus dans la location.",
   },
   {
     id: 3,
-    question: "Si je rencontre un problème technique avec le matériel ?",
+    question: "Combien de temps à l'avance dois-je réserver l'équipement ?",
     answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+      "Réservez le plus tôt possible, surtout pendant les périodes de forte demande. Nous acceptons les demandes de dernière minute selon la disponibilité.",
   },
   {
     id: 3,
-    question: "Quels sont les modes de paiement acceptés ?",
+    question: "Puis-je modifier ma réservation après confirmation ?",
     answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+      "Oui, vous pouvez modifier votre réservation sous réserve de disponibilité. Contactez-nous dès que possible pour toute modification.",
   },
   {
     id: 3,
     question:
       "Dois-je vérifier le matériel au moment du retrait ou de la livraison?",
     answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+      "Oui, il est important de vérifier le matériel lors du retrait ou de la livraison pour s'assurer qu'il est en bon état et complet. Toute anomalie doit être signalée immédiatement.",
   },
   {
     id: 3,
-    question: "Le matériel est-il assuré en cas de dommage ?",
+    question: "Que faire en cas de problème technique pendant l’événement ?",
     answer:
-      "Nous proposons une assurance en option pour couvrir d’éventuels dommages. Contactez-nous pour en savoir plus.",
+      "Pour les locations avec technicien, nous assurons une assistance sur place. Si le problème n’est pas dû à une mauvaise utilisation, nous intervenons gratuitement. Dans le cas contraire, une intervention sur place sera facturée.",
   },
 ];
 const Home = async () => {
