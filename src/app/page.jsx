@@ -4,7 +4,7 @@
  * Author: Kaji Hasibur Rahman
  * Date: 2025-01-03
  */
-
+"use client";
 import Grid from "@mui/material/Grid2";
 import PublicLayout from "@/_components/layouts";
 import CatalogList from "@/_components/home/catelog-llist";
@@ -14,74 +14,139 @@ import Image from "next/image";
 import AccordionContent from "@/_components/home/faq";
 import CallToAction from "@/_components/home/cta";
 import ContactInfo from "@/_components/home/contact-info";
-import { packages } from "@/_utils/packages";
-const slides = [
-  {
-    backgroundImage: "/images/hero-bg1.jpg",
-    subtitle: "Louez facilement, profitez pleinement !",
-    titleHighlight: "Tout ce dont vous avez besoin",
-    title: "pour vos événements en quelques clics !",
-  },
-  // {
-  //   backgroundImage: "/images/hero-bg1.jpg",
-  //   subtitle: "Louez facilement, profitez pleinement !",
-  //   titleHighlight: "Tout ce dont vous avez besoin",
-  //   title: "pour vos événements en quelques clics !",
-  // },
-  // {
-  //   backgroundImage: "/images/hero-bg1.jpg",
-  //   subtitle: "Louez facilement, profitez pleinement !",
-  //   titleHighlight: "Tout ce dont vous avez besoin",
-  //   title: "pour vos événements en quelques clics !",
-  // },
-];
-
-const faqData = [
-  {
-    id: 1,
-    question: "Comment choisir l’équipement qui convient à mon événement ?",
-    answer:
-      "Le choix dépend du type d’événement, de la taille du lieu et du nombre de participants. Notre équipe peut vous conseiller pour trouver le pack le plus adapté.",
-  },
-  {
-    id: 2,
-    question: "Proposez-vous la livraison et l’installation du matériel ?",
-    answer:
-      "Oui, nous livrons et installons le matériel en Île-de-France, y compris Paris. Un technicien peut également rester sur place si nécessaire.",
-  },
-  {
-    id: 3,
-    question: "Fournissez-vous les câbles et accessoires nécessaires ?",
-    answer:
-      "Oui, tous les câbles et accessoires nécessaires au bon fonctionnement du matériel sont inclus dans la location.",
-  },
-  {
-    id: 3,
-    question: "Combien de temps à l'avance dois-je réserver l'équipement ?",
-    answer:
-      "Réservez le plus tôt possible, surtout pendant les périodes de forte demande. Nous acceptons les demandes de dernière minute selon la disponibilité.",
-  },
-  {
-    id: 3,
-    question: "Puis-je modifier ma réservation après confirmation ?",
-    answer:
-      "Oui, vous pouvez modifier votre réservation sous réserve de disponibilité. Contactez-nous dès que possible pour toute modification.",
-  },
-  {
-    id: 3,
-    question:
-      "Dois-je vérifier le matériel au moment du retrait ou de la livraison?",
-    answer:
-      "Oui, il est important de vérifier le matériel lors du retrait ou de la livraison pour s'assurer qu'il est en bon état et complet. Toute anomalie doit être signalée immédiatement.",
-  },
-  {
-    id: 3,
-    question: "Que faire en cas de problème technique pendant l’événement ?",
-    answer:
-      "Pour les locations avec technicien, nous assurons une assistance sur place. Si le problème n’est pas dû à une mauvaise utilisation, nous intervenons gratuitement. Dans le cas contraire, une intervention sur place sera facturée.",
-  },
-];
+import { useTranslations } from "next-intl";
 const Home = async () => {
+  const t = useTranslations();
+  const packages = [
+    {
+      image: "/images/c-1.png",
+      slug: "/pack-standard",
+      alt: t(
+        "20-50 Personnes, Idéal pour les petites soirées privées, anniversaires ou réunions professionnelles"
+      ),
+      title: t(
+        "20-50 Personnes, Idéal pour les petites soirées privées, anniversaires ou réunions professionnelles"
+      ),
+      tag: t("PACK STANDARD"),
+    },
+    {
+      image: "/images/c-2.png",
+      slug: "/pack-essentiel",
+      alt: t(
+        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
+      ),
+      title: t(
+        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
+      ),
+      tag: t("PACK ESSENTIEL"),
+    },
+    {
+      image: "/images/c-3.png",
+      slug: "/pack-confort",
+      alt: t(
+        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
+      ),
+      title: t(
+        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
+      ),
+      tag: t("PACK CONFORT"),
+    },
+    {
+      image: "/images/c-3.png",
+      slug: "/pack-premium",
+      alt: t(
+        "120-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles"
+      ),
+      title: t(
+        "120-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles"
+      ),
+      tag: t("PACK PREMIUM"),
+    },
+    {
+      image: "/images/c-3.png",
+      slug: "/pack-prestige",
+      alt: t(
+        "200-300 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
+      ),
+      title: t(
+        "200-300 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
+      ),
+      tag: t("PACK PRESTIGE"),
+    },
+    {
+      image: "/images/c-3.png",
+      slug: "/pack-grand-event",
+      alt: t(
+        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
+      ),
+      title: t(
+        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
+      ),
+      tag: t("PACK GRAND EVENT"),
+    },
+  ];
+  const slides = [
+    {
+      backgroundImage: "/images/hero-bg1.jpg",
+      subtitle: t("Louez facilement, profitez pleinement"),
+      titleHighlight: t("Tout ce dont vous avez besoin"),
+      title: t("pour vos événements en quelques clics"),
+    },
+  ];
+
+  const faqData = [
+    {
+      id: 1,
+      question: t("Comment choisir l’équipement qui convient à mon événement"),
+      answer: t(
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+      ),
+    },
+    {
+      id: 2,
+      question: t("Dois-je verser une caution pour la location"),
+      answer: t(
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+      ),
+    },
+    {
+      id: 3,
+      question: t("Proposez-vous un service de livraison"),
+      answer: t(
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+      ),
+    },
+    {
+      id: 3,
+      question: t("Si je rencontre un problème technique avec le matériel"),
+      answer: t(
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+      ),
+    },
+    {
+      id: 3,
+      question: t("Quels sont les modes de paiement acceptés"),
+      answer: t(
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+      ),
+    },
+    {
+      id: 3,
+      question: t(
+        "Dois-je vérifier le matériel au moment du retrait ou de la livraison"
+      ),
+      answer: t(
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+      ),
+    },
+    {
+      id: 3,
+      question: t("Le matériel est-il assuré en cas de dommage"),
+      answer: t(
+        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+      ),
+    },
+  ];
   return (
     <Fragment>
       <PublicLayout>
@@ -102,8 +167,8 @@ const Home = async () => {
           >
             <Grid className="container">
               <Grid className="section-title">
-                <p>Des étapes simplifiées pour vos locations</p>
-                <h2>NOTRE PROCESS</h2>
+                <p>{t("Des étapes simplifiées pour vos locations")}</p>
+                <h2>{t("NOTRE PROCESS")}</h2>
                 <Image
                   src="/images/title-border.png"
                   width="130"
@@ -119,7 +184,7 @@ const Home = async () => {
                     height="265"
                     alt=""
                   />
-                  <h3>Remplissez le formulaire de réservation</h3>
+                  <h3>{t("Remplissez le formulaire de réservation")}</h3>
                 </Grid>
                 <Grid className="single-process">
                   <Image
@@ -128,7 +193,9 @@ const Home = async () => {
                     height="265"
                     alt=""
                   />
-                  <h3>Validez la caution et le paiement du pack choisi</h3>
+                  <h3>
+                    {t("Validez la caution et le paiement du pack choisi")}
+                  </h3>
                 </Grid>
                 <Grid className="single-process">
                   <Image
@@ -139,7 +206,8 @@ const Home = async () => {
                   />
                   <h3>
                     {" "}
-                    Récupérez votre matériel <br /> (livraison ou retrait)
+                    {t("Récupérez votre matériel")} <br /> (
+                    {t("livraison ou retrait")})
                   </h3>
                 </Grid>
               </Grid>

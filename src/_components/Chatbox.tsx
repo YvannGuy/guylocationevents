@@ -12,19 +12,12 @@ import {
   TextareaAutosize,
 } from "@mui/material";
 import { ChatBubble, Close } from "@mui/icons-material";
+import { useTranslations } from "next-intl";
 
 interface Message {
   sender: "user" | "bot";
   text: string;
 }
-
-const presetQuestions = [
-  "Bonjour",
-  "Quels sont vos horaires ?",
-  "Quels équipements proposez-vous ?",
-  "Qu'est-ce qu'un photobooth ?",
-  "Comment réserver ?",
-];
 
 // Palette orange personnalisée
 const orangePalette = {
@@ -35,13 +28,21 @@ const orangePalette = {
 };
 
 export default function ChatBox() {
+  const t = useTranslations();
+
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-
+  const presetQuestions = [
+    t("Bonjour"),
+    t("Quels sont vos horaires?"),
+    t("Quels équipements proposez-vous"),
+    t("Qu'est-ce qu'un photobooth"),
+    t("Comment réserver"),
+  ];
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({
@@ -80,7 +81,9 @@ export default function ChatBox() {
         ...prev,
         {
           sender: "bot",
-          text: "Service temporairement indisponible - Veuillez réessayer",
+          text: `${t(
+            "Service temporairement indisponible Veuillez réessayer"
+          )}`,
         },
       ]);
     } finally {
@@ -150,7 +153,7 @@ export default function ChatBox() {
               flexShrink: 0,
             }}
           >
-            <Typography variant="h6">Assistance Client</Typography>
+            <Typography variant="h6">{t("Assistance Client")}</Typography>
             <IconButton
               onClick={toggleChat}
               sx={{

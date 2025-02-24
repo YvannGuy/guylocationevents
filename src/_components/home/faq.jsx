@@ -7,9 +7,11 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const AccordionContent = ({ faqData }) => {
   const [expanded, setExpanded] = useState("panel0");
+  const t = useTranslations();
 
   const handleChange = (panel) => (_event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -29,8 +31,8 @@ const AccordionContent = ({ faqData }) => {
               />
             </Grid>
             <Grid className="section-title">
-              <p>Toutes les réponses pour louer en toute sérénité</p>
-              <h2>QUESTIONS FRÉQUENTES SUR NOS SERVICES</h2>
+              <p>{t("Toutes les réponses pour louer en toute sérénité")}</p>
+              <h2>{t("QUESTIONS FRÉQUENTES SUR NOS SERVICES")}</h2>
               <Image
                 src="/images/title-border.png"
                 width="130"

@@ -1,12 +1,16 @@
 "use client";
+import { useTranslations } from "next-intl";
+
 export default function Step4({ onPrev, onNext }) {
+  const t = useTranslations();
+
   return (
     <section>
       <h2 className="text-2xl font-bold mb-4">
-        Étape 4 : Empreinte Bancaire via Swikly
+        {t("Étape 4 Empreinte Bancaire via Swikly")}
       </h2>
       <p className="mb-4 text-gray-600">
-        Veuillez sélectionner un montant pour l'empreinte bancaire.
+        {t("Veuillez sélectionner un montant pour l'empreinte bancaire")}.
       </p>
       <div className="flex gap-3">
         <button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">
@@ -24,13 +28,13 @@ export default function Step4({ onPrev, onNext }) {
           onClick={onPrev}
           className="px-4 py-2 bg-gray-400 text-white rounded hover:bg-gray-500 transition"
         >
-          Retour
+          {t("Retour")}
         </button>
         <button
           onClick={onNext}
           className="px-4 py-2 bg-[#e27430] hover:bg-[#e27430] text-white rounded transition"
         >
-          Suivant
+          {t("Suivant")}
         </button>
       </div>
     </section>

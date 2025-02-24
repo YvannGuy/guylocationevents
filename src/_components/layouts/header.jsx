@@ -6,8 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { IoMenu, IoClose } from "react-icons/io5"; // Icons for hamburger and close menu
 import { usePathname } from "next/navigation";
+import Language from "../language";
+import { useTranslations } from "next-intl";
 
 const Header = () => {
+  const t = useTranslations();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const patname = usePathname();
   const toggleMobileMenu = () => {
@@ -26,7 +29,7 @@ const Header = () => {
                 height="30"
                 alt="icon"
               />
-              7J/7 9h30-19h30 /<Link href="/">Urgences</Link>19h30-21h00
+              {t("open_hours")}
             </p>
             <a className="phone" href="tel:+33 6 51 08 49 94">
               <Image
@@ -60,7 +63,7 @@ const Header = () => {
               <ul className="main-menu">
                 <li>
                   <Link href="/" className={patname == "/" ? "active" : ""}>
-                    Accueil
+                    {t("Accueil")}
                   </Link>
                 </li>
                 <li>
@@ -68,7 +71,7 @@ const Header = () => {
                     href="/sono"
                     className={patname == "/sono" ? "active" : ""}
                   >
-                    Sono
+                    {t("Sono")}
                   </Link>
                 </li>
                 <li>
@@ -76,7 +79,7 @@ const Header = () => {
                     href="/video"
                     className={patname == "/video" ? "active" : ""}
                   >
-                    Vidéo
+                    {t("Vidéo")}
                   </Link>
                 </li>
                 <li>
@@ -84,7 +87,7 @@ const Header = () => {
                     href="/photobooth"
                     className={patname == "/photobooth" ? "active" : ""}
                   >
-                    Photobooth
+                    {t("Photobooth")}
                   </Link>
                 </li>
                 <li>
@@ -92,7 +95,7 @@ const Header = () => {
                     href="/urgences"
                     className={patname == "/urgences" ? "active" : ""}
                   >
-                    Urgences
+                    {t("Urgences")}
                   </Link>
                 </li>
               </ul>
@@ -100,8 +103,9 @@ const Header = () => {
 
             <Grid className="col-lg-3 col-5 d-none d-lg-block">
               <Grid className="header-button">
+                <Language />
                 <Link href="/reservation" className="button theme">
-                  Réservez
+                  {t("Réservez")}
                 </Link>
               </Grid>
             </Grid>
@@ -128,39 +132,32 @@ const Header = () => {
           <div className="mobile-menu">
             <ul>
               <li>
-                <Link
-                  href="/"
-                  className={patname == "/" ? "active" : ""}
-                  onClick={toggleMobileMenu}
-                >
-                  Accueil
+                <Link href="/" className={patname == "/" ? "active" : ""}>
+                  {t("Accueil")}
                 </Link>
               </li>
               <li>
                 <Link
                   href="/sono"
                   className={patname == "/sono" ? "active" : ""}
-                  onClick={toggleMobileMenu}
                 >
-                  Sono
+                  {t("Sono")}
                 </Link>
               </li>
               <li>
                 <Link
                   href="/video"
                   className={patname == "/video" ? "active" : ""}
-                  onClick={toggleMobileMenu}
                 >
-                  Vidéo
+                  {t("Vidéo")}
                 </Link>
               </li>
               <li>
                 <Link
                   href="/photobooth"
                   className={patname == "/photobooth" ? "active" : ""}
-                  onClick={toggleMobileMenu}
                 >
-                  Photobooth
+                  {t("Photobooth")}
                 </Link>
               </li>
               <li>
@@ -168,7 +165,7 @@ const Header = () => {
                   href="/urgences"
                   className={patname == "/urgences" ? "active" : ""}
                 >
-                  Urgences
+                  {t("Urgences")}
                 </Link>
               </li>
               <li>
@@ -177,7 +174,7 @@ const Header = () => {
                   className={patname == "/reservation" ? "active" : ""}
                   onClick={toggleMobileMenu}
                 >
-                  Réservez
+                  {t("Réservez")}
                 </Link>
               </li>
             </ul>

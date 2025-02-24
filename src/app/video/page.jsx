@@ -1,18 +1,31 @@
+/**
+ * Title: Home
+ * Description: Description of the component
+ * Author: Kaji Hasibur Rahman
+ * Date: 2025-01-03
+ */
+"use client";
 import PublicLayout from "@/_components/layouts";
 import CatalogList from "@/_components/home/catelog-llist";
 import { Fragment } from "react";
 import Grid from "@mui/material/Grid2";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const CatalogPage = async () => {
+  const t = useTranslations();
+
   const cards = [
     {
-      image: "/images/packvideo.jpg",
-      link: "/single-page",
-      alt: "Pack vidéo complet : vidéoprojecteur, écran de projection et trépied pour présentations et événements",
-      title:
-        "Faites vivre à votre audience une immersion visuelle inédite, où chaque projection devient une aventure captivante",
-      tag: "PACK VIDÉO",
+      image: "/images/c-1.png",
+      slug: "/pack-video",
+      alt: t(
+        "Plongez votre audience dans une expérience visuelle exceptionnelle"
+      ),
+      title: t(
+        "Plongez votre audience dans une expérience visuelle exceptionnelle"
+      ),
+      tag: t("PACK VIDÉO"),
     },
   ];
 
@@ -44,7 +57,7 @@ const CatalogPage = async () => {
           />
           <div className="container">
             <div className="hero-content-wrap">
-              <h1 className="title">Vidéo</h1>
+              <h1 className="title">{t("Vidéo")}</h1>
               <div className="title-image">
                 <Image
                   src="/images/title-border.png"
@@ -54,10 +67,9 @@ const CatalogPage = async () => {
                 />
               </div>
               <p className="subtitle">
-                Offrez une expérience visuelle immersive avec nos
-                vidéoprojecteurs et écrans sur trépied ! Parfait pour vos
-                conférences, mariages, soirées cinéma ou présentations
-                professionnelles
+                {t(
+                  "Offrez une expérience visuelle immersive avec nos vidéoprojecteurs et écrans sur trépied Parfait pour vos conférences mariages soirées cinéma ou présentations professionnelles"
+                )}
               </p>
             </div>
           </div>

@@ -11,8 +11,8 @@ interface LanguageProps {
   className?: string;
 }
 const languages = [
-  { code: "en", label: "En" },
-  { code: "pt", label: "Pt" },
+  { code: "en", label: "Eng" },
+  { code: "fr", label: "Fr" },
 ];
 
 const Language: FC<LanguageProps> = ({ className = "" }) => {
@@ -58,9 +58,7 @@ const Language: FC<LanguageProps> = ({ className = "" }) => {
           alt={
             languages.find((item) => item.code == currentLocale)?.label ?? ""
           }
-          style={{
-            marginRight: "7px",
-          }}
+          style={{ marginRight: "10px" }}
         />
         {languages.find((item) => item.code == currentLocale)?.label}
         <KeyboardArrowDownIcon />
@@ -74,12 +72,13 @@ const Language: FC<LanguageProps> = ({ className = "" }) => {
           >
             <Image
               src={`/images/flags/${item.code}.svg`}
-              width={20}
-              height={18}
-              alt={item.label}
-              style={{
-                marginRight: "7px",
-              }}
+              width={25}
+              height={15}
+              alt={
+                languages.find((item) => item.code == currentLocale)?.label ??
+                ""
+              }
+              style={{ marginRight: "10px" }}
             />
             {item.label}
           </MenuItem>

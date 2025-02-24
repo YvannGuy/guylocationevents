@@ -20,9 +20,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import SliderBlock from "@/_components/single-page/product-gallary";
-import { packages } from "@/_utils/packages";
-import { slugify } from "@/_utils/commonFunction";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const items = [
   {
@@ -70,30 +69,78 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const rows = [
-  { name: "Weight:", value: "5710kg" },
-  { name: "Rated power:", value: "36.9kW / 2200rpm" },
-  { name: "Standard bucket capacity:", value: "0.2m³" },
-  { name: "Standard bucket width:", value: "775mm" },
-  { name: "Operation Hydraulic Pressure:", value: "24.5Mpa" },
-  { name: "Maximum Digging Force:", value: "37.4kN" },
-  { name: "Gradeability:", value: "30°" },
-  { name: "Pressure To The Ground:", value: "31.4kPa" },
-  { name: "Walking Speed:", value: "2.8 / 4.7 km/h" },
-  { name: "Maximum Hauling Force:", value: "44kN" },
-];
-
-const ProductDetails = async (props) => {
+const ProductDetails = (props) => {
+  const t = useTranslations();
+  const packages = [
+    {
+      image: "/images/c-1.png",
+      slug: "/pack-standard",
+      title: "",
+      tag: t("PACK STANDARD"),
+    },
+    {
+      image: "/images/c-2.png",
+      slug: "/pack-essentiel",
+      title: t(
+        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
+      ),
+      tag: t("PACK ESSENTIEL"),
+    },
+    {
+      image: "/images/c-3.png",
+      slug: "/pack-confort",
+      title: t(
+        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
+      ),
+      tag: t("PACK CONFORT"),
+    },
+    {
+      image: "/images/c-3.png",
+      slug: "/pack-premium",
+      title: t(
+        "120-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles"
+      ),
+      tag: t("PACK PREMIUM"),
+    },
+    {
+      image: "/images/c-3.png",
+      slug: "/pack-prestige",
+      title: t(
+        "200-300 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
+      ),
+      tag: t("PACK PRESTIGE"),
+    },
+    {
+      image: "/images/c-3.png",
+      slug: "/pack-grand-event",
+      title: t(
+        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
+      ),
+      tag: t("PACK GRAND EVENT"),
+    },
+  ];
+  const rows = [
+    { name: t("Weight"), value: "5710kg" },
+    { name: t("Rated power"), value: "36.9kW / 2200rpm" },
+    { name: t("Standard bucket capacity"), value: "0.2m³" },
+    { name: t("Standard bucket width"), value: "775mm" },
+    { name: t("Operation Hydraulic Pressure"), value: "24.5Mpa" },
+    { name: t("Maximum Digging Force"), value: "37.4kN" },
+    { name: t("Gradeability"), value: "30°" },
+    { name: t("Pressure To The Ground"), value: "31.4kPa" },
+    { name: t("Walking Speed"), value: "2.8 / 4.7 km/h" },
+    { name: t("Maximum Hauling Force"), value: "44kN" },
+  ];
   const packageData =
-    props.params.slug !== "pack-vido"
-      ? packages.find((item) => slugify(item.tag) == props.params.slug)
+    props.params?.slug !== "pack-vido"
+      ? packages.find((item) => item.slug == `/${props.params?.slug}`)
       : {
           image: "/images/c-1.png",
-          link: "/single-page",
-          alt: "Pack vidéo complet : vidéoprojecteur, écran de projection et trépied pour présentations et événements",
-          title:
-            "Faites vivre à votre audience une immersion visuelle inédite, où chaque projection devient une aventure captivante",
-          tag: "PACK VIDÉO",
+          slug: "/pack-vido",
+          title: t(
+            "Plongez votre audience dans une expérience visuelle exceptionnelle"
+          ),
+          tag: t("PACK VIDÉO"),
         };
   return (
     <Fragment>
@@ -155,37 +202,41 @@ const ProductDetails = async (props) => {
                     <h2 className="name">{packageData.title}</h2>
                     <Grid className="description-box">
                       <h3 className="common-title">
-                        Description
+                        {t("Description")}
                         <span className="border border-short"></span>
                         <span className="border border-long"></span>
                         <span className="border border-middle"></span>
                       </h3>
-                      <h4>Best Yanmar powered hydraulic excavator for rent.</h4>
+                      <h4>
+                        {t("Best Yanmar powered hydraulic excavator for rent")}.
+                      </h4>
                       <p>
-                        Sed ut perspiciatis unde omnis iste natus error sit
-                        voluptatem accusantium dolore mque laud antium, totam
-                        rem aperiam, eaque ipsa quae ab illo inventore veritatis
-                        et quasi architecto be atae vitae dicta sunt explicabo.
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-                        aut odit aut fugit, sed quia consequuntur magni dolores.
+                        {t(
+                          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laud antium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto be atae vitae dicta sunt explicabo Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores"
+                        )}
                       </p>
                       <p>
-                        Eos qui ratione voluptatem sequi nesciunt. Neque porro
-                        quisquam es qui dolorem ipsum quia dolor sit amet
-                        consectetur, adipisci velit sed quia non numquam eius
-                        modi.
+                        {t(
+                          "Eos qui ratione voluptatem sequi nesciunt Neque porro  es qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi"
+                        )}
                       </p>
 
                       <ul className="product-key-points">
-                        <li>Nostrud exercitation ullamco laboris</li>
-                        <li>Ut aliquip ex ea reprehenderitin voluptate</li>
-                        <li>Adipisicing elit sed eiusmod tempor incididunt</li>
-                        <li>Labore dolore magna aliqua veniam nostrud</li>
+                        <li>{t("Nostrud exercitation ullamco laboris")}</li>
+                        <li>
+                          {t("Ut aliquip ex ea reprehenderitin voluptate")}
+                        </li>
+                        <li>
+                          {t("Adipisicing elit sed eiusmod tempor incididunt")}
+                        </li>
+                        <li>
+                          {t("Labore dolore magna aliqua veniam nostrud")}
+                        </li>
                       </ul>
                     </Grid>
                     <Grid className="specification-box">
                       <h3 className="common-title">
-                        Specification
+                        {t("Specification")}
                         <span className="border border-short"></span>
                         <span className="border border-long"></span>
                         <span className="border border-middle"></span>
@@ -222,11 +273,11 @@ const ProductDetails = async (props) => {
                       <span className="border border-short-right"></span>
                       <span className="border border-long-right"></span>
                     </h5>
-                    <p>Per Day</p>
+                    <p>{t("Per Day")}</p>
                   </Grid>
                   <Grid className="book-btn">
                     <Link href="/reservation" className="view-more-btn">
-                      Book Now
+                      {t("Book Now")}
                       <EastIcon />
                     </Link>
                   </Grid>

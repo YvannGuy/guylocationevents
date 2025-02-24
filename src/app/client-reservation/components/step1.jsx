@@ -1,7 +1,10 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 export default function Step1({ onNext }) {
+  const t = useTranslations();
+
   const [formData, setFormData] = useState({
     companyName: "",
     address: "",
@@ -35,42 +38,42 @@ export default function Step1({ onNext }) {
 
     // Required fields validation
     if (!formData.companyName.trim()) {
-      newErrors.companyName = "Le nom de l'entreprise est requis.";
+      newErrors.companyName = t("Le nom de l'entreprise est requis");
     }
     if (!formData.address.trim()) {
-      newErrors.address = "L'adresse est requise.";
+      newErrors.address = t("L'adresse est requise");
     }
     if (!formData.postalCode.trim()) {
-      newErrors.postalCode = "Le code postal est requis.";
+      newErrors.postalCode = t("Le code postal est requis");
     }
     if (!formData.city.trim()) {
-      newErrors.city = "La ville est requise.";
+      newErrors.city = t("La ville est requise");
     }
     if (!formData.email.trim()) {
-      newErrors.email = "L'email est requis.";
+      newErrors.email = t("L'email est requis.");
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "L'email est invalide.";
+      newErrors.email = t("L'email est invalide");
     }
     if (!formData.phone.trim()) {
-      newErrors.phone = "Le téléphone est requis.";
+      newErrors.phone = t("Le téléphone est requis");
     } else if (!/^\d{10}$/.test(formData.phone)) {
-      newErrors.phone = "Le téléphone doit contenir 10 chiffres.";
+      newErrors.phone = t("Le téléphone doit contenir 10 chiffres");
     }
     if (!formData.siret.trim()) {
-      newErrors.siret = "Le numéro SIRET est requis.";
+      newErrors.siret = "Le numéro SIRET est requis";
     } else if (!/^\d{14}$/.test(formData.siret)) {
-      newErrors.siret = "Le numéro SIRET doit contenir 14 chiffres.";
+      newErrors.siret = t("Le numéro SIRET doit contenir 14 chiffres");
     }
     if (!formData.startDate) {
-      newErrors.startDate = "La date de début est requise.";
+      newErrors.startDate = t("La date de début est requise");
     }
     if (!formData.endDate) {
-      newErrors.endDate = "La date de fin est requise.";
+      newErrors.endDate = t("La date de fin est requise");
     } else if (formData.endDate < formData.startDate) {
-      newErrors.endDate = "La date de fin doit être après la date de début.";
+      newErrors.endDate = t("La date de fin doit être après la date de début");
     }
     if (!formData.cgu) {
-      newErrors.cgu = "Vous devez accepter les conditions générales.";
+      newErrors.cgu = t("Vous devez accepter les conditions générales");
     }
 
     setErrors(newErrors);
@@ -87,16 +90,18 @@ export default function Step1({ onNext }) {
   return (
     <section>
       <h2 className="text-2xl font-bold mb-4">
-        Étape 1 : Formulaire de réservation 📋
+        {t("Étape 1 : Formulaire de réservation")} 📋
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Company Name */}
         <div>
-          <label className="block font-medium">Nom de l'entreprise :</label>
+          <label className="block font-medium">
+            {t("Nom de l'entreprise")} :
+          </label>
           <input
             type="text"
             name="companyName"
-            placeholder="Nom de l'entreprise"
+            placeholder={t("Nom de l'entreprise")}
             className={`w-full border rounded px-3 py-2 mt-1 ${
               errors.companyName ? "border-red-500" : ""
             }`}
@@ -110,11 +115,11 @@ export default function Step1({ onNext }) {
 
         {/* Address */}
         <div>
-          <label className="block font-medium">Adresse :</label>
+          <label className="block font-medium">{t("Adresse")} :</label>
           <input
             type="text"
             name="address"
-            placeholder="Adresse de l'entreprise"
+            placeholder={t("Adresse de l'entreprise")}
             className={`w-full border rounded px-3 py-2 mt-1 ${
               errors.address ? "border-red-500" : ""
             }`}
@@ -129,11 +134,11 @@ export default function Step1({ onNext }) {
         {/* Postal Code and City */}
         <div className="flex gap-4">
           <div className="flex-1">
-            <label className="block font-medium">Code postal :</label>
+            <label className="block font-medium">{t("Code postal")} :</label>
             <input
               type="text"
               name="postalCode"
-              placeholder="Code postal"
+              placeholder={t("Code postal")}
               className={`w-full border rounded px-3 py-2 mt-1 ${
                 errors.postalCode ? "border-red-500" : ""
               }`}
@@ -145,11 +150,11 @@ export default function Step1({ onNext }) {
             )}
           </div>
           <div className="flex-1">
-            <label className="block font-medium">Ville :</label>
+            <label className="block font-medium">{t("Ville")} :</label>
             <input
               type="text"
               name="city"
-              placeholder="Ville"
+              placeholder={t("Ville")}
               className={`w-full border rounded px-3 py-2 mt-1 ${
                 errors.city ? "border-red-500" : ""
               }`}
@@ -164,11 +169,13 @@ export default function Step1({ onNext }) {
 
         {/* Email */}
         <div>
-          <label className="block font-medium">Email professionnel :</label>
+          <label className="block font-medium">
+            {t("Email professionnel")} :
+          </label>
           <input
             type="email"
             name="email"
-            placeholder="Email professionnel"
+            placeholder={t("Email professionnel")}
             className={`w-full border rounded px-3 py-2 mt-1 ${
               errors.email ? "border-red-500" : ""
             }`}
@@ -182,11 +189,13 @@ export default function Step1({ onNext }) {
 
         {/* Phone */}
         <div>
-          <label className="block font-medium">Téléphone professionnel :</label>
+          <label className="block font-medium">
+            {t("Téléphone professionnel")} :
+          </label>
           <input
             type="tel"
             name="phone"
-            placeholder="Téléphone professionnel"
+            placeholder={t("Téléphone professionnel")}
             className={`w-full border rounded px-3 py-2 mt-1 ${
               errors.phone ? "border-red-500" : ""
             }`}
@@ -200,11 +209,11 @@ export default function Step1({ onNext }) {
 
         {/* SIRET */}
         <div>
-          <label className="block font-medium">Numéro SIRET :</label>
+          <label className="block font-medium">{t("Numéro SIRET")}:</label>
           <input
             type="text"
             name="siret"
-            placeholder="Numéro SIRET de l'entreprise"
+            placeholder={t("Numéro SIRET de l'entreprise")}
             className={`w-full border rounded px-3 py-2 mt-1 ${
               errors.siret ? "border-red-500" : ""
             }`}
@@ -218,7 +227,7 @@ export default function Step1({ onNext }) {
 
         {/* Start Date */}
         <div>
-          <label className="block font-medium">Date de début :</label>
+          <label className="block font-medium">{t("Date de début")}:</label>
           <input
             type="date"
             name="startDate"
@@ -235,7 +244,7 @@ export default function Step1({ onNext }) {
 
         {/* End Date */}
         <div>
-          <label className="block font-medium">Date de fin :</label>
+          <label className="block font-medium">{t("Date de fin")} :</label>
           <input
             type="date"
             name="endDate"
@@ -260,13 +269,13 @@ export default function Step1({ onNext }) {
               onChange={handleChange}
               className={`mr-2 ${errors.cgu ? "border-red-500" : ""}`}
             />
-            J’accepte les{" "}
+            {t("J’accepte les")}{" "}
             <a
               href="#"
               target="_blank"
               className="text-blue-600 underline ml-1"
             >
-              conditions générales
+              {t("conditions générales")}
             </a>
           </label>
           {errors.cgu && (
@@ -280,7 +289,7 @@ export default function Step1({ onNext }) {
             type="submit"
             className="px-4 py-2 bg-[#e27430] hover:bg-[#e27430] text-white rounded transition"
           >
-            Suivant
+            {t("Suivant")}
           </button>
         </div>
       </form>
