@@ -81,7 +81,7 @@ const InfoRequestForm = () => {
     <div className="bg-[#f1f1f1] pt-20 pb-20 flex justify-center">
       <div className="w-full max-w-4xl p-8 bg-white shadow-xl rounded-lg">
         <h2 className="text-3xl font-bold mb-6 text-[#e27430] text-center">
-          {t("Réservez votre événement en quelques clics")} !
+          {t("Book your event in a few clicks")} !
         </h2>
 
         {submitStatus === "success" && (
