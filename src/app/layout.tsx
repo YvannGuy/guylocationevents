@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     title: "Guy Location Events - Location Sono, Vidéo & Photobooth",
     description:
         "Besoin de matériel audiovisuel pour vos événements ? Guy Location Events propose la location de sonorisation, vidéoprojecteurs et photobooth en Île-de-France.",
-    creator: "@GuyEvents",
+    creator: "@GuylocationEvents",
     images: ["/images/preview.jpg"],
   },
 };

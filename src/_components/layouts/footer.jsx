@@ -52,7 +52,7 @@ const Footer = () => {
                   >
                     <FaFacebookF />
                   </a>
-                  <a href="/" target="_blank" aria-label="Instagram">
+                  <a href="https://www.instagram.com/guy_location_events/" target="_blank" aria-label="Instagram">
                     <FaInstagram />
                   </a>
                   <a href="/" target="_blank" aria-label="TikTok">
