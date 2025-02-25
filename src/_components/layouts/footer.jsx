@@ -38,7 +38,7 @@ const Footer = () => {
               <Grid className="left-wrap">
                 <Link href="/">
                   <Image
-                    src="/images/logo-white.png"
+                    src="/images/logofooter.png"
                     width="235"
                     height="75"
                     alt="Logo"

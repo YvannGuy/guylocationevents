@@ -1,6 +1,6 @@
 export const packages = [
   {
-    image: "/images/packstandard.jpg",
+    image: "/images/packstandard1.jpg",
     link: "/single-page",
     alt: "20-50 Personnes, Idéal pour les petites soirées privées, anniversaires ou réunions professionnelles",
     title:
@@ -18,9 +18,9 @@ export const packages = [
   {
     image: "/images/packconfort.jpg",
     link: "/single-page",
-    alt: "100-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !",
+    alt: "100-150 personnes, L’équilibre parfait entre puissance et qualité ! pour des événements de taille moyenne !",
     title:
-      "100-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !",
+      "100-150 personnes, L’équilibre parfait entre puissance et qualité ! pour des événements de taille moyenne !",
     tag: "PACK CONFORT",
   },
   {
@@ -42,9 +42,9 @@ export const packages = [
   {
     image: "/images/packgrandevent.jpg",
     link: "/single-page",
-    alt: "250-300 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !",
+    alt: "250-300 personnes, L’équilibre parfait  entre puissance et qualité !  pour des événements de taille moyenne !",
     title:
-      "250-300 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne !",
+      "250-300 personnes, L’équilibre parfait  entre puissance et qualité !  pour des événements de taille moyenne !",
     tag: "PACK GRAND EVENT",
   },
   // {

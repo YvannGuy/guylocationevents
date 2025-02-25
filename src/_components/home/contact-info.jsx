@@ -20,7 +20,7 @@ const ContactInfo = () => {
               <p className="label">{t("78 avenue des Champs Élysées 75008")}</p>
               <p className="info">
                 {t(
-                  "Paris Pour le retrait chaque lundi mercredi et vendredi 14h 00h"
+                  "Pour le retrait les lundi mercredi et vendredi 14h-19h et Urgences : 19h-20h30"
                 )}
               </p>
             </div>

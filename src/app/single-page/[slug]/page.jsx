@@ -73,13 +73,13 @@ const ProductDetails = (props) => {
   const t = useTranslations();
   const packages = [
     {
-      image: "/images/c-1.png",
+      image: "//images/packstandard1.jpg",
       slug: "/pack-standard",
       title: "",
       tag: t("PACK STANDARD"),
     },
     {
-      image: "/images/c-2.png",
+      image: "/images/packessentiel.jpg",
       slug: "/pack-essentiel",
       title: t(
         "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
@@ -87,34 +87,34 @@ const ProductDetails = (props) => {
       tag: t("PACK ESSENTIEL"),
     },
     {
-      image: "/images/c-3.png",
+      image: "/images/packconfort.jpg",
       slug: "/pack-confort",
       title: t(
-        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
+        "100-150 personnes, L’équilibre parfait entre puissance et qualité ! pour des événements de taille moyenne !"
       ),
       tag: t("PACK CONFORT"),
     },
     {
-      image: "/images/c-3.png",
+      image: "/public/images/packpremium.jpg",
       slug: "/pack-premium",
       title: t(
-        "120-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles"
+        "150-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles"
       ),
       tag: t("PACK PREMIUM"),
     },
     {
-      image: "/images/c-3.png",
+      image: "/images/packprestige.jpg",
       slug: "/pack-prestige",
       title: t(
-        "200-300 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
+        "200-250 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
       ),
       tag: t("PACK PRESTIGE"),
     },
     {
-      image: "/images/c-3.png",
+      image: "/images/packgrandevent.jpg",
       slug: "/pack-grand-event",
       title: t(
-        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
+        "250-300 personnes, L’équilibre parfait  entre puissance et qualité !  pour des événements de taille moyenne"
       ),
       tag: t("PACK GRAND EVENT"),
     },
@@ -135,7 +135,7 @@ const ProductDetails = (props) => {
     props.params?.slug !== "pack-vido"
       ? packages.find((item) => item.slug == `/${props.params?.slug}`)
       : {
-          image: "/images/c-1.png",
+          image: "/images/packvideo.jpg",
           slug: "/pack-vido",
           title: t(
             "Plongez votre audience dans une expérience visuelle exceptionnelle"

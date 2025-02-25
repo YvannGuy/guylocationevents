@@ -16,53 +16,53 @@ const CatalogPage = async () => {
   const faqData = [
     {
       id: 1,
-      question: t("Comment choisir l’équipement qui convient à mon événement?"),
+      question: t("Comment puis-je réserver du matériel pour mon événement ?"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "Vous pouvez réserver directement via notre formulaire de réservation en ligne. Une fois le formulaire soumis, notre équipe vous contactera pour confirmer la disponibilité et vous envoyer un devis personnalisé."
       ),
     },
     {
       id: 2,
-      question: t("Dois-je verser une caution pour la location?"),
+      question: t("Dois-je verser une caution pour la location"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "Oui, une caution est demandée lors de la réservation. Son montant dépend du matériel loué et sera précisé dans votre devis. Elle est restituée après vérification du matériel à la fin de la location."
       ),
     },
     {
       id: 3,
       question: t("Proposez-vous un service de livraison"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "Oui, nous livrons à Paris intramuros pour 40 € et en Île-de-France pour 80 €"
       ),
     },
     {
       id: 3,
       question: t("Si je rencontre un problème technique avec le matériel"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "Notre équipe de support est disponible par téléphone pour vous assister à distance. En cas de panne majeure, nous intervenons rapidement pour résoudre le problème"
       ),
     },
     {
       id: 3,
-      question: t("Quels sont les modes de paiement acceptés"),
+      question: t("Fournissez-vous un service d’installation ?"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "Oui, notre technicien peut installer et configurer le matériel sur place."
       ),
     },
     {
       id: 3,
       question: t(
-        "Dois-je vérifier le matériel au moment du retrait ou de la livraison"
+        "Que se passe-t-il en cas de casse ou de perte du matériel ?"
       ),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "En cas de dommage dû à une mauvaise utilisation ou de perte, les frais de réparation ou de remplacement seront facturés."
       ),
     },
     {
       id: 3,
-      question: t("Le matériel est-il assuré en cas de dommage"),
+      question: t("Puis-je venir récupérer le matériel moi-même ?"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "Oui, le retrait du matériel est possible sur rendez-vous dans nos locaux. Les détails vous seront communiqués après confirmation de la réservation"
       ),
     },
   ];

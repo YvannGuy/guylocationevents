@@ -19,7 +19,7 @@ const Home = async () => {
   const t = useTranslations();
   const packages = [
     {
-      image: "/images/c-1.png",
+      image: "/images/packstandard1.jpg",
       slug: "/pack-standard",
       alt: t(
         "20-50 Personnes, Idéal pour les petites soirées privées, anniversaires ou réunions professionnelles"
@@ -30,7 +30,7 @@ const Home = async () => {
       tag: t("PACK STANDARD"),
     },
     {
-      image: "/images/c-2.png",
+      image: "/images/packessentiel.jpg",
       slug: "/pack-essentiel",
       alt: t(
         "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
@@ -41,46 +41,46 @@ const Home = async () => {
       tag: t("PACK ESSENTIEL"),
     },
     {
-      image: "/images/c-3.png",
+      image: "/images/packconfort.jpg",
       slug: "/pack-confort",
       alt: t(
-        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
+        "100-150 personnes, L’équilibre parfait entre puissance et qualité ! pour des événements de taille moyenne !"
       ),
       title: t(
-        "80-150 personnes L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne"
+        "100-150 personnes, L’équilibre parfait entre puissance et qualité ! pour des événements de taille moyenne !"
       ),
       tag: t("PACK CONFORT"),
     },
     {
-      image: "/images/c-3.png",
+      image: "/images/packpremium.jpg",
       slug: "/pack-premium",
       alt: t(
-        "120-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles"
+        "150-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles"
       ),
       title: t(
-        "120-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles"
+        "150-200 personnes, Des basses profondes et une clarté sonore professionnelle les petites soirées privées, anniversaires ou réunions professionnelles"
       ),
       tag: t("PACK PREMIUM"),
     },
     {
-      image: "/images/c-3.png",
+      image: "/images/packprestige.jpg",
       slug: "/pack-prestige",
       alt: t(
-        "200-300 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
+        "200-250 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
       ),
       title: t(
-        "200-300 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
+        "200-250 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
       ),
       tag: t("PACK PRESTIGE"),
     },
     {
-      image: "/images/c-3.png",
+      image: "/images/packgrandevent.jpg",
       slug: "/pack-grand-event",
       alt: t(
-        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
+        "250-300 personnes, L’équilibre parfait  entre puissance et qualité !  pour des événements de taille moyenne"
       ),
       title: t(
-        "80-150 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
+        "250-300 personnes, L’équilibre parfait  entre puissance et qualité !  pour des événements de taille moyenne"
       ),
       tag: t("PACK GRAND EVENT"),
     },
@@ -97,53 +97,53 @@ const Home = async () => {
   const faqData = [
     {
       id: 1,
-      question: t("Comment choisir l’équipement qui convient à mon événement"),
+      question: t("Comment puis-je réserver du matériel pour mon événement ?"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "Vous pouvez réserver directement via notre formulaire de réservation en ligne. Une fois le formulaire soumis, notre équipe vous contactera pour confirmer la disponibilité et vous envoyer un devis personnalisé."
       ),
     },
     {
       id: 2,
       question: t("Dois-je verser une caution pour la location"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "Oui, une caution est demandée lors de la réservation. Son montant dépend du matériel loué et sera précisé dans votre devis. Elle est restituée après vérification du matériel à la fin de la location."
       ),
     },
     {
       id: 3,
       question: t("Proposez-vous un service de livraison"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "Oui, nous livrons à Paris intramuros pour 40 € et en Île-de-France pour 80 €"
       ),
     },
     {
       id: 3,
       question: t("Si je rencontre un problème technique avec le matériel"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "Notre équipe de support est disponible par téléphone pour vous assister à distance. En cas de panne majeure, nous intervenons rapidement pour résoudre le problème"
       ),
     },
     {
       id: 3,
-      question: t("Quels sont les modes de paiement acceptés"),
+      question: t("Fournissez-vous un service d’installation ?"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "Oui, notre technicien peut installer et configurer le matériel sur place."
       ),
     },
     {
       id: 3,
       question: t(
-        "Dois-je vérifier le matériel au moment du retrait ou de la livraison"
+        "Que se passe-t-il en cas de casse ou de perte du matériel ?"
       ),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "En cas de dommage dû à une mauvaise utilisation ou de perte, les frais de réparation ou de remplacement seront facturés."
       ),
     },
     {
       id: 3,
-      question: t("Le matériel est-il assuré en cas de dommage"),
+      question: t("Puis-je venir récupérer le matériel moi-même ?"),
       answer: t(
-        "Nous proposons une assurance en option pour couvrir d’éventuels dommages Contactez-nous pour en savoir plus"
+        "Oui, le retrait du matériel est possible sur rendez-vous dans nos locaux. Les détails vous seront communiqués après confirmation de la réservation"
       ),
     },
   ];

@@ -17,7 +17,7 @@ const CatalogPage = async () => {
 
   const cards = [
     {
-      image: "/images/c-1.png",
+      image: "/images/packvideo.jpg",
       slug: "/pack-video",
       alt: t(
         "Plongez votre audience dans une expérience visuelle exceptionnelle"
