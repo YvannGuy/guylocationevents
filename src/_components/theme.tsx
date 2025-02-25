@@ -1,9 +1,3 @@
-/**
- * Title: Theme component
- * Description: Description of the component
- * Author: Kaji Hasibur Rahman
- * Date: 2024-10-21
- */
 "use client";
 import { createTheme } from "@mui/material/styles";
 

@@ -40,10 +40,10 @@ const CatalogPage = async () => {
       image: "/images/packconfort.jpg",
       slug: "/pack-confort",
       alt: t(
-        "100-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !"
+        "100-150 personnes, L’équilibre parfait entre puissance et qualité ! pour des événements de taille moyenne !"
       ),
       title: t(
-        "100-150 personnes, L’équilibre parfait entre puissance et qualité !t pour des événements de taille moyenne !"
+        "100-150 personnes, L’équilibre parfait entre puissance et qualité ! pour des événements de taille moyenne !"
       ),
       tag: t("PACK CONFORT"),
     },
@@ -73,10 +73,10 @@ const CatalogPage = async () => {
       image: "/images/packgrandevent.jpg",
       slug: "/pack-grand-event",
       alt: t(
-        "250-300 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
+        "250-300 personnes, L’équilibre parfait  entre puissance et qualité !  pour des événements de taille moyenne"
       ),
       title: t(
-        "250-300 personnes, L’équilibre parfait  entre puissance et qualité !t  pour des événements de taille moyenne"
+        "250-300 personnes, L’équilibre parfait  entre puissance et qualité !  pour des événements de taille moyenne"
       ),
       tag: t("PACK GRAND EVENT"),
     },

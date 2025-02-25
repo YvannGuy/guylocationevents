@@ -1,31 +1,48 @@
 "use client";
+import { useTranslations } from 'next-intl';
 import React, { useState, useEffect } from "react";
 
 const SendFinalEmailForm = () => {
-  // États d'authentification
   const [password, setPassword] = useState("");
   const t = useTranslations();
 
   const [authenticated, setAuthenticated] = useState(false);
+  
   const packs = [
-    { id: "pack1", name: t("Pack Mariage"), price: 50000, icon: "💍" },
-    { id: "pack2", name: t("Pack Anniversaire"), price: 30000, icon: "🎈" },
-    { id: "pack3", name: t("Pack Conférence"), price: 40000, icon: "🎤" },
+    { id: "pack1", name: t("Pack Standard"), price: 8000, icon: "📋" },
+    { id: "pack2", name: t("Pack Essentiel"), price: 10500, icon: "✅" },
+    { id: "pack3", name: t("Pack Confort"), price: 12500, icon: "🛋️" },
+    { id: "pack4", name: t("Pack Premium"), price: 13500, icon: "💎" },
+    { id: "pack5", name: t("Pack Prestige"), price: 17500, icon: "👑" },
+    { id: "pack6", name: t("Pack Grand Événement"), price: 19500, icon: "🎉" },
+    { id: "pack7", name: t("Pack Vidéo"), price: 5000, icon: "🎥" },
+    { id: "pack8", name: t("Photobooth"), price: 49900, icon: "📸" },
   ];
 
   const options = [
-    { id: "technician", name: t("Technicien"), price: 10000, icon: "🔧" },
-    { id: "delivery", name: t("Livraison"), price: 5000, icon: "🚚" },
+    { id: "technician-installation", name: t("Technicien installation"), price: 8000, icon: "🔧" },
+    { id: "technician-management", name: t("Technicien gestion"), price: 5000, icon: "🛠️", hourly: true },
+    { id: "delivery-paris", name: t("Livraison Paris intra-muros"), price: 4000, icon: "🚚" },
+    { id: "delivery-idf", name: t("Livraison Île-de-France"), price: 8000, icon: "🚚" },
+    { id: "micro-wired", name: t("Micro filaire"), price: 1000, icon: "🎤", quantity: true },
+    { id: "micro-wireless", name: t("Micro sans fil"), price: 2000, icon: "🎙️", quantity: true },
   ];
-  // États du formulaire
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [eventAddress, setEventAddress] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [startTime, setStartTime] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [endTime, setEndTime] = useState("");
   const [selectedPacks, setSelectedPacks] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState([]);
+  const [packQuantities, setPackQuantities] = useState({});
+  const [optionQuantities, setOptionQuantities] = useState({});
+  const [technicianHours, setTechnicianHours] = useState(1);
   const [participants, setParticipants] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
 
-  // Gestion de l'authentification
   const handleSubmitPassword = (e) => {
     e.preventDefault();
     if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
@@ -35,34 +52,58 @@ const SendFinalEmailForm = () => {
     }
   };
 
-  // Calcul du total
   useEffect(() => {
     let total = selectedPacks.reduce((acc, packId) => {
       const pack = packs.find((p) => p.id === packId);
-      return acc + (pack?.price || 0);
+      const quantity = packQuantities[packId] || 1;
+      return acc + (pack?.price || 0) * quantity;
     }, 0);
 
     total += selectedOptions.reduce((acc, optionId) => {
       const option = options.find((o) => o.id === optionId);
-      return acc + (option?.price || 0);
+      let optionTotal = 0;
+      
+      if (optionId === "technician-management") {
+        optionTotal = (option?.price || 0) * technicianHours;
+      } 
+      else if (option?.quantity) {
+        const qty = optionQuantities[optionId] || 1;
+        optionTotal = (option?.price || 0) * qty;
+      }
+      else {
+        optionTotal = option?.price || 0;
+      }
+      
+      return acc + optionTotal;
     }, 0);
 
-    total += participants * 1000;
     setTotalAmount(total);
-  }, [selectedPacks, selectedOptions, participants]);
+  }, [selectedPacks, selectedOptions, packQuantities, technicianHours, optionQuantities]);
 
-  // Réinitialisation du formulaire
   const resetForm = () => {
     setFullName("");
     setEmail("");
+    setEventAddress("");
+    setStartDate("");
+    setStartTime("");
+    setEndDate("");
+    setEndTime("");
     setSelectedPacks([]);
     setSelectedOptions([]);
+    setPackQuantities({});
+    setOptionQuantities({});
+    setTechnicianHours(1);
     setParticipants(0);
   };
 
-  // Fonctions utilitaires
   const getDeliveryLabel = () => {
-    return selectedOptions.includes("delivery") ? t("Livraison") : t("Retrait");
+    if (selectedOptions.includes("delivery-paris")) {
+      return t("Livraison Paris intra-muros");
+    }
+    if (selectedOptions.includes("delivery-idf")) {
+      return t("Livraison Île-de-France");
+    }
+    return t("Retrait");
   };
 
   const getSelectedPacksLabel = () => {
@@ -70,21 +111,29 @@ const SendFinalEmailForm = () => {
     return selectedPacks
       .map((packId) => {
         const pack = packs.find((p) => p.id === packId);
-        return pack?.name || "";
+        const quantity = packQuantities[packId] || 1;
+        return `${pack?.name || ""} (x${quantity})`;
       })
       .filter(Boolean)
       .join(", ");
   };
 
-  // Soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const data = {
       fullName,
       email,
+      eventAddress,
+      startDate,
+      startTime,
+      endDate,
+      endTime,
       selectedPacks,
       selectedOptions,
+      packQuantities,
+      optionQuantities,
+      technicianHours,
       participants,
     };
 
@@ -143,6 +192,40 @@ const SendFinalEmailForm = () => {
                     placeholder="john@example.com"
                   />
                   <AppleInput
+                    label={t("Adresse de l'événement")}
+                    value={eventAddress}
+                    onChange={(e) => setEventAddress(e.target.value)}
+                    placeholder="123 Rue de l'Exemple, 75000 Paris"
+                  />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <AppleInput
+                      label={t("Date de début")}
+                      type="date"
+                      value={startDate}
+                      onChange={(e) => setStartDate(e.target.value)}
+                    />
+                    <AppleInput
+                      label={t("Heure de début")}
+                      type="time"
+                      value={startTime}
+                      onChange={(e) => setStartTime(e.target.value)}
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <AppleInput
+                      label={t("Date de fin")}
+                      type="date"
+                      value={endDate}
+                      onChange={(e) => setEndDate(e.target.value)}
+                    />
+                    <AppleInput
+                      label={t("Heure de fin")}
+                      type="time"
+                      value={endTime}
+                      onChange={(e) => setEndTime(e.target.value)}
+                    />
+                  </div>
+                  <AppleInput
                     label={t("Nombre de participants")}
                     type="number"
                     value={participants}
@@ -158,20 +241,39 @@ const SendFinalEmailForm = () => {
                 <div className="space-y-4">
                   <div className="grid grid-cols-1 gap-4">
                     {packs.map((pack) => (
-                      <AppleCard
-                        key={pack.id}
-                        label={pack.name}
-                        price={pack.price}
-                        icon={pack.icon}
-                        selected={selectedPacks.includes(pack.id)}
-                        onToggle={() =>
-                          setSelectedPacks((prev) =>
-                            prev.includes(pack.id)
-                              ? prev.filter((id) => id !== pack.id)
-                              : [...prev, pack.id]
-                          )
-                        }
-                      />
+                      <div key={pack.id} className="flex items-center gap-4">
+                        <AppleCard
+                          label={pack.name}
+                          price={pack.price}
+                          icon={pack.icon}
+                          selected={selectedPacks.includes(pack.id)}
+                          onToggle={() =>
+                            setSelectedPacks((prev) =>
+                              prev.includes(pack.id)
+                                ? prev.filter((id) => id !== pack.id)
+                                : [...prev, pack.id]
+                            )
+                          }
+                        />
+                        {selectedPacks.includes(pack.id) && (
+                          <select
+                            value={packQuantities[pack.id] || 1}
+                            onChange={(e) =>
+                              setPackQuantities((prev) => ({
+                                ...prev,
+                                [pack.id]: Number(e.target.value),
+                              }))
+                            }
+                            className="w-20 px-3 py-2 border border-gray-200 rounded-xl"
+                          >
+                            {[...Array(10).keys()].map((i) => (
+                              <option key={i + 1} value={i + 1}>
+                                {i + 1}
+                              </option>
+                            ))}
+                          </select>
+                        )}
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -183,20 +285,58 @@ const SendFinalEmailForm = () => {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {options.map((option) => (
-                    <AppleOptionCard
-                      key={option.id}
-                      label={option.name}
-                      price={option.price}
-                      icon={option.icon}
-                      selected={selectedOptions.includes(option.id)}
-                      onToggle={() =>
-                        setSelectedOptions((prev) =>
-                          prev.includes(option.id)
-                            ? prev.filter((id) => id !== option.id)
-                            : [...prev, option.id]
-                        )
-                      }
-                    />
+                    <div key={option.id} className="flex flex-col gap-2">
+                      <AppleOptionCard
+                        label={option.name}
+                        price={option.price}
+                        icon={option.icon}
+                        selected={selectedOptions.includes(option.id)}
+                        onToggle={() =>
+                          setSelectedOptions((prev) =>
+                            prev.includes(option.id)
+                              ? prev.filter((id) => id !== option.id)
+                              : [...prev, option.id]
+                          )
+                        }
+                      />
+                      {option.hourly && selectedOptions.includes(option.id) && (
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm text-gray-600">Heures :</span>
+                          <select
+                            value={technicianHours}
+                            onChange={(e) => setTechnicianHours(Number(e.target.value))}
+                            className="w-20 px-2 py-1 border border-gray-200 rounded-xl"
+                          >
+                            {[...Array(10).keys()].map((i) => (
+                              <option key={i + 1} value={i + 1}>
+                                {i + 1}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+                      {option.quantity && selectedOptions.includes(option.id) && (
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm text-gray-600">Quantité :</span>
+                          <select
+                            value={optionQuantities[option.id] || 1}
+                            onChange={(e) =>
+                              setOptionQuantities((prev) => ({
+                                ...prev,
+                                [option.id]: Number(e.target.value),
+                              }))
+                            }
+                            className="w-20 px-2 py-1 border border-gray-200 rounded-xl"
+                          >
+                            {[...Array(10).keys()].map((i) => (
+                              <option key={i + 1} value={i + 1}>
+                                {i + 1}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               </section>
@@ -218,6 +358,26 @@ const SendFinalEmailForm = () => {
                     value={email || "Non renseigné"}
                   />
                   <AppleSummaryItem
+                    label={t("Adresse")}
+                    value={eventAddress || "Non renseigné"}
+                  />
+                  <AppleSummaryItem
+                    label={t("Début")}
+                    value={
+                      startDate && startTime
+                        ? `${new Date(startDate).toLocaleDateString('fr-FR')} à ${startTime}`
+                        : "-"
+                    }
+                  />
+                  <AppleSummaryItem
+                    label={t("Fin")}
+                    value={
+                      endDate && endTime
+                        ? `${new Date(endDate).toLocaleDateString('fr-FR')} à ${endTime}`
+                        : "-"
+                    }
+                  />
+                  <AppleSummaryItem
                     label={t("Participants")}
                     value={participants > 0 ? participants : "-"}
                   />
@@ -226,16 +386,40 @@ const SendFinalEmailForm = () => {
                     value={getSelectedPacksLabel()}
                   />
                   <AppleSummaryItem
-                    label={t("Technicien")}
+                    label={t("Technicien installation")}
                     value={
-                      selectedOptions.includes("technician")
+                      selectedOptions.includes("technician-installation")
                         ? t("Inclus")
+                        : t("Non inclus")
+                    }
+                  />
+                  <AppleSummaryItem
+                    label={t("Technicien gestion")}
+                    value={
+                      selectedOptions.includes("technician-management")
+                        ? `${technicianHours} ${t("heures")}`
                         : t("Non inclus")
                     }
                   />
                   <AppleSummaryItem
                     label={t("Livraison")}
                     value={getDeliveryLabel()}
+                  />
+                  <AppleSummaryItem
+                    label={t("Micro filaire")}
+                    value={
+                      selectedOptions.includes("micro-wired")
+                        ? `${optionQuantities["micro-wired"] || 1}x`
+                        : t("Non inclus")
+                    }
+                  />
+                  <AppleSummaryItem
+                    label={t("Micro sans fil")}
+                    value={
+                      selectedOptions.includes("micro-wireless")
+                        ? `${optionQuantities["micro-wireless"] || 1}x`
+                        : t("Non inclus")
+                    }
                   />
                 </div>
 
@@ -294,7 +478,6 @@ const SendFinalEmailForm = () => {
   );
 };
 
-// Composants stylisés
 const AppleInput = ({ label, ...props }) => (
   <div>
     <label className="block text-sm font-medium text-gray-700 mb-2">
