@@ -37,12 +37,12 @@ export default function ChatBox() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const presetQuestions = [
-t("Bonjour"),
-t("Quels sont vos horaires?"),
-t("quels types d'équipements sono proposez-vous ?"),
-t("Comment fonctionne la location?"),
-t("Comment réserver?"),
-t("Avez-vous un service technicien?"),
+    t("Bonjour"),
+    t("Quels sont vos horaires"),
+    t("quels types d'équipements sono proposez-vous"),
+    t("Comment fonctionne la location"),
+    t("Comment réserver"),
+    t("Avez-vous un service technicien"),
   ];
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
