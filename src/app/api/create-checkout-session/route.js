@@ -6,7 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { mainPaymentAmount, deposit, paymentMethodId } = body;
+    const { mainPaymentAmount, deposit } = body; // pas de paymentMethodId ici
     const totalAmount = mainPaymentAmount + deposit;
 
     // Création de la session Checkout pour le paiement principal
@@ -24,34 +24,18 @@ export async function POST(request) {
       ],
       mode: 'payment',
       payment_intent_data: {
-        capture_method: 'manual',
+        capture_method: 'manual', // Autorisation manuelle pour permettre la capture partielle
         metadata: {
-          mainPaymentAmount: mainPaymentAmount.toString(),
-          depositAmount: deposit.toString(),
+          mainPaymentAmount: mainPaymentAmount.toString(), // Montant à capturer immédiatement
+          depositAmount: deposit.toString(), // Montant de caution à autoriser
         },
       },
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
     });
 
-    let depositPaymentIntentId = null;
-    if (deposit > 0) {
-      // En mode live, on ne doit pas utiliser de PaymentMethodId de test.
-      // Si paymentMethodId est fourni depuis le front-end, on confirme le PaymentIntent.
-      const confirm = paymentMethodId ? true : false;
-      const depositIntent = await stripe.paymentIntents.create({
-        amount: deposit,
-        currency: 'eur',
-        capture_method: 'manual',
-        payment_method_types: ['card'],
-        confirm,
-        ...(paymentMethodId && { payment_method: paymentMethodId }),
-      });
-      depositPaymentIntentId = depositIntent.id;
-    }
-
     return NextResponse.json(
-      { sessionId: session.id, url: session.url, depositPaymentIntentId },
+      { sessionId: session.id, url: session.url },
       { status: 200 }
     );
   } catch (error) {
