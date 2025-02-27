@@ -7,6 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 const packs = [
+  { id: "test-product", name: "Produit Test", price: 100, stripePriceId: "price_1Qx9qNGKCVzDExz8SqSZSMeX" },
   { id: "pack1", name: "Pack Standard", price: 8000, stripePriceId: "price_1QwVRfGKCVzDExz8KO4ujxPa" },
   { id: "pack2", name: "Pack Essentiel", price: 10500, stripePriceId: "price_1QwVT4GKCVzDExz87s7E1Mei" },
   { id: "pack3", name: "Pack Confort", price: 12500, stripePriceId: "price_1QwVU1GKCVzDExz8tfhjhIeX" },
@@ -28,7 +29,7 @@ const options = [
 export async function POST(req) {
   try {
     const {
-      deposit,           // caution en centimes
+      deposit,           // caution en centimes (ex: 10000 pour 100€)
       fullName,
       email,
       eventAddress,
@@ -37,66 +38,81 @@ export async function POST(req) {
       endDate,
       endTime,
       participants,
-      technicianHours,   // nombre d'heures pour le technicien
+      technicianHours,
       selectedPacks,
       selectedOptions,
       packQuantities,
       optionQuantities,
+      mainPaymentAmount, // montant principal en centimes (ex: 1000 pour 10€)
     } = await req.json();
 
-    // 1. Calcul du montant principal à payer (issu des packs et options)
-    const mainPaymentAmount =
-      selectedPacks.reduce((acc, packId) => {
-        const pack = packs.find((p) => p.id === packId);
-        return acc + (pack?.price || 0) * (packQuantities[packId] || 1);
-      }, 0) +
-      selectedOptions.reduce((acc, optionId) => {
-        const option = options.find((o) => o.id === optionId);
-        let qty = 1;
-        if (optionId === "technician-management") {
-          qty = technicianHours;
-        } else if (option?.quantity) {
-          qty = optionQuantities[optionId] || 1;
-        }
-        return acc + (option?.price || 0) * qty;
-      }, 0);
+    // Vérification et conversion du montant principal
+    let mainAmount = parseInt(mainPaymentAmount, 10);
+    if (isNaN(mainAmount)) {
+      mainAmount = 0;
+    }
 
-    // Total pour la session Checkout (mainPayment + caution)
-    const totalForCheckout = mainPaymentAmount + deposit;
-
-    // 2. Création du client Stripe
+    // Création du client Stripe
     const customer = await stripe.customers.create({
       email,
       name: fullName,
     });
 
-    // 3. Création de la session Checkout (en mode capture manuelle)
-    const session = await stripe.checkout.sessions.create({
+    // Création des line items pour le paiement principal (sans la caution)
+    const mainLineItems = selectedPacks.map(packId => {
+      const pack = packs.find(p => p.id === packId);
+      return {
+        price: pack.stripePriceId,
+        quantity: packQuantities[packId] || 1,
+      };
+    }).concat(selectedOptions.map(optionId => {
+      const option = options.find(o => o.id === optionId);
+      let quantity = 1;
+      if (optionId === "technician-management") {
+        quantity = technicianHours;
+      } else if (option?.quantity) {
+        quantity = optionQuantities[optionId] || 1;
+      }
+      return { price: option.stripePriceId, quantity };
+    }));
+
+    // Création de la session Checkout pour le paiement principal uniquement
+    const mainSession = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       customer: customer.id,
-      line_items: [
-        {
-          price_data: {
-            currency: 'eur',
-            product_data: { name: 'Total de la commande' },
-            unit_amount: totalForCheckout,
-          },
-          quantity: 1,
-        },
-      ],
+      line_items: mainLineItems,
       mode: 'payment',
-      payment_intent_data: {
-        capture_method: 'manual', // Permet la capture partielle via le webhook
-        metadata: {
-          mainPaymentAmount: mainPaymentAmount.toString(), // Montant à capturer immédiatement
-          depositAmount: deposit.toString(),                 // Montant de caution à autoriser
-        },
-      },
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success-payment?session_id={CHECKOUT_SESSION_ID}&customer_id=${customer.id}&deposit=${deposit}`,
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
     });
 
-    // 4. Insertion de la réservation dans Supabase (seulement les champs définis dans votre schéma)
+    // Création d'un PaymentIntent pour la caution (non confirmé ici)
+    let depositPaymentLink = null;
+    if (deposit > 0) {
+      const depositIntent = await stripe.paymentIntents.create({
+        amount: deposit,
+        currency: 'eur',
+        capture_method: 'manual',
+        customer: customer.id,
+        payment_method_types: ['card'],
+      });
+      depositPaymentLink = depositIntent.id;
+    }
+
+    // Calcul du montant total des produits (pour l'affichage dans l'e-mail)
+    const totalProductsAmount = selectedPacks.reduce((acc, packId) => {
+      const pack = packs.find(p => p.id === packId);
+      return acc + (pack?.price || 0) * (packQuantities[packId] || 1);
+    }, 0);
+    const totalFromOptions = selectedOptions.reduce((acc, optionId) => {
+      const option = options.find(o => o.id === optionId);
+      let qty = optionId === "technician-management" ? technicianHours : 
+                option?.quantity ? optionQuantities[optionId] || 1 : 1;
+      return acc + (option?.price || 0) * qty;
+    }, 0);
+    const totalProductsDisplay = totalProductsAmount + totalFromOptions;
+
+    // Préparation du payload pour l'insertion dans la table "final_reservations"
     const reservationPayload = {
       fullName,
       email,
@@ -107,8 +123,8 @@ export async function POST(req) {
       endTime,
       participants,
       technicianHours,
-      totalAmount: mainPaymentAmount / 100, // Montant principal en euros
-      paymentLink: session.url,
+      totalAmount: mainAmount / 100, // en euros (paiement principal)
+      paymentLink: mainSession.url,
     };
 
     const { data: reservationData, error: reservationError } = await supabase
@@ -123,7 +139,7 @@ export async function POST(req) {
 
     const reservationId = reservationData[0].id;
 
-    // 5. Insertion des packs sélectionnés dans "reservation_packs"
+    // Insertion des packs sélectionnés
     if (selectedPacks.length > 0) {
       const packInsertions = selectedPacks.map(packId => ({
         reservation_id: reservationId,
@@ -136,7 +152,7 @@ export async function POST(req) {
       if (packsError) throw new Error(packsError.message);
     }
 
-    // 6. Insertion des options sélectionnées dans "reservation_options"
+    // Insertion des options sélectionnées
     if (selectedOptions.length > 0) {
       const optionInsertions = selectedOptions.map(optionId => ({
         reservation_id: reservationId,
@@ -153,7 +169,7 @@ export async function POST(req) {
       if (optionsError) throw new Error(optionsError.message);
     }
 
-    // 7. Envoi de l'e-mail de confirmation
+    // Génération du contenu de l'e-mail de confirmation (inchangé)
     const emailContent = `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #1c1c1e; padding: 2rem; color: #ffffff;">
         <!-- Logo -->
@@ -170,9 +186,88 @@ export async function POST(req) {
               Bonjour <strong>${fullName}</strong>,<br>
               Votre réservation a été enregistrée avec succès. Voici les détails :
             </p>
-            <!-- Vous pouvez ajouter ici d'autres détails récapitulatifs -->
-            <p>Pour finaliser votre réservation, veuillez procéder au paiement en cliquant sur le lien suivant :</p>
-            <p><a href="${session.url}" style="color: #e27431; text-decoration: none;">Finaliser le paiement principal</a></p>
+            <!-- Détails de l'événement -->
+            <div style="background-color: #3a3a3c; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
+              <h2 style="font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 1rem;">Détails de l'événement</h2>
+              <div style="display: grid; gap: 0.75rem;">
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #a0a0a0; font-size: 14px;">Adresse</span>
+                  <span style="font-size: 14px; font-weight: 500;">${eventAddress}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #a0a0a0; font-size: 14px;">Date de début</span>
+                  <span style="font-size: 14px; font-weight: 500;">${new Date(startDate).toLocaleDateString('fr-FR')} à ${startTime}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #a0a0a0; font-size: 14px;">Date de fin</span>
+                  <span style="font-size: 14px; font-weight: 500;">${new Date(endDate).toLocaleDateString('fr-FR')} à ${endTime}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #a0a0a0; font-size: 14px;">Participants</span>
+                  <span style="font-size: 14px; font-weight: 500;">${participants}</span>
+                </div>
+              </div>
+            </div>
+            <!-- Packs et options -->
+            <div style="background-color: #3a3a3c; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
+              <h2 style="font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 1rem;">Packs et options</h2>
+              <div style="display: grid; gap: 0.75rem;">
+                ${selectedPacks.map((packId) => {
+                  const pack = packs.find((p) => p.id === packId);
+                  const quantity = packQuantities[packId] || 1;
+                  const totalPrice = (pack?.price || 0) * quantity;
+                  return `
+                    <div style="display: flex; justify-content: space-between;">
+                      <span style="font-size: 14px; color: #a0a0a0;">${pack?.name || packId} (x${quantity})</span>
+                      <span style="font-size: 14px; font-weight: 500; color: #ffffff;">${(totalPrice / 100).toFixed(2)} €</span>
+                    </div>
+                  `;
+                }).join('')}
+                ${selectedOptions.map((optionId) => {
+                  const option = options.find((o) => o.id === optionId);
+                  let totalPrice = 0;
+                  let label = option?.name || optionId;
+                  if (optionId === "technician-management") {
+                    totalPrice = (option?.price || 0) * technicianHours;
+                    label += ` (${technicianHours} heures)`;
+                  } else if (option?.quantity) {
+                    const qty = optionQuantities[optionId] || 1;
+                    totalPrice = (option?.price || 0) * qty;
+                    label += ` (x${qty})`;
+                  } else {
+                    totalPrice = option?.price || 0;
+                  }
+                  return `
+                    <div style="display: flex; justify-content: space-between;">
+                      <span style="font-size: 14px; color: #a0a0a0;">${label}</span>
+                      <span style="font-size: 14px; font-weight: 500; color: #ffffff;">${(totalPrice / 100).toFixed(2)} €</span>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+            <!-- Paiement -->
+            <div style="background-color: #3a3a3c; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
+              <h2 style="font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 1rem;">Paiement</h2>
+              <div style="display: grid; gap: 0.75rem;">
+                ${deposit > 0 ? `
+                  <div style="display: flex; justify-content: space-between;">
+                    <span style="font-size: 14px; color: #a0a0a0;">Caution préautorisée</span>
+                    <span style="font-size: 14px; font-weight: 500; color: #ffffff;">${(deposit / 100).toFixed(2)} €</span>
+                  </div>` : ''}
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="font-size: 14px; color: #a0a0a0;">Total</span>
+                  <span style="font-size: 14px; font-weight: 500; color: #ffffff;">${(totalProductsDisplay / 100).toFixed(2)} €</span>
+                </div>
+              </div>
+              <a href="${mainSession.url}" style="display: inline-block; background-color: #e27431; color: #ffffff; font-size: 14px; font-weight: 500; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; margin-top: 1rem; text-align: center;">
+                Finaliser le paiement principal
+              </a>
+            </div>
+            <p style="font-size: 14px; color: #ffffff; margin-top: 1.5rem;">
+              Merci de faire confiance à <strong>Guy Location Events</strong> pour votre événement.<br>
+              Pour toute question, contactez-nous à <a href="mailto:contact@guylocationevents.com" style="color: #e27431; text-decoration: none;">contact@guylocationevents.com</a>.
+            </p>
           </div>
         </div>
       </div>
@@ -185,9 +280,10 @@ export async function POST(req) {
       html: emailContent,
     });
 
-    return NextResponse.json({
-      success: true,
-      mainPaymentUrl: session.url,
+    return NextResponse.json({ 
+      success: true, 
+      mainPaymentUrl: mainSession.url, 
+      depositPaymentIntent: depositPaymentLink 
     });
   } catch (error) {
     console.error("Erreur:", error.message);
