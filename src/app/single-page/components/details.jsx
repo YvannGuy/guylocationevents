@@ -414,42 +414,36 @@ informations: [
   ];
 
   const packageData =
-    props?.slug !== "pack-vido"
+    props?.slug !== "pack-video"
       ? packages.find((item) => item.slug == `/${props?.slug}`)
       : {
           image: "/images/packvideo.jpg",
-          slug: "/pack-vido",
-          title: t(
-            "Plongez votre audience dans une expérience visuelle exceptionnelle"
-          ),
-          tag: t("PACK VIDÉO"),
-          specifications: [
-            { name: t("Weight"), value: "5710kg" },
-            { name: t("Rated power"), value: "36.9kW / 2200rpm" },
-            { name: t("Standard bucket capacity"), value: "0.2m³" },
-            { name: t("Standard bucket width"), value: "775mm" },
-            { name: t("Operation Hydraulic Pressure"), value: "24.5Mpa" },
-            { name: t("Maximum Digging Force"), value: "37.4kN" },
-            { name: t("Gradeability"), value: "30°" },
-            { name: t("Pressure To The Ground"), value: "31.4kPa" },
-            { name: t("Walking Speed"), value: "2.8 / 4.7 km/h" },
-            { name: t("Maximum Hauling Force"), value: "44kN" },
-          ],
-          price: "250.00",
-          unite: t("Per Day"),
-          description: t(
-            "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laud antium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto be atae vitae dicta sunt explicabo Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores"
-          ),
-          description2: t(
-            "Eos qui ratione voluptatem sequi nesciunt Neque porro  es qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi"
-          ),
-          subtitle: t("Best Yanmar powered hydraulic excavator for rent"),
-          informations: [
-            t("Nostrud exercitation ullamco laboris"),
-            t("Ut aliquip ex ea reprehenderitin voluptate"),
-            t("Adipisicing elit sed eiusmod tempor incididunt"),
-            t("Labore dolore magna aliqua veniam nostrud"),
-          ],
+          slug: "/pack-video",
+          title: t("Pack Vidéo Complet Epson EB-S27 avec Écran Portatif et Trépied Stable"),
+tag: t("PACK VIDÉO"),
+specifications: [
+  { name: t("Vidéoprojecteur"), value: "Epson EB-S27" },
+  { name: t("Écran de projection"), value: "Écran portatif 100 pouces (2,26 m x 1,4 m)" },
+  { name: t("Trépied"), value: "Trépied stable et réglable" },
+  { name: t("Poids du vidéoprojecteur"), value: "2.5 kg" },
+  { name: t("Poids de l'écran"), value: "5.5 kg" },
+  { name: t("Dimensions de l'écran"), value: "2,26 m x 1,4 m" }
+],
+price: "50.00€ TTC",
+unite: t("Par Jour/Week-end"),
+description: t(
+  "Le Pack Vidéo est conçu pour offrir une solution complète et pratique pour vos présentations et projections. Il comprend un vidéoprojecteur Epson EB-S27, un écran de projection portatif de 100 pouces, et un trépied stable et réglable pour installer facilement l'écran. Ce pack est idéal pour des réunions, des conférences, ou tout autre événement nécessitant une projection de qualité."
+),
+description2: t(
+  "Avec cet équipement, vous obtiendrez des images nettes et claires grâce au vidéoprojecteur Epson, tout en bénéficiant d'un écran portatif facile à transporter et à installer. Le trépied ajustable vous permet de positionner l'écran à la hauteur souhaitée pour un meilleur confort de visionnage. Ce pack est parfait pour vos événements professionnels ou privés nécessitant une projection simple et efficace."
+),
+subtitle: t("Une solution simple et pratique pour vos projections et présentations de qualité."),
+informations: [
+  t("Pack complet : Vidéoprojecteur Epson EB-S27 + Écran portatif 100 pouces + Trépied réglable"),
+  t("Utilisation : Idéal pour des présentations, réunions, conférences ou projections en extérieur"),
+  t("Facile à transporter et à installer, avec des réglages simples pour un confort optimal"),
+  t("Écran de grande taille pour une visibilité maximale lors de vos événements")
+],
           images: [
             {
               fullImage: "/images/packstandard1.jpg",
