@@ -1,29 +1,28 @@
-// pages/api/create-checkout-session.js
+// src/app/api/create-checkout-session/route.js
 import Stripe from 'stripe';
+import { NextResponse } from 'next/server';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).end();
-  }
+export async function POST(request) {
   try {
-    // On suppose que vous recevez ces valeurs depuis le front-end (en centimes)
-    const { mainPaymentAmount, deposit } = req.body;
+    const body = await request.json();
+    const { mainPaymentAmount, deposit } = body;
     const totalAmount = mainPaymentAmount + deposit;
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [{
-        price_data: {
-          currency: 'eur',
-          product_data: { name: 'Total de la commande' },
-          unit_amount: totalAmount,
+      line_items: [
+        {
+          price_data: {
+            currency: 'eur',
+            product_data: { name: 'Total de la commande' },
+            unit_amount: totalAmount,
+          },
+          quantity: 1,
         },
-        quantity: 1,
-      }],
+      ],
       mode: 'payment',
-      // Création d'un PaymentIntent en mode manuel avec des métadonnées
       payment_intent_data: {
         capture_method: 'manual',
         metadata: {
@@ -35,9 +34,9 @@ export default async function handler(req, res) {
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
     });
 
-    res.status(200).json({ sessionId: session.id, url: session.url });
+    return NextResponse.json({ sessionId: session.id, url: session.url }, { status: 200 });
   } catch (error) {
     console.error('Erreur lors de la création de la session:', error.message);
-    res.status(500).json({ error: error.message });
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
