@@ -1,4 +1,3 @@
-// src/app/api/create-checkout-session/route.js
 import Stripe from 'stripe';
 import { NextResponse } from 'next/server';
 
@@ -7,9 +6,10 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { mainPaymentAmount, deposit } = body;
+    const { mainPaymentAmount, deposit, paymentMethodId } = body;
     const totalAmount = mainPaymentAmount + deposit;
 
+    // Création de la session Checkout pour le paiement principal
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [
@@ -34,7 +34,26 @@ export async function POST(request) {
       cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
     });
 
-    return NextResponse.json({ sessionId: session.id, url: session.url }, { status: 200 });
+    let depositPaymentIntentId = null;
+    if (deposit > 0) {
+      // En mode live, on ne doit pas utiliser de PaymentMethodId de test.
+      // Si paymentMethodId est fourni depuis le front-end, on confirme le PaymentIntent.
+      const confirm = paymentMethodId ? true : false;
+      const depositIntent = await stripe.paymentIntents.create({
+        amount: deposit,
+        currency: 'eur',
+        capture_method: 'manual',
+        payment_method_types: ['card'],
+        confirm,
+        ...(paymentMethodId && { payment_method: paymentMethodId }),
+      });
+      depositPaymentIntentId = depositIntent.id;
+    }
+
+    return NextResponse.json(
+      { sessionId: session.id, url: session.url, depositPaymentIntentId },
+      { status: 200 }
+    );
   } catch (error) {
     console.error('Erreur lors de la création de la session:', error.message);
     return NextResponse.json({ error: error.message }, { status: 500 });

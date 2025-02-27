@@ -1,4 +1,3 @@
-// src/app/api/webhook/route.js
 import Stripe from 'stripe';
 import { NextResponse } from 'next/server';
 
