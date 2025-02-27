@@ -33,10 +33,10 @@ const Home = async () => {
       image: "/images/packessentiel.jpg",
       slug: "/pack-essentiel",
       alt: t(
-        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
+        "50-100 Personnes, Idéal pour des séminaires, petits concerts ou fêtes privé"
       ),
       title: t(
-        "50-100 Personnes, Un son plus puissant pour des événements de taille moyenne"
+        "50-100 Personnes, Idéal pour des séminaires, petits concerts ou fêtes privé"
       ),
       tag: t("PACK ESSENTIEL"),
     },
@@ -66,21 +66,21 @@ const Home = async () => {
       image: "/images/packprestige.jpg",
       slug: "/pack-prestige",
       alt: t(
-        "200-250 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
+        "200-250 personnes, Idéal pour des soirées dansantes, conférences majeures ou événements religieux"
       ),
       title: t(
-        "200-250 personnes, L’expérience sonore ultime pour vos événements prestigieux anniversaires ou réunions professionnelles"
+        "200-250 personnes, Idéal pour des soirées dansantes, conférences majeures ou événements religieux"
       ),
       tag: t("PACK PRESTIGE"),
     },
     {
-      image: "/images/packgrandevent.jpg",
+      image: "/images/packgd.jpg",
       slug: "/pack-grand-event",
       alt: t(
-        "250-250 personnes L’équilibre parfait  entre puissance et qualité pour des événements de taille moyenne"
+        "250-300 personnes, Idéal pour des mariages de grande ampleur, concerts ou événements extérieurs"
       ),
       title: t(
-        "250-250 personnes L’équilibre parfait  entre puissance et qualité pour des événements de taille moyenne"
+        "250-300 personnes, Idéal pour des mariages de grande ampleur, concerts ou événements extérieurs"
       ),
       tag: t("PACK GRAND EVENT"),
     },
