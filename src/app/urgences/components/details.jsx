@@ -97,7 +97,7 @@ export default function UrgenceLocation() {
 
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-[#e27431] mb-4">
-            🚨 {t("Location d'Urgence 21h30 - 00h00")}
+            🚨 {t("Location d'Urgence 19h30 - 20h30")}
           </h1>
           <p className="text-xl text-gray-700">
             {t(

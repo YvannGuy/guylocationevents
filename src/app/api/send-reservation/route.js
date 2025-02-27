@@ -32,89 +32,108 @@ export async function POST(req) {
             to: ["devisclients@guylocationevents.com"],
             subject: "🎉 Nouvelle réservation - Guy Location Events",
             html: `
-                <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, sans-serif; max-width: 600px; margin: 0 auto; color: #1d1d1f;">
-                    <div style="background: linear-gradient(135deg, #f5f5f7 0%, #fff 100%); padding: 32px; border-radius: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-                        <!-- En-tête -->
-                        <div style="text-align: center; margin-bottom: 32px;">
-                            <div style="font-size: 24px; font-weight: 600; color: #1d1d1f; margin-bottom: 8px;">🎉 Nouvelle Réservation</div>
-                            <div style="font-size: 15px; color: #86868b;">Guy Location Events</div>
-                            <div style="height: 4px; background: linear-gradient(90deg, #0071e3 0%, #8e8ef0 100%); width: 60px; margin: 16px auto; border-radius: 2px;"></div>
-                        </div>
+      <div style="font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f8f9fb; padding: 40px 0;">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden;">
+          <!-- Header -->
+          <tr style="background-color: #ffffff;">
+            <td style="padding: 20px; text-align: center;">
+              <!-- Icône / Image -->
+              <img src="https://guylocationevents.com/images/logolocguy.png" alt="Scooter Icon" width="80" style="display: block; margin: 0 auto 10px;" />
+              <!-- Titre principal -->
+              <h1 style="margin: 0; font-size: 24px; color: #333333;">Vous avez une nouvelle réservation !</h1>
+              <p style="margin: 8px 0 0; color: #888888; font-size: 14px;">
+                Retrouvez ici tous les détails.
+              </p>
+            </td>
+          </tr>
 
-                        <!-- Carte Client -->
-                        <div style="background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 24px; border: 1px solid #e0e0e0;">
-                            <div style="display: flex; gap: 16px; margin-bottom: 20px;">
-                                <div style="flex: 1;">
-                                    <div style="font-size: 13px; color: #86868b; margin-bottom: 4px;">Client</div>
-                                    <div style="font-size: 17px; font-weight: 500;">${fullName}</div>
-                                </div>
-                                <div style="flex: 1;">
-                                    <div style="font-size: 13px; color: #86868b; margin-bottom: 4px;">Contact</div>
-                                    <div style="font-size: 15px;">📧 ${email}</div>
-                                    <div style="font-size: 15px;">📱 ${telephone}</div>
-                                </div>
-                            </div>
-                            
-                            <div style="margin-top: 16px;">
-                                <div style="font-size: 13px; color: #86868b; margin-bottom: 4px;">Message</div>
-                                <div style="font-size: 15px; background: #f5f5f7; padding: 12px; border-radius: 8px;">${message || "Aucun message"}</div>
-                            </div>
-                        </div>
+          <!-- Info commande -->
+          <tr>
+            <td style="padding: 20px;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td style="color: #555555; font-size: 14px; padding-bottom: 6px;">
+                    <strong>Réservation # :</strong> ${Math.floor(Math.random() * 1000000)}<br />
+                    <strong>Date :</strong> ${new Date().toLocaleDateString()}
+                  </td>
+                  <td style="text-align: right; color: #555555; font-size: 14px; padding-bottom: 6px;">
+                    <strong>Client :</strong> ${fullName}<br />
+                    <strong>Email :</strong> ${email}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-                        <!-- Détails Événement -->
-                        <div style="background: #fff; border-radius: 12px; padding: 24px; margin-bottom: 24px; border: 1px solid #e0e0e0;">
-                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 16px;">
-                                <div>
-                                    <div style="font-size: 20px; font-weight: 500; margin-bottom: 12px;">📅 Dates</div>
-                                    <div style="font-size: 15px; margin-bottom: 8px;">
-                                        <div style="color: #86868b;">Début</div>
-                                        <div>${eventStartDate || "—"} • ${eventStartTime || "—"}</div>
-                                    </div>
-                                    <div style="font-size: 15px;">
-                                        <div style="color: #86868b;">Fin</div>
-                                        <div>${eventEndDate || "—"} • ${eventEndTime || "—"}</div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div style="font-size: 20px; font-weight: 500; margin-bottom: 12px;">👥 Détails</div>
-                                    <div style="font-size: 15px; margin-bottom: 8px;">
-                                        <div style="color: #86868b;">Participants</div>
-                                        <div>${participants || "—"}</div>
-                                    </div>
-                                    <div style="font-size: 15px;">
-                                        <div style="color: #86868b;">Type</div>
-                                        <div>${eventType || "—"}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+          <!-- Résumé de la réservation -->
+          <tr>
+            <td style="padding: 20px;">
+              <h2 style="margin: 0 0 10px; font-size: 18px; color: #333;">Résumé de la réservation</h2>
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
+                <tr style="background-color: #f5f5f5; color: #333;">
+                  <th align="left" style="padding: 10px; font-size: 14px;">Élément</th>
+                  <th align="center" style="padding: 10px; font-size: 14px;">Détails</th>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; border-bottom: 1px solid #eee;">Date & Heure (Début)</td>
+                  <td align="center" style="padding: 10px; border-bottom: 1px solid #eee;">
+                    ${eventStartDate || "—"} à ${eventStartTime || "—"}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; border-bottom: 1px solid #eee;">Date & Heure (Fin)</td>
+                  <td align="center" style="padding: 10px; border-bottom: 1px solid #eee;">
+                    ${eventEndDate || "—"} à ${eventEndTime || "—"}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; border-bottom: 1px solid #eee;">Participants</td>
+                  <td align="center" style="padding: 10px; border-bottom: 1px solid #eee;">
+                    ${participants || "—"}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; border-bottom: 1px solid #eee;">Type d'événement</td>
+                  <td align="center" style="padding: 10px; border-bottom: 1px solid #eee;">
+                    ${eventType || "—"}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; border-bottom: 1px solid #eee;">Technicien</td>
+                  <td align="center" style="padding: 10px; border-bottom: 1px solid #eee;">
+                    ${technician === "oui" ? "✅ Inclus" : "❌ Non inclus"}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px;">Livraison</td>
+                  <td align="center" style="padding: 10px;">
+                    ${deliveryOption === "livraison" ? "🚚 À domicile" : "🏢 Retrait"}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
 
-                        <!-- Options -->
-                        <div style="background: #fff; border-radius: 12px; padding: 24px; border: 1px solid #e0e0e0;">
-                            <div style="display: flex; gap: 16px;">
-                                <div style="flex: 1; text-align: center; background: #f5f5f7; padding: 16px; border-radius: 8px;">
-                                    <div style="font-size: 13px; color: #86868b; margin-bottom: 8px;">Technicien</div>
-                                    <div style="font-size: 17px; font-weight: 500; color: ${technician === "oui" ? "#007A47" : "#BF4800"}">
-                                        ${technician === "oui" ? "✅ Inclus" : "❌ Non inclus"}
-                                    </div>
-                                </div>
-                                <div style="flex: 1; text-align: center; background: #f5f5f7; padding: 16px; border-radius: 8px;">
-                                    <div style="font-size: 13px; color: #86868b; margin-bottom: 8px;">Livraison</div>
-                                    <div style="font-size: 17px; font-weight: 500; color: #0071e3;">
-                                        ${deliveryOption === "livraison" ? "🚚 À domicile" : "🏢 Retrait"}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+          <!-- Message supplémentaire -->
+          <tr>
+            <td style="padding: 20px;">
+              <h2 style="margin: 0 0 10px; font-size: 18px; color: #333;">Message du client</h2>
+              <div style="background-color: #f8f8f8; padding: 16px; border-radius: 6px; color: #555;">
+                ${message || "Aucun message"}
+              </div>
+            </td>
+          </tr>
 
-                        <!-- Footer -->
-                        <div style="text-align: center; margin-top: 32px; font-size: 13px; color: #86868b;">
-                            <div style="margin-bottom: 8px;">📩 devis@guy-location-events.com</div>
-                            <div>© ${new Date().getFullYear()} Guy Location Events</div>
-                        </div>
-                    </div>
-                </div>
-            `,
+          <!-- Footer -->
+          <tr>
+            <td style="padding: 20px; text-align: center; color: #999999; font-size: 13px;">
+              <p style="margin: 0;">© ${new Date().getFullYear()} Guy Location Events. Tous droits réservés.</p>
+              <p style="margin: 4px 0 0; font-size: 12px;">Contact : devis@guy-location-events.com</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      `,
         });
 
         console.log("✅ Email envoyé avec succès :", response);

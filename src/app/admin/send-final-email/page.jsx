@@ -5,27 +5,26 @@ import React, { useState, useEffect } from "react";
 const SendFinalEmailForm = () => {
   const [password, setPassword] = useState("");
   const t = useTranslations();
-
   const [authenticated, setAuthenticated] = useState(false);
-  
+
   const packs = [
-    { id: "pack1", name: t("Pack Standard"), price: 8000, icon: "📋" },
-    { id: "pack2", name: t("Pack Essentiel"), price: 10500, icon: "✅" },
-    { id: "pack3", name: t("Pack Confort"), price: 12500, icon: "🛋️" },
-    { id: "pack4", name: t("Pack Premium"), price: 13500, icon: "💎" },
-    { id: "pack5", name: t("Pack Prestige"), price: 17500, icon: "👑" },
-    { id: "pack6", name: t("Pack Grand Événement"), price: 19500, icon: "🎉" },
-    { id: "pack7", name: t("Pack Vidéo"), price: 5000, icon: "🎥" },
-    { id: "pack8", name: t("Photobooth"), price: 49900, icon: "📸" },
+    { id: "pack1", name: t("Pack Standard"), price: 8000, icon: "📋", stripePriceId: "price_1QwVRfGKCVzDExz8KO4ujxPa" },
+    { id: "pack2", name: t("Pack Essentiel"), price: 10500, icon: "✅", stripePriceId: "price_1QwVT4GKCVzDExz87s7E1Mei" },
+    { id: "pack3", name: t("Pack Confort"), price: 12500, icon: "🛋️", stripePriceId: "price_1QwVU1GKCVzDExz8tfhjhIeX" },
+    { id: "pack4", name: t("Pack Premium"), price: 13500, icon: "💎", stripePriceId: "price_1QwVUxGKCVzDExz8WsQ3j9wu" },
+    { id: "pack5", name: t("Pack Prestige"), price: 17500, icon: "👑", stripePriceId: "price_1QwVWOGKCVzDExz8I4Gd3P5F" },
+    { id: "pack6", name: t("Pack Grand Événement"), price: 19500, icon: "🎉", stripePriceId: "price_1QwVXKGKCVzDExz8SNRzMiE9" },
+    { id: "pack7", name: t("Pack Vidéo"), price: 5000, icon: "🎥", stripePriceId: "price_1QwVYCGKCVzDExz8wlZ4GIlE" },
+    { id: "pack8", name: t("Photobooth"), price: 49900, icon: "📸", stripePriceId: "prod_RqBxX425yBJxh7" },
   ];
 
   const options = [
-    { id: "technician-installation", name: t("Technicien installation"), price: 8000, icon: "🔧" },
-    { id: "technician-management", name: t("Technicien gestion"), price: 5000, icon: "🛠️", hourly: true },
-    { id: "delivery-paris", name: t("Livraison Paris intra-muros"), price: 4000, icon: "🚚" },
-    { id: "delivery-idf", name: t("Livraison Île-de-France"), price: 8000, icon: "🚚" },
-    { id: "micro-wired", name: t("Micro filaire"), price: 1000, icon: "🎤", quantity: true },
-    { id: "micro-wireless", name: t("Micro sans fil"), price: 2000, icon: "🎙️", quantity: true },
+    { id: "technician-installation", name: t("Technicien installation"), price: 8000, icon: "🔧", stripePriceId: "price_1QwVatGKCVzDExz8XH5xNbvL" },
+    { id: "technician-management", name: t("Technicien gestion"), price: 5000, icon: "🛠️", hourly: true, stripePriceId: "price_1QwVcVGKCVzDExz8VxxLgCt8" },
+    { id: "delivery-paris", name: t("Livraison Paris intra-muros"), price: 4000, icon: "🚚", stripePriceId: "price_1QwVdCGKCVzDExz8Va97K0IV" },
+    { id: "delivery-idf", name: t("Livraison Île-de-France"), price: 8000, icon: "🚚", stripePriceId: "price_1QwVdeGKCVzDExz85oQIiWSw" },
+    { id: "micro-wired", name: t("Micro filaire"), price: 1000, icon: "🎤", quantity: true, stripePriceId: "price_1QwVe2GKCVzDExz876SePe0h" },
+    { id: "micro-wireless", name: t("Micro sans fil"), price: 2000, icon: "🎙️", quantity: true, stripePriceId: "price_1QwVeHGKCVzDExz8GN7Hwn9s" },
   ];
 
   const [fullName, setFullName] = useState("");
@@ -42,13 +41,14 @@ const SendFinalEmailForm = () => {
   const [technicianHours, setTechnicianHours] = useState(1);
   const [participants, setParticipants] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
+  const [deposit, setDeposit] = useState(50000); // Nouvel état pour la caution
 
   const handleSubmitPassword = (e) => {
     e.preventDefault();
     if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
       setAuthenticated(true);
     } else {
-      alert("Mot de passe incorrect !");
+      alert(t("Mot de passe incorrect !"));
     }
   };
 
@@ -62,18 +62,16 @@ const SendFinalEmailForm = () => {
     total += selectedOptions.reduce((acc, optionId) => {
       const option = options.find((o) => o.id === optionId);
       let optionTotal = 0;
-      
+
       if (optionId === "technician-management") {
         optionTotal = (option?.price || 0) * technicianHours;
-      } 
-      else if (option?.quantity) {
+      } else if (option?.quantity) {
         const qty = optionQuantities[optionId] || 1;
         optionTotal = (option?.price || 0) * qty;
-      }
-      else {
+      } else {
         optionTotal = option?.price || 0;
       }
-      
+
       return acc + optionTotal;
     }, 0);
 
@@ -94,6 +92,7 @@ const SendFinalEmailForm = () => {
     setOptionQuantities({});
     setTechnicianHours(1);
     setParticipants(0);
+    setDeposit(50000);
   };
 
   const getDeliveryLabel = () => {
@@ -122,6 +121,7 @@ const SendFinalEmailForm = () => {
     e.preventDefault();
 
     const data = {
+      deposit, // Ajout de la caution
       fullName,
       email,
       eventAddress,
@@ -146,14 +146,16 @@ const SendFinalEmailForm = () => {
         body: JSON.stringify(data),
       });
 
+      const result = await response.json();
+
       if (response.ok) {
-        alert("E-mail envoyé avec succès !");
+        alert(t("Réservation confirmée ! Un e-mail a été envoyé avec le lien de paiement."));
         resetForm();
       } else {
-        throw new Error("Échec de l'envoi");
+        throw new Error(result.message || t("Erreur lors de l'envoi de la réservation"));
       }
     } catch (error) {
-      alert("Erreur lors de l'envoi : " + error.message);
+      alert(t("Erreur lors de l'envoi : ") + error.message);
     }
   };
 
@@ -197,6 +199,16 @@ const SendFinalEmailForm = () => {
                     onChange={(e) => setEventAddress(e.target.value)}
                     placeholder="123 Rue de l'Exemple, 75000 Paris"
                   />
+                  {/* Nouveau champ pour la caution */}
+                  <AppleInput
+                    label={t("Caution remboursable")}
+                    type="number"
+                    value={deposit}
+                    onChange={(e) => setDeposit(Number(e.target.value))}
+                    placeholder="50000 (500,00 €)"
+                    min="0"
+                    step="100"
+                  />
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <AppleInput
                       label={t("Date de début")}
@@ -234,6 +246,7 @@ const SendFinalEmailForm = () => {
                 </div>
               </section>
 
+              {/* Les sections suivantes restent inchangées */}
               <section className="p-6 bg-gray-50 rounded-2xl">
                 <h2 className="text-lg font-semibold text-gray-900 mb-6">
                   {t("Options de service")}
@@ -301,7 +314,7 @@ const SendFinalEmailForm = () => {
                       />
                       {option.hourly && selectedOptions.includes(option.id) && (
                         <div className="flex items-center gap-2">
-                          <span className="text-sm text-gray-600">Heures :</span>
+                          <span className="text-sm text-gray-600">{t("Heures")} :</span>
                           <select
                             value={technicianHours}
                             onChange={(e) => setTechnicianHours(Number(e.target.value))}
@@ -317,7 +330,7 @@ const SendFinalEmailForm = () => {
                       )}
                       {option.quantity && selectedOptions.includes(option.id) && (
                         <div className="flex items-center gap-2">
-                          <span className="text-sm text-gray-600">Quantité :</span>
+                          <span className="text-sm text-gray-600">{t("Quantité")} :</span>
                           <select
                             value={optionQuantities[option.id] || 1}
                             onChange={(e) =>
@@ -351,21 +364,26 @@ const SendFinalEmailForm = () => {
                 <div className="space-y-4">
                   <AppleSummaryItem
                     label={t("Client")}
-                    value={fullName || "Non renseigné"}
+                    value={fullName || t("Non renseigné")}
                   />
                   <AppleSummaryItem
                     label={t("Email")}
-                    value={email || "Non renseigné"}
+                    value={email || t("Non renseigné")}
                   />
                   <AppleSummaryItem
                     label={t("Adresse")}
-                    value={eventAddress || "Non renseigné"}
+                    value={eventAddress || t("Non renseigné")}
+                  />
+                  {/* Ajout de la caution dans le récapitulatif */}
+                  <AppleSummaryItem
+                    label={t("Caution")}
+                    value={`${(deposit / 100).toFixed(2)} € (${t("préautorisation")})`}
                   />
                   <AppleSummaryItem
                     label={t("Début")}
                     value={
                       startDate && startTime
-                        ? `${new Date(startDate).toLocaleDateString('fr-FR')} à ${startTime}`
+                        ? `${new Date(startDate).toLocaleDateString('fr-FR')} ${t("à")} ${startTime}`
                         : "-"
                     }
                   />
@@ -373,7 +391,7 @@ const SendFinalEmailForm = () => {
                     label={t("Fin")}
                     value={
                       endDate && endTime
-                        ? `${new Date(endDate).toLocaleDateString('fr-FR')} à ${endTime}`
+                        ? `${new Date(endDate).toLocaleDateString('fr-FR')} ${t("à")} ${endTime}`
                         : "-"
                     }
                   />
