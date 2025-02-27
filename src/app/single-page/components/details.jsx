@@ -69,8 +69,8 @@ const ProductDetailsInfo = (props) => {
         { name: t("Walking Speed"), value: "2.8 / 4.7 km/h" },
         { name: t("Maximum Hauling Force"), value: "44kN" },
       ],
-      price: "250.00",
-      unite: t("Per Day"),
+      price: "80.00",
+      unite: t("Par Jour"),
       description: t(
         "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laud antium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto be atae vitae dicta sunt explicabo Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores"
       ),
