@@ -8,6 +8,7 @@ const SendFinalEmailForm = () => {
   const [authenticated, setAuthenticated] = useState(false);
 
   const packs = [
+    { id: "test-product", name: "Produit Test", price: 100, stripePriceId: "price_1Qx9qNGKCVzDExz8SqSZSMeX" },
     { id: "pack1", name: t("Pack Standard"), price: 8000, icon: "📋", stripePriceId: "price_1QwVRfGKCVzDExz8KO4ujxPa" },
     { id: "pack2", name: t("Pack Essentiel"), price: 10500, icon: "✅", stripePriceId: "price_1QwVT4GKCVzDExz87s7E1Mei" },
     { id: "pack3", name: t("Pack Confort"), price: 12500, icon: "🛋️", stripePriceId: "price_1QwVU1GKCVzDExz8tfhjhIeX" },
@@ -465,35 +466,36 @@ const SendFinalEmailForm = () => {
     );
   }
 
-  return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 w-96">
-        <div className="text-center mb-8">
-          <div className="mb-4">
-            <span className="text-4xl">🔒</span>
-          </div>
-          <h1 className="text-2xl font-semibold text-gray-900 mb-2">
-            {t("Accès Administrateur")}
-          </h1>
-        </div>
-        <form onSubmit={handleSubmitPassword} className="space-y-6">
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FF7755] focus:border-transparent outline-none transition-all"
-            placeholder={t("Mot de passe")}
-          />
-          <button
-            type="submit"
-            className="w-full bg-[#FF7755] hover:bg-[#FF6644] text-white py-3.5 rounded-xl font-medium transition-colors duration-200"
-          >
-            {t("Se connecter")}
-          </button>
-        </form>
+  // Partie de la page de connexion
+return (
+  <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+    <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 w-96">
+      <div className="text-center mb-8">
+        {/* Logo (n'oubliez pas d'adapter le chemin si besoin) */}
+        <img src="https://guylocationevents.com/images/logo.png" alt="Logo" className="mx-auto h-12 w-auto mb-4" />
+        <h1 className="text-2xl font-semibold text-gray-900 mb-2">
+          {t("Accès Administrateur")}
+        </h1>
       </div>
+      <form onSubmit={handleSubmitPassword} className="space-y-6">
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FF7755] focus:border-transparent outline-none transition-all"
+          placeholder={t("Mot de passe")}
+        />
+        <button
+          type="submit"
+          className="w-full bg-[#FF7755] hover:bg-[#FF6644] text-white py-3.5 rounded-xl font-medium transition-colors duration-200"
+        >
+          {t("Se connecter")}
+        </button>
+      </form>
     </div>
-  );
+  </div>
+);
+
 };
 
 const AppleInput = ({ label, ...props }) => (

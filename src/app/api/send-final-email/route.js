@@ -172,20 +172,20 @@ export async function POST(req) {
 
     // Génération du contenu de l'e-mail de confirmation (inchangé)
     const emailContent = `
-      <div style="
+     <div style="
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: #ffffff;
   margin: 0;
   padding: 0;
   color: #000000;
 ">
-  <!-- Conteneur principal (centré) avec marge en haut réduite -->
+  <!-- Conteneur principal (centré) -->
   <div style="
     max-width: 600px;
     margin: 10px auto 0 auto;
     background-color: #ffffff;
   ">
-    <!-- Logo (optionnel) -->
+    <!-- Logo -->
     <div style="text-align: center; padding: 10px 0 10px;">
       <img 
         src="https://guylocationevents.com/images/logo.png" 
@@ -317,6 +317,162 @@ export async function POST(req) {
         </div>
       </div>
 
+      <!-- Barre de progression multi-étapes (icônes + textes courts) -->
+      <div style="max-width: 600px; margin: 30px auto;">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <h2 style="margin: 0; font-size: 20px; color: #999;">
+            Prochaines étapes
+          </h2>
+          <h1 style="margin: 0; font-size: 24px; color: #000;">
+            Suivez le processus
+          </h1>
+        </div>
+        
+        <div style="display: flex; align-items: flex-start; justify-content: space-between;">
+          <!-- Étape 1 : Paiement -->
+          <div style="flex: 1; text-align: center;">
+            <div style="
+              width: 30px;
+              height: 30px;
+              background-color: #ff6600;
+              border-radius: 50%;
+              margin: 0 auto;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            ">
+              <!-- Icône Paiement -->
+              <img 
+                src="https://img.icons8.com/ios-filled/24/ffffff/money.png" 
+                alt="Paiement" 
+                style="width: 18px; height: 18px;" 
+              />
+            </div>
+            <div style="margin-top: 5px; color: #333; white-space: nowrap; font-weight: bold;">
+              Paiement
+            </div>
+            <div style="
+              font-size: 12px; 
+              color: #555; 
+              margin-top: 3px;
+              white-space: normal;
+              word-break: break-word;
+            ">
+              Réglez la somme due
+            </div>
+          </div>
+
+          <!-- Ligne de liaison -->
+          <div style="flex: 1; height: 2px; background-color: #ff6600; margin-top: 15px;"></div>
+
+          <!-- Étape 2 : Caution -->
+          <div style="flex: 1; text-align: center;">
+            <div style="
+              width: 30px;
+              height: 30px;
+              background-color: #ff6600;
+              border-radius: 50%;
+              margin: 0 auto;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            ">
+              <!-- Icône Caution -->
+              <img 
+                src="https://img.icons8.com/ios-filled/24/ffffff/lock--v1.png" 
+                alt="Caution" 
+                style="width: 18px; height: 18px;" 
+              />
+            </div>
+            <div style="margin-top: 5px; color: #333; white-space: nowrap; font-weight: bold;">
+              Caution
+            </div>
+            <div style="
+              font-size: 12px; 
+              color: #555; 
+              margin-top: 3px;
+              white-space: normal;
+              word-break: break-word;
+            ">
+              Déposez votre caution
+            </div>
+          </div>
+
+          <!-- Ligne de liaison -->
+          <div style="flex: 1; height: 2px; background-color: #ff6600; margin-top: 15px;"></div>
+
+          <!-- Étape 3 : Documents -->
+          <div style="flex: 1; text-align: center;">
+            <div style="
+              width: 30px;
+              height: 30px;
+              background-color: #ff6600;
+              border-radius: 50%;
+              margin: 0 auto;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            ">
+              <!-- Icône Documents -->
+              <img 
+                src="https://img.icons8.com/ios-filled/24/ffffff/documents.png" 
+                alt="Documents" 
+                style="width: 18px; height: 18px;" 
+              />
+            </div>
+            <div style="margin-top: 5px; color: #333; white-space: nowrap; font-weight: bold;">
+              Documents
+            </div>
+            <div style="
+              font-size: 12px; 
+              color: #555; 
+              margin-top: 3px;
+              white-space: normal;
+              word-break: break-word;
+            ">
+              Téléchargez les justificatifs
+            </div>
+          </div>
+
+          <!-- Ligne de liaison -->
+          <div style="flex: 1; height: 2px; background-color: #ff6600; margin-top: 15px;"></div>
+
+          <!-- Étape 4 : Contrat -->
+          <div style="flex: 1; text-align: center;">
+            <div style="
+              width: 30px;
+              height: 30px;
+              background-color: #ff6600;
+              border-radius: 50%;
+              margin: 0 auto;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            ">
+              <!-- Icône Contrat -->
+              <img 
+                src="https://img.icons8.com/ios-filled/24/ffffff/hand-with-pen.png" 
+                alt="Contrat" 
+                style="width: 18px; height: 18px;" 
+              />
+            </div>
+            <div style="margin-top: 5px; color: #333; white-space: nowrap; font-weight: bold;">
+              Contrat
+            </div>
+            <div style="
+              font-size: 12px; 
+              color: #555; 
+              margin-top: 3px;
+              white-space: normal;
+              word-break: break-word;
+            ">
+              Signez pour finaliser
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fin de la barre de progression multi-étapes -->
+
       <!-- Bouton Valider la réservation (centré) -->
       <div style="text-align: center; margin-bottom: 10px;">
         <a 
@@ -346,27 +502,6 @@ export async function POST(req) {
         Pour garantir une expérience de réservation optimale, nous vous recommandons de vérifier que votre connexion internet est stable, que vous disposez de la somme requise pour la caution, et que tous vos documents essentiels sont préalablement rassemblés pour un téléchargement rapide.
       </p>
 
-      <!-- Bloc noir : Prochaines étapes en orange -->
-      <div style="
-        background-color: #000000; 
-        padding: 15px; 
-        text-align: center;
-        margin-bottom: 20px;
-      ">
-        <span style="color: #ff6600; font-weight: bold; margin-right: 10px;">
-          1.Paiement
-        </span>
-        <span style="color: #ff6600; font-weight: bold; margin-right: 10px;">
-          2.Caution
-        </span>
-        <span style="color: #ff6600; font-weight: bold; margin-right: 10px;">
-          3.Documents
-        </span>
-        <span style="color: #ff6600; font-weight: bold;">
-          4.Contrat
-        </span>
-      </div>
-
       <!-- Pied de page -->
       <p style="
         font-size: 14px; 
@@ -385,6 +520,9 @@ export async function POST(req) {
     </div>
   </div>
 </div>
+
+
+
 
     `;
 
