@@ -18,6 +18,7 @@ const packs = [
 ];
 
 const options = [
+  { id: "test-product", name: "Produit Test", price: 100, stripePriceId: "price_1Qx9qNGKCVzDExz8SqSZSMeX" },
   { id: "technician-installation", name: "Technicien installation", price: 8000, stripePriceId: "price_1QwVatGKCVzDExz8XH5xNbvL" },
   { id: "technician-management", name: "Technicien gestion", price: 5000, hourly: true, stripePriceId: "price_1QwVcVGKCVzDExz8VxxLgCt8" },
   { id: "delivery-paris", name: "Livraison Paris intra-muros", price: 4000, stripePriceId: "price_1QwVdCGKCVzDExz8Va97K0IV" },
@@ -171,106 +172,220 @@ export async function POST(req) {
 
     // Génération du contenu de l'e-mail de confirmation (inchangé)
     const emailContent = `
-      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #1c1c1e; padding: 2rem; color: #ffffff;">
-        <!-- Logo -->
-        <div style="text-align: center; margin-bottom: 1rem;">
-          <img src="https://guylocationevents.com/images/logolocguy.png" alt="Logo Guy Location Events" style="width: 250px; height: auto; display: block; margin: 0 auto;" />
+      <div style="
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+  color: #000000;
+">
+  <!-- Conteneur principal (centré) avec marge en haut réduite -->
+  <div style="
+    max-width: 600px;
+    margin: 10px auto 0 auto;
+    background-color: #ffffff;
+  ">
+    <!-- Logo (optionnel) -->
+    <div style="text-align: center; padding: 10px 0 10px;">
+      <img 
+        src="https://guylocationevents.com/images/logo.png" 
+        alt="Logo Guy Location Events"
+        style="width: 250px; height: auto;"
+      />
+    </div>
+
+    <!-- Bandeau orange : MERCI POUR VOTRE RÉSERVATION -->
+    <div style="
+      background-color: #ff6600;
+      padding: 40px 0;
+      text-align: center;
+    ">
+      <h1 style="
+        margin: 0;
+        font-size: 24px;
+        color: #ffffff;
+        text-transform: uppercase;
+      ">
+        MERCI POUR VOTRE RÉSERVATION !
+      </h1>
+    </div>
+
+    <!-- Contenu principal -->
+    <div style="padding: 20px;">
+      <!-- Message d'accueil -->
+      <p style="font-size: 16px; line-height: 1.5; margin: 0 0 20px;">
+        Bonjour <strong>${fullName}</strong>,<br>
+        Votre réservation a été enregistrée avec succès. Voici les détails :
+      </p>
+
+      <!-- Détails de l'événement -->
+      <div style="margin-bottom: 20px;">
+        <h2 style="font-size: 18px; font-weight: bold; margin: 0 0 10px;">
+          Détails de l'événement
+        </h2>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span>Adresse</span>
+          <span style="text-align: right;">${eventAddress}</span>
         </div>
-        <!-- Contenu principal -->
-        <div style="max-width: 600px; margin: 0 auto; background-color: #2c2c2e; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
-          <div style="background-color: #e27431; padding: 2rem; text-align: center; color: #ffffff;">
-            <h1 style="font-size: 24px; font-weight: 600; margin: 0;">Confirmation de réservation</h1>
-          </div>
-          <div style="padding: 2rem;">
-            <p style="font-size: 16px; margin-bottom: 1.5rem;">
-              Bonjour <strong>${fullName}</strong>,<br>
-              Votre réservation a été enregistrée avec succès. Voici les détails :
-            </p>
-            <!-- Détails de l'événement -->
-            <div style="background-color: #3a3a3c; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
-              <h2 style="font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 1rem;">Détails de l'événement</h2>
-              <div style="display: grid; gap: 0.75rem;">
-                <div style="display: flex; justify-content: space-between;">
-                  <span style="color: #a0a0a0; font-size: 14px;">Adresse</span>
-                  <span style="font-size: 14px; font-weight: 500;">${eventAddress}</span>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                  <span style="color: #a0a0a0; font-size: 14px;">Date de début</span>
-                  <span style="font-size: 14px; font-weight: 500;">${new Date(startDate).toLocaleDateString('fr-FR')} à ${startTime}</span>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                  <span style="color: #a0a0a0; font-size: 14px;">Date de fin</span>
-                  <span style="font-size: 14px; font-weight: 500;">${new Date(endDate).toLocaleDateString('fr-FR')} à ${endTime}</span>
-                </div>
-                <div style="display: flex; justify-content: space-between;">
-                  <span style="color: #a0a0a0; font-size: 14px;">Participants</span>
-                  <span style="font-size: 14px; font-weight: 500;">${participants}</span>
-                </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span>Date de début</span>
+          <span style="text-align: right;">
+            ${new Date(startDate).toLocaleDateString('fr-FR')} à ${startTime}
+          </span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span>Date de fin</span>
+          <span style="text-align: right;">
+            ${new Date(endDate).toLocaleDateString('fr-FR')} à ${endTime}
+          </span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+          <span>Participants</span>
+          <span style="text-align: right;">${participants}</span>
+        </div>
+      </div>
+
+      <!-- Packs et options -->
+      <div style="margin-bottom: 20px;">
+        <h2 style="font-size: 18px; font-weight: bold; margin: 0 0 10px;">
+          Packs et options
+        </h2>
+        <div style="font-size: 14px;">
+          ${selectedPacks.map((packId) => {
+            const pack = packs.find((p) => p.id === packId);
+            const quantity = packQuantities[packId] || 1;
+            const totalPrice = (pack?.price || 0) * quantity;
+            return `
+              <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>${pack?.name || packId} (x${quantity})</span>
+                <span style="font-weight: 500;">
+                  ${(totalPrice / 100).toFixed(2)} €
+                </span>
               </div>
-            </div>
-            <!-- Packs et options -->
-            <div style="background-color: #3a3a3c; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
-              <h2 style="font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 1rem;">Packs et options</h2>
-              <div style="display: grid; gap: 0.75rem;">
-                ${selectedPacks.map((packId) => {
-                  const pack = packs.find((p) => p.id === packId);
-                  const quantity = packQuantities[packId] || 1;
-                  const totalPrice = (pack?.price || 0) * quantity;
-                  return `
-                    <div style="display: flex; justify-content: space-between;">
-                      <span style="font-size: 14px; color: #a0a0a0;">${pack?.name || packId} (x${quantity})</span>
-                      <span style="font-size: 14px; font-weight: 500; color: #ffffff;">${(totalPrice / 100).toFixed(2)} €</span>
-                    </div>
-                  `;
-                }).join('')}
-                ${selectedOptions.map((optionId) => {
-                  const option = options.find((o) => o.id === optionId);
-                  let totalPrice = 0;
-                  let label = option?.name || optionId;
-                  if (optionId === "technician-management") {
-                    totalPrice = (option?.price || 0) * technicianHours;
-                    label += ` (${technicianHours} heures)`;
-                  } else if (option?.quantity) {
-                    const qty = optionQuantities[optionId] || 1;
-                    totalPrice = (option?.price || 0) * qty;
-                    label += ` (x${qty})`;
-                  } else {
-                    totalPrice = option?.price || 0;
-                  }
-                  return `
-                    <div style="display: flex; justify-content: space-between;">
-                      <span style="font-size: 14px; color: #a0a0a0;">${label}</span>
-                      <span style="font-size: 14px; font-weight: 500; color: #ffffff;">${(totalPrice / 100).toFixed(2)} €</span>
-                    </div>
-                  `;
-                }).join('')}
+            `;
+          }).join('')}
+          ${selectedOptions.map((optionId) => {
+            const option = options.find((o) => o.id === optionId);
+            let totalPrice = 0;
+            let label = option?.name || optionId;
+            if (optionId === "technician-management") {
+              totalPrice = (option?.price || 0) * technicianHours;
+              label += " (" + technicianHours + " heures)";
+            } else if (option?.quantity) {
+              const qty = optionQuantities[optionId] || 1;
+              totalPrice = (option?.price || 0) * qty;
+              label += " (x" + qty + ")";
+            } else {
+              totalPrice = option?.price || 0;
+            }
+            return `
+              <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>${label}</span>
+                <span style="font-weight: 500;">
+                  ${(totalPrice / 100).toFixed(2)} €
+                </span>
               </div>
-            </div>
-            <!-- Paiement -->
-            <div style="background-color: #3a3a3c; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
-              <h2 style="font-size: 18px; font-weight: 600; color: #ffffff; margin-bottom: 1rem;">Paiement</h2>
-              <div style="display: grid; gap: 0.75rem;">
-                ${deposit > 0 ? `
-                  <div style="display: flex; justify-content: space-between;">
-                    <span style="font-size: 14px; color: #a0a0a0;">Caution préautorisée</span>
-                    <span style="font-size: 14px; font-weight: 500; color: #ffffff;">${(deposit / 100).toFixed(2)} €</span>
-                  </div>` : ''}
-                <div style="display: flex; justify-content: space-between;">
-                  <span style="font-size: 14px; color: #a0a0a0;">Total</span>
-                  <span style="font-size: 14px; font-weight: 500; color: #ffffff;">${(totalProductsDisplay / 100).toFixed(2)} €</span>
-                </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+
+      <!-- Paiement -->
+      <div style="margin-bottom: 20px;">
+        <h2 style="font-size: 18px; font-weight: bold; margin: 0 0 10px;">
+          Paiement
+        </h2>
+        <div style="font-size: 14px;">
+          ${
+            deposit > 0 
+            ? `
+              <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>Caution préautorisée</span>
+                <span style="font-weight: 500;">
+                  ${(deposit / 100).toFixed(2)} €
+                </span>
               </div>
-              <a href="${mainSession.url}" style="display: inline-block; background-color: #e27431; color: #ffffff; font-size: 14px; font-weight: 500; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; margin-top: 1rem; text-align: center;">
-                Finaliser le paiement principal
-              </a>
-            </div>
-            <p style="font-size: 14px; color: #ffffff; margin-top: 1.5rem;">
-              Merci de faire confiance à <strong>Guy Location Events</strong> pour votre événement.<br>
-              Pour toute question, contactez-nous à <a href="mailto:contact@guylocationevents.com" style="color: #e27431; text-decoration: none;">contact@guylocationevents.com</a>.
-            </p>
+            `
+            : ''
+          }
+          <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+            <span>Total</span>
+            <span style="font-weight: 500;">
+              ${(totalProductsDisplay / 100).toFixed(2)} €
+            </span>
           </div>
         </div>
       </div>
+
+      <!-- Bouton Valider la réservation (centré) -->
+      <div style="text-align: center; margin-bottom: 10px;">
+        <a 
+          href="${mainSession.url}" 
+          style="
+            display: inline-block;
+            background-color: #ff6600;
+            color: #000000;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+          "
+        >
+          Valider ma réservation
+        </a>
+      </div>
+
+      <!-- Note informative professionnelle -->
+      <p style="
+        font-size: 12px;
+        color: #888888;
+        text-align: center;
+        margin: 0 0 20px;
+      ">
+        Pour garantir une expérience de réservation optimale, nous vous recommandons de vérifier que votre connexion internet est stable, que vous disposez de la somme requise pour la caution, et que tous vos documents essentiels sont préalablement rassemblés pour un téléchargement rapide.
+      </p>
+
+      <!-- Bloc noir : Prochaines étapes en orange -->
+      <div style="
+        background-color: #000000; 
+        padding: 15px; 
+        text-align: center;
+        margin-bottom: 20px;
+      ">
+        <span style="color: #ff6600; font-weight: bold; margin-right: 10px;">
+          1.Paiement
+        </span>
+        <span style="color: #ff6600; font-weight: bold; margin-right: 10px;">
+          2.Caution
+        </span>
+        <span style="color: #ff6600; font-weight: bold; margin-right: 10px;">
+          3.Documents
+        </span>
+        <span style="color: #ff6600; font-weight: bold;">
+          4.Contrat
+        </span>
+      </div>
+
+      <!-- Pied de page -->
+      <p style="
+        font-size: 14px; 
+        line-height: 1.5; 
+        text-align: center;
+      ">
+        Merci de faire confiance à <strong>Guy Location Events</strong> pour votre événement.<br>
+        Pour toute question, contactez-nous à 
+        <a 
+          href="mailto:contact@guylocationevents.com" 
+          style="color: #ff6600; text-decoration: none;"
+        >
+          contact@guylocationevents.com
+        </a>.
+      </p>
+    </div>
+  </div>
+</div>
+
     `;
 
     await resend.emails.send({

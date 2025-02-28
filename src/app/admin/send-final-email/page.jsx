@@ -8,7 +8,6 @@ const SendFinalEmailForm = () => {
   const [authenticated, setAuthenticated] = useState(false);
 
   const packs = [
-    { id: "test-product", name: "Produit Test", price: 100, stripePriceId: "price_1Qx9qNGKCVzDExz8SqSZSMeX" },
     { id: "pack1", name: t("Pack Standard"), price: 8000, icon: "📋", stripePriceId: "price_1QwVRfGKCVzDExz8KO4ujxPa" },
     { id: "pack2", name: t("Pack Essentiel"), price: 10500, icon: "✅", stripePriceId: "price_1QwVT4GKCVzDExz87s7E1Mei" },
     { id: "pack3", name: t("Pack Confort"), price: 12500, icon: "🛋️", stripePriceId: "price_1QwVU1GKCVzDExz8tfhjhIeX" },
