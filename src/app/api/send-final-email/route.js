@@ -175,7 +175,7 @@ export async function POST(req) {
    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#fff;margin:0;padding:0;color:#000;">
 <div style="max-width:600px;margin:10px auto;background:#fff;">
 <div style="text-align:center;padding:10px 0;">
-<img src="http://localhost:3000/images/logoN.png" alt="Logo" style="width:250px;height:auto;">
+<img src="guylocationevents.com/images/logoN.png" alt="Logo" style="width:250px;height:auto;">
 </div>
 <div style="background:#ff6600;padding:40px 0;text-align:center;">
 <h1 style="margin:0;font-size:24px;color:#fff;text-transform:uppercase;">MERCI POUR VOTRE RÉSERVATION !</h1>
