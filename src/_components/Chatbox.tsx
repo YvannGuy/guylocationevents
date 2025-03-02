@@ -1,4 +1,3 @@
-// components/ChatBox.tsx
 "use client";
 
 import { useState, useRef, useEffect, KeyboardEvent } from "react";
@@ -36,14 +35,17 @@ export default function ChatBox() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Questions pré-définies mises à jour pour être cohérentes avec les clés du serveur
   const presetQuestions = [
-    t("Bonjour"),
-    t("Quels sont vos horaires"),
-    t("quels types d'équipements sono proposez-vous"),
-    t("Comment fonctionne la location"),
-    t("Comment réserver"),
-    t("Avez-vous un service technicien"),
+    t("bonjour"),
+    t("quels sont vos horaires?"),
+    t("quels types d'équipements sono proposez-vous?"),
+    t("comment fonctionne la location?"),
+    t("comment réserver?"),
+    t("avez-vous un service technicien?"),
   ];
+  
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({
@@ -82,9 +84,7 @@ export default function ChatBox() {
         ...prev,
         {
           sender: "bot",
-          text: `${t(
-            "Service temporairement indisponible Veuillez réessayer"
-          )}`,
+          text: `${t("Service temporairement indisponible Veuillez réessayer")}`,
         },
       ]);
     } finally {
