@@ -772,7 +772,7 @@ const ProductDetailsInfo = (props) => {
                   <Grid className="price-tag">
                     <h5>
                       <span className="border border-short"></span>
-                      <span className="border border-long"></span>$
+                      <span className="border border-long"></span>
                       {packageData.price}
                       <span className="border border-short-right"></span>
                       <span className="border border-long-right"></span>

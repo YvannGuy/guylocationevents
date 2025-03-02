@@ -146,7 +146,7 @@ a.button {
 .view-more-btn {
   font-size: 21px;
   line-height: 25px;
-  color: #000000;
+  color: #fff;
   font-weight: 700;
   font-family: $montserratFont;
   display: inline-flex;
@@ -154,7 +154,7 @@ a.button {
   justify-content: center;
   column-gap: 20px;
   padding: 30px 20px;
-  background-color: #ececec;
+  background-color: $themeColor;
   border: 1px solid #000000;
   transition: all 0.3s ease-in-out;
 
@@ -1138,7 +1138,7 @@ section.condition-location-area {
       align-items: center;
       justify-content: center;
       column-gap: 20px;
-      background-color: #e4b73f;
+      background-color: $themeColor;
       border: none;
       transition: all 0.3s ease-in-out;
     }
@@ -1188,7 +1188,7 @@ section.cta-area {
   .view-more-btn {
     font-size: 21px;
     line-height: 25px;
-    color: #000000;
+    color: #fff;
     font-weight: 700;
     font-family: $montserratFont;
     display: inline-flex;
@@ -1196,7 +1196,7 @@ section.cta-area {
     justify-content: center;
     column-gap: 20px;
     padding: 20px 25px;
-    background-color: #ececec;
+    background-color: $themeColor;
     border: 1px solid #000000;
     transition: all 0.3s ease-in-out;
 
