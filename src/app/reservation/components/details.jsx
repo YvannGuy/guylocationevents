@@ -100,7 +100,7 @@ const InfoRequestForm = () => {
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3">
             <FaTimesCircle className="text-red-600 text-xl" />
             <p className="text-red-800 font-medium">
-              {t("Une erreur est survenue, veuillez réessayer.")}
+              {t("Une erreur est survenue veuillez réessayer")}
             </p>
           </div>
         )}
@@ -137,7 +137,7 @@ const InfoRequestForm = () => {
             {...register("eventType")}
             className="border p-3 rounded-lg w-full"
           >
-            <option value="">{t("Type d'événement")}</option>
+            <option value="">{t("Type dévénement")}</option>
             <option value="mariage">{t("Mariage")}</option>
             <option value="anniversaire">{t("Anniversaire")}</option>
             <option value="conférence">{t("Conférence")}</option>
@@ -175,7 +175,7 @@ const InfoRequestForm = () => {
             {...register("technician")}
             className="border p-3 rounded-lg w-full"
           >
-            <option value="">{t("Besoin d'un technicien ?")}</option>
+            <option value="">{t("Besoin dun technicien")}</option>
             <option value="oui">{t("Oui")}</option>
             <option value="non">{t("Non")}</option>
           </select>

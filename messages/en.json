@@ -253,7 +253,7 @@
   "Please select an option": "Please select an option",
   "Book your event in a few clicks": "Book your event in a few clicks",
   "Your request has been sent successfully, you will receive a response within 24 hours maximum": "Your request has been sent successfully, you will receive a response within 24 hours maximum",
-  "An error occurred, please try again": "An error occurred, please try again",
+  "Une erreur est survenue veuillez réessayer": "An error occurred, please try again",
   "Subject of the request": "Subject of the request",
   "Event type": "Event type",
   "Other": "Other",
@@ -273,7 +273,7 @@
   "Vous devez accepter les conditions": "You must accept the conditions",
   "Demande envoyée Un conseiller vous contactera immédiatement": "Request sent! A consultant will contact you immediately.",
   "Erreur lors de l'envoi, veuillez réessayer": "Error during sending, please try again",
-  "Location d'Urgence 21h30 - 00h00": "Emergency Rental 9:30 PM - 12:00 AM",
+  "Location dUrgence 21h30 00h00": "Emergency Rental 9:30 PM - 12:00 AM",
   "Panique technique ? Besoin last minute Nous sommes là pour répondre à vos besoins en location d'équipements sono, vidéo et photobooth pour mariages, concerts, conférences et autres événements": "Technical panic? Last-minute need? We are here to meet your rental needs for sound, video, and photobooth equipment for weddings, concerts, conferences, and other events.",
   "Conditions de location en urgence": "Emergency rental conditions",
   "Intervention rapide": "Quick intervention",
@@ -427,5 +427,11 @@
   "Que se passe t il en cas de casse ou de perte du matériel": "What happens in case of damage or loss of the equipment?",
   "En cas de dommage dû à une mauvaise utilisation ou de perte les frais de réparation ou de remplacement seront facturés": "In case of damage due to misuse or loss, repair or replacement costs will be charged.",
   "Puis je venir récupérer le matériel moi même": "Can I pick up the equipment myself?",
-  "Oui le retrait du matériel est possible sur rendez vous dans nos locaux  Les détails vous seront communiqués après confirmation de la réservation": "Yes, equipment pickup is possible by appointment at our premises. Details will be provided after the booking confirmation."
+  "Oui le retrait du matériel est possible sur rendez vous dans nos locaux  Les détails vous seront communiqués après confirmation de la réservation": "Yes, equipment pickup is possible by appointment at our premises. Details will be provided after the booking confirmation.",
+  "Nombre de participants requis": "Nombre de participants requis",
+  "Objet de la demande": "Request subject",
+  "Type dévénement": "Event type",
+  "Autre": "Other",
+  "Besoin dun technicien": "Need a technician?",
+  "Mode de récupération": "Recovery mode"
 }
