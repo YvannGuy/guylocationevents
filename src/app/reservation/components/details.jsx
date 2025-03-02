@@ -24,7 +24,6 @@ const InfoRequestForm = () => {
         t("Le téléphone doit contenir uniquement des chiffres")
       )
       .required(t("Téléphone est requis")),
-    subject: yup.string().required(t("Objet de la demande est requis")),
     message: yup.string().required(t("Message est requis")),
     eventStartDate: yup.date().nullable().optional(),
     eventEndDate: yup.date().nullable().optional(),
@@ -130,7 +129,7 @@ const InfoRequestForm = () => {
           <input
             type="text"
             {...register("subject")}
-            placeholder={t("Objet de la demande")}
+            placeholder={t("Adresse (si livraison choisie)")}
             className="border p-3 rounded-lg w-full"
           />
           <select
@@ -189,7 +188,7 @@ const InfoRequestForm = () => {
           </select>
           <textarea
             {...register("message")}
-            placeholder={t("Message")}
+            placeholder={t("Nous vous prions de bien vouloir nous communiquer tous les équipements nécessaires à votre événement afin que nous puissions répondre au mieux à vos besoins.")}
             rows="4"
             className="border p-3 rounded-lg w-full col-span-2"
           ></textarea>

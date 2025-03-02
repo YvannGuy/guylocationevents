@@ -58,7 +58,8 @@ export async function POST(req) {
                   </td>
                   <td style="text-align: right; color: #555555; font-size: 14px; padding-bottom: 6px;">
                     <strong>Client :</strong> ${fullName}<br />
-                    <strong>Email :</strong> ${email}
+                    <strong>Email :</strong> ${email}<br />
+                    <strong>Telephone :</strong> ${telephone}
                   </td>
                 </tr>
               </table>
