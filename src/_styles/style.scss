@@ -1144,6 +1144,13 @@ section.condition-location-area {
     }
   }
 }
+.details-sidebar-wrap {
+  min-height: 100%;
+  .details-sidebar {
+    position: sticky;
+    top: 0;
+  }
+}
 
 // Single Page End
 

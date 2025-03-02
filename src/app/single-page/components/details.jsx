@@ -766,23 +766,27 @@ const ProductDetailsInfo = (props) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid className="col-lg-4">
-              <Grid className="price-tag">
-                <h5>
-                  <span className="border border-short"></span>
-                  <span className="border border-long"></span>$
-                  {packageData.price}
-                  <span className="border border-short-right"></span>
-                  <span className="border border-long-right"></span>
-                </h5>
-                <p>{packageData.unite}</p>
-              </Grid>
-              <Grid className="book-btn">
-                <Link href="/reservation" className="view-more-btn">
-                  {t("Book Now")}
-                  <EastIcon />
-                </Link>
-              </Grid>
+            <Grid className="col-lg-4 col-12">
+              <aside className="details-sidebar-wrap">
+                <div className="details-sidebar">
+                  <Grid className="price-tag">
+                    <h5>
+                      <span className="border border-short"></span>
+                      <span className="border border-long"></span>$
+                      {packageData.price}
+                      <span className="border border-short-right"></span>
+                      <span className="border border-long-right"></span>
+                    </h5>
+                    <p>{packageData.unite}</p>
+                  </Grid>
+                  <Grid className="book-btn">
+                    <Link href="/reservation" className="view-more-btn">
+                      {t("Book Now")}
+                      <EastIcon />
+                    </Link>
+                  </Grid>
+                </div>
+              </aside>
             </Grid>
           </Grid>
         </Grid>
