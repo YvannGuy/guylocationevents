@@ -171,7 +171,9 @@ const Header = () => {
               <li>
                 <Link
                   href="/reservation"
-                  className={patname == "/reservation" ? "active" : ""}
+                  className={
+                    patname == "/reservation" ? "active book-btn" : "book-btn"
+                  }
                   onClick={toggleMobileMenu}
                 >
                   {t("Réservez")}
