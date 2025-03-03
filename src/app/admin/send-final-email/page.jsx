@@ -1,12 +1,19 @@
 "use client";
-import { useTranslations } from 'next-intl';
 import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { useTranslations } from "next-intl";
+import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
+import { saveAs } from "file-saver";
 
 const SendFinalEmailForm = () => {
   const [password, setPassword] = useState("");
   const t = useTranslations();
   const [authenticated, setAuthenticated] = useState(false);
 
+  // Données existantes
   const packs = [
     { id: "test-product", name: "Produit Test", price: 100, stripePriceId: "price_1Qx9qNGKCVzDExz8SqSZSMeX" },
     { id: "pack1", name: t("Pack Standard"), price: 8000, icon: "📋", stripePriceId: "price_1QwVRfGKCVzDExz8KO4ujxPa" },
@@ -28,6 +35,7 @@ const SendFinalEmailForm = () => {
     { id: "micro-wireless", name: t("Micro sans fil"), price: 2000, icon: "🎙️", quantity: true, stripePriceId: "price_1QwVeHGKCVzDExz8GN7Hwn9s" },
   ];
 
+  // États du formulaire
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [eventAddress, setEventAddress] = useState("");
@@ -42,7 +50,7 @@ const SendFinalEmailForm = () => {
   const [technicianHours, setTechnicianHours] = useState(1);
   const [participants, setParticipants] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-  const [deposit, setDeposit] = useState(50000); // Nouvel état pour la caution
+  const [deposit, setDeposit] = useState(50000); // caution
 
   const handleSubmitPassword = (e) => {
     e.preventDefault();
@@ -53,6 +61,325 @@ const SendFinalEmailForm = () => {
     }
   };
 
+  /**
+   * Génère un numéro de facture incrémental stocké dans localStorage.
+   * Si aucun numéro n'est enregistré, on démarre à "000",
+   * puis la prochaine facture sera "001", "002", etc.
+   */
+  const generateInvoiceNumber = () => {
+    const lastInvoice = localStorage.getItem("lastInvoiceNumber");
+    if (lastInvoice === null) {
+      localStorage.setItem("lastInvoiceNumber", "000");
+      return "000";
+    } else {
+      const newInvoice = (parseInt(lastInvoice, 10) + 1).toString().padStart(3, "0");
+      localStorage.setItem("lastInvoiceNumber", newInvoice);
+      return newInvoice;
+    }
+  };
+
+  // Calcule la liste d'articles (packs + options) pour afficher dans le tableau
+  const getAllItemsForInvoice = () => {
+    const items = [];
+
+    // Packs
+    selectedPacks.forEach((packId) => {
+      const pack = packs.find((p) => p.id === packId);
+      if (pack) {
+        const quantity = packQuantities[packId] || 1;
+        const linePrice = pack.price * quantity;
+        items.push({
+          description: pack.name,
+          price: pack.price,
+          quantity,
+          total: linePrice,
+        });
+      }
+    });
+
+    // Options
+    selectedOptions.forEach((optionId) => {
+      const option = options.find((o) => o.id === optionId);
+      if (option) {
+        let quantity = 1;
+        let linePrice = option.price;
+        if (option.hourly) {
+          quantity = technicianHours;
+          linePrice = option.price * technicianHours;
+        } else if (option.quantity) {
+          quantity = optionQuantities[optionId] || 1;
+          linePrice = option.price * quantity;
+        }
+        items.push({
+          description: option.name,
+          price: option.price,
+          quantity,
+          total: linePrice,
+        });
+      }
+    });
+
+    return items;
+  };
+
+  /**
+   * Génère et télécharge la facture PDF avec les modifications suivantes :
+   * - Remplacement du titre "FACTURE" par le logo en haut à gauche.
+   * - Suppression de l'affichage du logo en haut à droite.
+   * - Colonnes client / entreprise, date & heure de l'événement, TVA non applicable,
+   *   caution affichée sans être incluse dans le total et numérotation progressive.
+   */
+  const generateInvoicePDF = async () => {
+    const invoiceNumber = generateInvoiceNumber();
+    const pdfDoc = await PDFDocument.create();
+    const page = pdfDoc.addPage([595, 842]); // A4
+    const { width, height } = page.getSize();
+
+    // Chargement des polices
+    const fontRegular = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const fontBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+
+    // Couleurs / marges
+    const black = rgb(0, 0, 0);
+    const gray = rgb(0.3, 0.3, 0.3);
+    const lineGray = rgb(0.8, 0.8, 0.8);
+    const leftMargin = 50;
+    
+    // Chargement du logo
+    const logoUrl = "http://localhost:3000/images/logo.png";
+    const logoImageBytes = await fetch(logoUrl).then(res => res.arrayBuffer());
+    const logoImage = await pdfDoc.embedPng(logoImageBytes);
+    const logoDims = logoImage.scale(0.25);
+    
+    // Remplacement du titre "FACTURE" par le logo en haut à gauche
+    let currentY = height - logoDims.height - 20;
+    page.drawImage(logoImage, {
+      x: leftMargin,
+      y: currentY,
+      width: logoDims.width,
+      height: logoDims.height,
+    });
+    
+    // Facture n° + date (affichées en haut à droite)
+    const invoiceInfoX = width - 200;
+    page.drawText(`Facture n°${invoiceNumber}`, {
+      x: invoiceInfoX,
+      y: currentY,
+      size: 12,
+      font: fontRegular,
+      color: gray,
+    });
+    currentY -= 20;
+    const dateStr = new Date().toLocaleDateString("fr-FR");
+    page.drawText(dateStr, {
+      x: invoiceInfoX,
+      y: currentY,
+      size: 12,
+      font: fontRegular,
+      color: gray,
+    });
+    currentY -= 40;
+
+    // Affichage en deux colonnes (client à gauche, entreprise à droite)
+    let clientY = currentY;
+    let enterpriseY = currentY;
+
+    // Colonne client
+    page.drawText(fullName, {
+      x: leftMargin,
+      y: clientY,
+      size: 12,
+      font: fontBold,
+      color: black,
+    });
+    clientY -= 15;
+    page.drawText(eventAddress || "Non renseignée", {
+      x: leftMargin,
+      y: clientY,
+      size: 11,
+      font: fontRegular,
+      color: gray,
+    });
+    clientY -= 15;
+    page.drawText(email || "Non renseignée", {
+      x: leftMargin,
+      y: clientY,
+      size: 11,
+      font: fontRegular,
+      color: gray,
+    });
+    clientY -= 25;
+
+    // Colonne entreprise (affichée en haut à droite)
+    const enterpriseX = width - 250;
+    page.drawText("GUY LOCATION EVENTS", {
+      x: enterpriseX,
+      y: enterpriseY,
+      size: 12,
+      font: fontBold,
+      color: black,
+    });
+    enterpriseY -= 15;
+    page.drawText("78 avenue des Champs Elysées, 75008 Paris", {
+      x: enterpriseX,
+      y: enterpriseY,
+      size: 11,
+      font: fontRegular,
+      color: gray,
+    });
+    enterpriseY -= 15;
+    page.drawText("SIRET : 79959617600021", {
+      x: enterpriseX,
+      y: enterpriseY,
+      size: 11,
+      font: fontRegular,
+      color: gray,
+    });
+    enterpriseY -= 15;
+    page.drawText("Téléphone : 06 51 08 49 94", {
+      x: enterpriseX,
+      y: enterpriseY,
+      size: 11,
+      font: fontRegular,
+      color: gray,
+    });
+    enterpriseY -= 25;
+
+    // Repositionnement pour la suite (on prend le point le plus bas des deux colonnes)
+    currentY = Math.min(clientY, enterpriseY) - 20;
+
+    // Ajout de la ligne "Date & Heure de l'événement"
+    const eventPeriod =
+      startDate && startTime && endDate && endTime
+        ? `Du ${new Date(startDate).toLocaleDateString("fr-FR")} ${startTime} au ${new Date(endDate).toLocaleDateString("fr-FR")} ${endTime}`
+        : "Non renseigné";
+    page.drawText(`Date & Heure de l'événement: ${eventPeriod}`, {
+      x: leftMargin,
+      y: currentY,
+      size: 11,
+      font: fontRegular,
+      color: gray,
+    });
+    currentY -= 20;
+
+    // Ligne horizontale de séparation
+    page.drawLine({
+      start: { x: leftMargin, y: currentY },
+      end: { x: width - leftMargin, y: currentY },
+      thickness: 1,
+      color: lineGray,
+    });
+    currentY -= 25;
+
+    // Tableau : DESCRIPTION | PRIX | QUANTITÉ | TOTAL
+    page.drawText("DESCRIPTION", { x: leftMargin, y: currentY, size: 11, font: fontBold });
+    page.drawText("PRIX", { x: leftMargin + 250, y: currentY, size: 11, font: fontBold });
+    page.drawText("QUANTITÉ", { x: leftMargin + 340, y: currentY, size: 11, font: fontBold });
+    page.drawText("TOTAL", { x: leftMargin + 440, y: currentY, size: 11, font: fontBold });
+    currentY -= 20;
+
+    const items = getAllItemsForInvoice();
+    let subTotal = 0;
+    items.forEach((item) => {
+      const lineTotal = item.total;
+      subTotal += lineTotal;
+      // DESCRIPTION
+      page.drawText(item.description, {
+        x: leftMargin,
+        y: currentY,
+        size: 10,
+        font: fontRegular,
+      });
+      // PRIX
+      page.drawText(`${(item.price / 100).toFixed(2)} €`, {
+        x: leftMargin + 250,
+        y: currentY,
+        size: 10,
+        font: fontRegular,
+      });
+      // QUANTITÉ
+      page.drawText(`${item.quantity}`, {
+        x: leftMargin + 350,
+        y: currentY,
+        size: 10,
+        font: fontRegular,
+      });
+      // TOTAL
+      page.drawText(`${(lineTotal / 100).toFixed(2)} €`, {
+        x: leftMargin + 450,
+        y: currentY,
+        size: 10,
+        font: fontRegular,
+      });
+      currentY -= 15;
+    });
+
+    // Sous total
+    currentY -= 10;
+    page.drawLine({
+      start: { x: leftMargin, y: currentY },
+      end: { x: width - leftMargin, y: currentY },
+      thickness: 1,
+      color: lineGray,
+    });
+    currentY -= 20;
+    page.drawText("Sous total :", { x: leftMargin + 340, y: currentY, size: 10, font: fontRegular });
+    page.drawText(`${(subTotal / 100).toFixed(2)} €`, {
+      x: leftMargin + 450,
+      y: currentY,
+      size: 10,
+      font: fontRegular,
+    });
+    currentY -= 15;
+
+    // Mention TVA
+    page.drawText("TVA : Non applicable (art. 293B CGI)", {
+      x: leftMargin + 340,
+      y: currentY,
+      size: 10,
+      font: fontRegular,
+      color: gray,
+    });
+    currentY -= 15;
+
+    // Total final
+    page.drawText("Total :", { x: leftMargin + 340, y: currentY, size: 10, font: fontBold });
+    page.drawText(`${(subTotal / 100).toFixed(2)} €`, {
+      x: leftMargin + 450,
+      y: currentY,
+      size: 10,
+      font: fontBold,
+    });
+    currentY -= 30;
+
+    // Affichage de la caution (affichée sans être incluse dans le total)
+    page.drawText(
+      `Caution : ${(deposit / 100).toFixed(2)} € - non prélevée, hors montant payé`,
+      {
+        x: leftMargin,
+        y: currentY,
+        size: 10,
+        font: fontRegular,
+        color: gray,
+      }
+    );
+    currentY -= 15;
+
+    // Phrase de remerciement
+    page.drawText("MERCI DE VOTRE CONFIANCE", {
+      x: leftMargin,
+      y: currentY,
+      size: 10,
+      font: fontRegular,
+      color: black,
+    });
+
+    // Génération et téléchargement du PDF
+    const pdfBytes = await pdfDoc.save();
+    saveAs(new Blob([pdfBytes], { type: "application/pdf" }), `facture_${invoiceNumber}.pdf`);
+  };
+
+  // Recalcule le total dès qu'un paramètre change
   useEffect(() => {
     let total = selectedPacks.reduce((acc, packId) => {
       const pack = packs.find((p) => p.id === packId);
@@ -63,7 +390,6 @@ const SendFinalEmailForm = () => {
     total += selectedOptions.reduce((acc, optionId) => {
       const option = options.find((o) => o.id === optionId);
       let optionTotal = 0;
-
       if (optionId === "technician-management") {
         optionTotal = (option?.price || 0) * technicianHours;
       } else if (option?.quantity) {
@@ -72,7 +398,6 @@ const SendFinalEmailForm = () => {
       } else {
         optionTotal = option?.price || 0;
       }
-
       return acc + optionTotal;
     }, 0);
 
@@ -122,7 +447,7 @@ const SendFinalEmailForm = () => {
     e.preventDefault();
 
     const data = {
-      deposit, // Ajout de la caution
+      deposit,
       fullName,
       email,
       eventAddress,
@@ -152,6 +477,8 @@ const SendFinalEmailForm = () => {
       if (response.ok) {
         alert(t("Réservation confirmée ! Un e-mail a été envoyé avec le lien de paiement."));
         resetForm();
+        // Génère et télécharge la facture PDF
+        generateInvoicePDF();
       } else {
         throw new Error(result.message || t("Erreur lors de l'envoi de la réservation"));
       }
@@ -169,12 +496,11 @@ const SendFinalEmailForm = () => {
               <span className="text-[#FF7755]">{t("Event")}</span>
               {t("Manager")}
             </h1>
-            <p className="text-gray-500 mt-2">
-              {t("Configuration de réservation")}
-            </p>
+            <p className="text-gray-500 mt-2">{t("Configuration de réservation")}</p>
           </header>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Formulaire de gauche */}
             <div className="lg:col-span-2 space-y-6">
               <section className="p-6 bg-gray-50 rounded-2xl">
                 <h2 className="text-lg font-semibold text-gray-900 mb-6">
@@ -200,7 +526,6 @@ const SendFinalEmailForm = () => {
                     onChange={(e) => setEventAddress(e.target.value)}
                     placeholder="123 Rue de l'Exemple, 75000 Paris"
                   />
-                  {/* Nouveau champ pour la caution */}
                   <AppleInput
                     label={t("Caution remboursable")}
                     type="number"
@@ -247,7 +572,6 @@ const SendFinalEmailForm = () => {
                 </div>
               </section>
 
-              {/* Les sections suivantes restent inchangées */}
               <section className="p-6 bg-gray-50 rounded-2xl">
                 <h2 className="text-lg font-semibold text-gray-900 mb-6">
                   {t("Options de service")}
@@ -356,6 +680,7 @@ const SendFinalEmailForm = () => {
               </section>
             </div>
 
+            {/* Récapitulatif à droite */}
             <div className="lg:col-span-1">
               <div className="sticky top-8 bg-white/90 backdrop-blur-lg p-6 rounded-2xl shadow-sm border border-gray-100">
                 <h3 className="text-lg font-semibold text-gray-900 mb-6">
@@ -372,10 +697,9 @@ const SendFinalEmailForm = () => {
                     value={email || t("Non renseigné")}
                   />
                   <AppleSummaryItem
-                    label={t("Adresse")}
+                    label={t("Adresse de l'événement")}
                     value={eventAddress || t("Non renseigné")}
                   />
-                  {/* Ajout de la caution dans le récapitulatif */}
                   <AppleSummaryItem
                     label={t("Caution")}
                     value={`${(deposit / 100).toFixed(2)} € (${t("préautorisation")})`}
@@ -384,7 +708,7 @@ const SendFinalEmailForm = () => {
                     label={t("Début")}
                     value={
                       startDate && startTime
-                        ? `${new Date(startDate).toLocaleDateString('fr-FR')} ${t("à")} ${startTime}`
+                        ? `${new Date(startDate).toLocaleDateString("fr-FR")} ${t("à")} ${startTime}`
                         : "-"
                     }
                   />
@@ -392,7 +716,7 @@ const SendFinalEmailForm = () => {
                     label={t("Fin")}
                     value={
                       endDate && endTime
-                        ? `${new Date(endDate).toLocaleDateString('fr-FR')} ${t("à")} ${endTime}`
+                        ? `${new Date(endDate).toLocaleDateString("fr-FR")} ${t("à")} ${endTime}`
                         : "-"
                     }
                   />
@@ -466,43 +790,44 @@ const SendFinalEmailForm = () => {
     );
   }
 
-  // Partie de la page de connexion
-return (
-  <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-    <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 w-96">
-      <div className="text-center mb-8">
-        {/* Logo (n'oubliez pas d'adapter le chemin si besoin) */}
-        <img src="https://guylocationevents.com/images/logo.png" alt="Logo" className="mx-auto h-12 w-auto mb-4" />
-        <h1 className="text-2xl font-semibold text-gray-900 mb-2">
-          {t("Accès Administrateur")}
-        </h1>
+  // Page de connexion (mot de passe)
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 w-96">
+        <div className="text-center mb-8">
+          <img
+            src="https://guylocationevents.com/images/logo.png"
+            alt="Logo"
+            className="mx-auto h-12 w-auto mb-4"
+          />
+          <h1 className="text-2xl font-semibold text-gray-900 mb-2">
+            {t("Accès Administrateur")}
+          </h1>
+        </div>
+        <form onSubmit={handleSubmitPassword} className="space-y-6">
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FF7755] focus:border-transparent outline-none transition-all"
+            placeholder={t("Mot de passe")}
+          />
+          <button
+            type="submit"
+            className="w-full bg-[#FF7755] hover:bg-[#FF6644] text-white py-3.5 rounded-xl font-medium transition-colors duration-200"
+          >
+            {t("Se connecter")}
+          </button>
+        </form>
       </div>
-      <form onSubmit={handleSubmitPassword} className="space-y-6">
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FF7755] focus:border-transparent outline-none transition-all"
-          placeholder={t("Mot de passe")}
-        />
-        <button
-          type="submit"
-          className="w-full bg-[#FF7755] hover:bg-[#FF6644] text-white py-3.5 rounded-xl font-medium transition-colors duration-200"
-        >
-          {t("Se connecter")}
-        </button>
-      </form>
     </div>
-  </div>
-);
-
+  );
 };
 
+/** Composants utilitaires pour les inputs, cartes, etc. */
 const AppleInput = ({ label, ...props }) => (
   <div>
-    <label className="block text-sm font-medium text-gray-700 mb-2">
-      {label}
-    </label>
+    <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
     <input
       className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FF7755] focus:border-transparent outline-none transition-all"
       {...props}
@@ -513,9 +838,7 @@ const AppleInput = ({ label, ...props }) => (
 const AppleCard = ({ label, price, icon, selected, onToggle }) => (
   <div
     className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
-      selected
-        ? "border-[#FF7755] bg-[#FF7755]/10"
-        : "border-gray-200 hover:border-gray-300"
+      selected ? "border-[#FF7755] bg-[#FF7755]/10" : "border-gray-200 hover:border-gray-300"
     }`}
     onClick={onToggle}
   >
@@ -532,9 +855,7 @@ const AppleCard = ({ label, price, icon, selected, onToggle }) => (
 const AppleOptionCard = ({ label, price, icon, selected, onToggle }) => (
   <div
     className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${
-      selected
-        ? "border-[#FF7755] bg-[#FF7755]/10"
-        : "border-gray-200 hover:border-gray-300"
+      selected ? "border-[#FF7755] bg-[#FF7755]/10" : "border-gray-200 hover:border-gray-300"
     }`}
     onClick={onToggle}
   >
@@ -542,9 +863,7 @@ const AppleOptionCard = ({ label, price, icon, selected, onToggle }) => (
       <span className="text-xl">{icon}</span>
       <div>
         <div className="font-medium text-gray-900">{label}</div>
-        <div className="text-sm text-gray-500">
-          € {(price / 100).toFixed(2)}
-        </div>
+        <div className="text-sm text-gray-500">€ {(price / 100).toFixed(2)}</div>
       </div>
     </div>
   </div>
