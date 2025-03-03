@@ -1,9 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { saveAs } from "file-saver";
@@ -146,7 +142,7 @@ const SendFinalEmailForm = () => {
     const leftMargin = 50;
     
     // Chargement du logo
-    const logoUrl = "http://localhost:3000/images/logo.png";
+    const logoUrl = "https://www.guylocationevents.com/images/logo.png";
     const logoImageBytes = await fetch(logoUrl).then(res => res.arrayBuffer());
     const logoImage = await pdfDoc.embedPng(logoImageBytes);
     const logoDims = logoImage.scale(0.25);
