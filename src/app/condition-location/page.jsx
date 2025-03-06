@@ -79,7 +79,7 @@ const CatalogPage = () => {
                     <p>{t("conditions_text_4")}</p>
                     <p>
                       {t(
-                        "Garantie financière : Une caution peut être demandée, réglée par empreinte bancaire"
+                        "Garantie financière Une caution peut être demandée réglée par empreinte bancaire par le biais de la plateforme Wikli"
                       )}
                     </p>
                     <p>
@@ -90,20 +90,20 @@ const CatalogPage = () => {
                     </p>
                     <p>
                       {t(
-                        "Retour et restitution Si le matériel revient en bon état la caution est restituée après vérification, (95 % des cas), En cas de dommages une expertise sous 48 heures déterminera les réparations nécessaires"
+                        "Retour et restitution Si le matériel revient en bon état la caution est restituée après vérification 95 des cas En cas de dommages une expertise sous 48 heures déterminera les réparations nécessaires"
                       )}
                       .
                     </p>
                     <p>
                       {t(
-                        "Réparations : Vous pouvez confier les réparations à Guy Location Events ou choisir un prestataire sous 5 jours. Attention, dans le cas d'une attente de 5 jours pour les réparations, le matériel vous sera facturé sur 5 jours de location."
+                        "Réparations Vous pouvez confier les réparations à Guy Location Events ou choisir un prestataire sous 5 jours Attention dans le cas d'une attente de 5 jours pour les réparations le matériel vous sera facturé sur 5 jours de location"
                       )}
                     </p>
 
                     <h3>3. {t("DURÉE ET RETARD")}</h3>
                     <p>
                       {t(
-                        "Les durées de location sont fixées dans le contrat. Tout retard de restitution sera facturé au tarif d'une journée supplémentaire par jour de retard."
+                        "Les durées de location sont fixées dans le contrat Tout retard de restitution sera facturé au tarif d'une journée supplémentaire par jour de retard"
                       )}
                     </p>
 
@@ -172,7 +172,7 @@ const CatalogPage = () => {
                     <h3>10. {t("INSPECTION AU RETOUR")}</h3>
                     <p>
                       {t(
-                        "Le matériel sera inspecté dès son retour, Toute non-conformité tels que des dommages ou salissures nécessitant un nettoyage spécifique sera facturée au locataire, Si un prestataire n'est pas choisi dans un délai de 2 jours ouvrables l'entreprise effectuera les réparations et facturera les frais"
+                        "Le matériel sera inspecté dès son retour Toute non-conformité tels que des dommages ou salissures nécessitant un nettoyage spécifique sera facturée au locataire Si un prestataire nest pas choisi dans un délai de 2 jours ouvrables lentreprise effectuera les réparations et facturera les frais"
                       )}
                     </p>
 
@@ -186,7 +186,7 @@ const CatalogPage = () => {
                     <h3>12. {t("ACCEPTATION DES CONDITIONS")}</h3>
                     <p>
                       {t(
-                        "En signant le contrat de location, le locataire reconnaît avoir pris connaissance et accepté les présentes conditions générales de location sans réserve."
+                        "En signant le contrat de location le locataire reconnaît avoir pris connaissance et accepté les présentes conditions générales de location sans réserve"
                       )}
                     </p>
                   </Grid>

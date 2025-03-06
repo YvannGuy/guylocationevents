@@ -12,36 +12,29 @@ const InfoRequestForm = () => {
   const t = useTranslations();
 
   const schema = yup.object().shape({
-    fullName: yup.string().required(t("Nom et prénom sont requis")),
+    fullName: yup.string().required(t("Name and surname are required")),
     email: yup
       .string()
-      .email(t("Email invalide"))
+      .email(t("Invalid email"))
       .required(t("Email est requis")),
     telephone: yup
       .string()
-      .matches(
-        /^[0-9]+$/,
-        t("Le téléphone doit contenir uniquement des chiffres")
-      )
+      .matches(/^[0-9]+$/, t("Phone must contain only digits"))
       .required(t("Téléphone est requis")),
     message: yup.string().required(t("Message est requis")),
     eventStartDate: yup.date().nullable().optional(),
     eventEndDate: yup.date().nullable().optional(),
-    eventStartTime: yup.string().required(t("Veuillez sélectionner une heure")),
-    eventEndTime: yup.string().required(t("Veuillez sélectionner une heure")),
+    eventStartTime: yup.string().required(t("Please select a time")),
+    eventEndTime: yup.string().required(t("Please select a time")),
     participants: yup
       .number()
       .typeError(t("Le nombre de participants doit être un chiffre"))
-      .positive(t("Le nombre doit être positif"))
+      .positive(t("Number must be positive"))
       .integer(t("Le nombre doit être entier"))
       .required(t("Nombre de participants requis")),
-    eventType: yup
-      .string()
-      .required(t("Veuillez sélectionner un type d'événement")),
-    technician: yup.string().required(t("Veuillez sélectionner une option")),
-    deliveryOption: yup
-      .string()
-      .required(t("Veuillez sélectionner une option")),
+    eventType: yup.string().required(t("Please select an event type")),
+    technician: yup.string().required(t("Please select an option")),
+    deliveryOption: yup.string().required(t("Please select an option")),
   });
   const {
     register,
@@ -88,7 +81,7 @@ const InfoRequestForm = () => {
             <FaCheckCircle className="text-green-600 text-xl" />
             <p className="text-green-800 font-medium">
               {t(
-                "Votre demande a été envoyée avec succès, vous recevrez une réponse sous 24h maximun"
+                "Votre demande a été envoyée avec succès vous recevrez une réponse sous 24h maximun"
               )}{" "}
               !
             </p>
@@ -129,7 +122,7 @@ const InfoRequestForm = () => {
           <input
             type="text"
             {...register("subject")}
-            placeholder={t("Adresse (si livraison choisie)")}
+            placeholder={t("Adresse si livraison choisie")}
             className="border p-3 rounded-lg w-full"
           />
           <select
@@ -188,7 +181,9 @@ const InfoRequestForm = () => {
           </select>
           <textarea
             {...register("message")}
-            placeholder={t("Nous vous prions de bien vouloir nous communiquer tous les équipements nécessaires à votre événement afin que nous puissions répondre au mieux à vos besoins.")}
+            placeholder={t(
+              "Nous vous prions de bien vouloir nous communiquer tous les équipements nécessaires à votre événement afin que nous puissions répondre au mieux à vos besoins"
+            )}
             rows="4"
             className="border p-3 rounded-lg w-full col-span-2"
           ></textarea>
