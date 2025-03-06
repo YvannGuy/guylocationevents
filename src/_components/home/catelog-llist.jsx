@@ -3,24 +3,30 @@ import Grid from "@mui/material/Grid2";
 import Link from "next/link";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 const CatalogList = ({ cards, className }) => {
   const t = useTranslations();
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
   return (
     <section className={`catalog-list-area ${className}`}>
       <Grid className="container">
         <Grid className="row">
-          <Grid className="col-lg-12">
-            <Grid className="section-title">
-              <h2>{t("NOS MEILLEURS PRODUITS EN LOCATION DE SONORISATION")}</h2>
-              <Image
-                src="/images/title-border.png"
-                width="130"
-                height="16"
-                alt="border"
-              />
+          {isHomePage && (
+            <Grid className="col-lg-12">
+              <Grid className="section-title">
+                <h2>{t("NOS MEILLEURS PRODUITS EN LOCATION DE SONORISATION")}</h2>
+                <Image
+                  src="/images/title-border.png"
+                  width="130"
+                  height="16"
+                  alt="border"
+                />
+              </Grid>
             </Grid>
-          </Grid>
+          )}
 
           {cards.map((card, index) => (
             <Grid className="col-lg-4" key={index}>

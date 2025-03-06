@@ -223,7 +223,7 @@ const ProductDetails = () => {
                         <h5>
                           <span className="border border-short"></span>
                           <span className="border border-long"></span>
-                          $250.00
+                          À PARTIR DE 350€
                           <span className="border border-short-right"></span>
                           <span className="border border-long-right"></span>
                         </h5>
