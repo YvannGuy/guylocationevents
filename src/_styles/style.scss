@@ -160,6 +160,7 @@ a.button {
 
   &:hover {
     color: $themeColor;
+    background: #fff;
   }
 }
 
@@ -1188,7 +1189,7 @@ section.cta-area {
   .view-more-btn {
     font-size: 21px;
     line-height: 25px;
-    color: #fff;
+    color: $themeColor;
     font-weight: 700;
     font-family: $montserratFont;
     display: inline-flex;
@@ -1196,12 +1197,14 @@ section.cta-area {
     justify-content: center;
     column-gap: 20px;
     padding: 20px 25px;
-    background-color: $themeColor;
-    border: 1px solid #000000;
+    background-color: #fff;
+    border: 1px solid #fff;
     transition: all 0.3s ease-in-out;
-
+    border-radius: 3px;
     &:hover {
       color: $themeColor;
+      background: #fff;
+      border-color: #fff;
     }
   }
 }

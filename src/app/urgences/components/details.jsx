@@ -194,7 +194,7 @@ export default function UrgenceLocation() {
             </div>
             <div>
               <label className="block text-gray-700 mb-2">
-                {t("Type d'événement")} *
+                {t("Type dévénement")} *
               </label>
               <select
                 name="eventType"

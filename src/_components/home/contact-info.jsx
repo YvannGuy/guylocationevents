@@ -39,6 +39,7 @@ const ContactInfo = () => {
                   href="tel:+33651084994"
                   style={{ color: "inherit", textDecoration: "none" }}
                 >
+                  {" "}
                   +33 6 51 08 49 94
                 </a>
               </p>

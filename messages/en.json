@@ -434,5 +434,14 @@
   "Autre": "Other",
   "Besoin dun technicien": "Need a technician?",
   "Mode de récupération": "Recovery mode",
-  "Pour le retrait les lundi mercredi et vendredi 14h 19h et Urgences 19h 20h30": "For pickup on Monday, Wednesday, and Friday from 2:00 PM to 7:00 PM, and for emergencies from 7:00 PM to 8:30 PM"
+  "Pour le retrait les lundi mercredi et vendredi 14h 19h et Urgences 19h 20h30": "For pickup on Monday, Wednesday, and Friday from 2:00 PM to 7:00 PM, and for emergencies from 7:00 PM to 8:30 PM",
+  "Email est requis": "Email est requis",
+  "Le nombre de participants doit être un chiffre": "The number of participants must be a digit.",
+  "Le nombre doit être entier": "The number must be an integer.",
+  "Votre demande a été envoyée avec succès vous recevrez une réponse sous 24h maximun": "Your request has been successfully sent, and you will receive a response within 24 hours maximum.",
+  "Nous vous prions de bien vouloir nous communiquer tous les équipements nécessaires à votre événement afin que nous puissions répondre au mieux à vos besoins": "We kindly ask you to provide us with all the necessary equipment for your event so that we can best meet your needs.",
+  "Adresse si livraison choisie": "Address (if delivery chosen)",
+  "Concert": "Concert",
+  "Retour et restitution Si le matériel revient en bon état la caution est restituée après vérification 95 des cas En cas de dommages une expertise sous 48 heures déterminera les réparations nécessaires": "Return and restitution: If the equipment is returned in good condition, the deposit is refunded after verification (95% of cases). In case of damage, an assessment within 48 hours will determine the necessary repairs.",
+  "Le matériel sera inspecté dès son retour Toute non-conformité tels que des dommages ou salissures nécessitant un nettoyage spécifique sera facturée au locataire Si un prestataire nest pas choisi dans un délai de 2 jours ouvrables lentreprise effectuera les réparations et facturera les frais": "The equipment will be inspected upon return. Any non-compliance, such as damage or dirt requiring specific cleaning, will be charged to the renter. If a service provider is not chosen within 2 business days, the company will carry out the repairs and invoice the costs."
 }

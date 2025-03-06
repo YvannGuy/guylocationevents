@@ -14,7 +14,7 @@
   "NOS MEILLEURS PRODUITS EN LOCATION DE SONORISATION": "NOS MEILLEURS PRODUITS EN LOCATION DE SONORISATION",
   "78 avenue des Champs Élysées 75008": "78 avenue des Champs-Élysées 75008",
   "Paris Pour le retrait chaque lundi mercredi et vendredi 14h 00h": "Paris – Pour le retrait : chaque lundi, mercredi et vendredi (14h-00h)",
-  "Contactez-nous au": "Contactez-nous au",
+  "Contactez-nous au": "Contactez nous au",
   "Du lundi au dimanche 9h30 à 19h30 et urgences 19h30 21h00": "Du lundi au dimanche - 9h30 à 19h30 et urgences 19h30-21h00",
   "Livraison Île-de-France et paris intra-muros": "Livraison Île-de-France et Paris intra-muros",
   "Paris Intra-muros TTC la course et Île-de-france": "Paris Intra-muros 40€ TTC la course et Île-de-France 80€",
@@ -433,5 +433,14 @@
   "Autre": "Autre",
   "Besoin dun technicien": "Besoin d'un technicien ?",
   "Mode de récupération": "Mode de récupération",
-  "Pour le retrait les lundi mercredi et vendredi 14h 19h et Urgences 19h 20h30": "Pour le retrait les lundi mercredi et vendredi 14h-19h et Urgences : 19h-20h30"
+  "Pour le retrait les lundi mercredi et vendredi 14h 19h et Urgences 19h 20h30": "Pour le retrait les lundi mercredi et vendredi 14h-19h et Urgences : 19h-20h30",
+  "Email est requis": "Email est requis",
+  "Le nombre de participants doit être un chiffre": "Le nombre de participants doit être un chiffre",
+  "Le nombre doit être entier": "Le nombre doit être entier",
+  "Votre demande a été envoyée avec succès vous recevrez une réponse sous 24h maximun": "Votre demande a été envoyée avec succès, vous recevrez une réponse sous 24h maximun",
+  "Nous vous prions de bien vouloir nous communiquer tous les équipements nécessaires à votre événement afin que nous puissions répondre au mieux à vos besoins": "Nous vous prions de bien vouloir nous communiquer tous les équipements nécessaires à votre événement afin que nous puissions répondre au mieux à vos besoins.",
+  "Adresse si livraison choisie": "Adresse (si livraison choisie)",
+  "Concert": "Concert",
+  "Retour et restitution Si le matériel revient en bon état la caution est restituée après vérification 95 des cas En cas de dommages une expertise sous 48 heures déterminera les réparations nécessaires": "Retour et restitution Si le matériel revient en bon état la caution est restituée après vérification, (95 % des cas), En cas de dommages une expertise sous 48 heures déterminera les réparations nécessaires",
+  "Le matériel sera inspecté dès son retour Toute non-conformité tels que des dommages ou salissures nécessitant un nettoyage spécifique sera facturée au locataire Si un prestataire nest pas choisi dans un délai de 2 jours ouvrables lentreprise effectuera les réparations et facturera les frais": "Le matériel sera inspecté dès son retour, Toute non-conformité tels que des dommages ou salissures nécessitant un nettoyage spécifique sera facturée au locataire, Si un prestataire n'est pas choisi dans un délai de 2 jours ouvrables l'entreprise effectuera les réparations et facturera les frais"
 }
