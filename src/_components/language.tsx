@@ -45,7 +45,21 @@ const Language: FC<LanguageProps> = ({ className = "" }) => {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
         disabled={isPending}
-        sx={{ padding: 0 }}
+        sx={{
+          color: "#ffffff",
+          border: "none",
+          padding: "8px 15px",
+          fontSize: "16px",
+          minWidth: "120px",
+          height: "35px",
+          margin: "0 0 0 20px",
+          "&:hover": {
+            backgroundColor: "transparent"
+          },
+          "& .MuiSvgIcon-root": {
+            fontSize: "20px"
+          }
+        }}
         disableFocusRipple
         disableRipple
       >
@@ -53,12 +67,12 @@ const Language: FC<LanguageProps> = ({ className = "" }) => {
           src={`/images/flags/${
             languages.find((item) => item.code == currentLocale)?.code
           }.svg`}
-          width={25}
-          height={15}
+          width={20}
+          height={12}
           alt={
             languages.find((item) => item.code == currentLocale)?.label ?? ""
           }
-          style={{ marginRight: "10px" }}
+          style={{ marginRight: "8px" }}
         />
         {languages.find((item) => item.code == currentLocale)?.label}
         <KeyboardArrowDownIcon />
