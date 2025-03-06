@@ -1,3 +1,4 @@
+"use client";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState, MouseEvent, FC } from "react";
 import { Menu, MenuItem, Button, Box } from "@mui/material";
@@ -7,9 +8,11 @@ import { setUserLocale } from "@/services/locale";
 import { useTransition } from "react";
 import { useLocale } from "next-intl";
 import { Fragment } from "react";
+
 interface LanguageProps {
   className?: string;
 }
+
 const languages = [
   { code: "en", label: "English" },
   { code: "fr", label: "France" },
@@ -29,6 +32,7 @@ const LanguageFooter: FC<LanguageProps> = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
   const handleClickChangeLanguage = (lang: string) => {
     const locale = lang as Locale;
     startTransition(() => {
@@ -36,6 +40,7 @@ const LanguageFooter: FC<LanguageProps> = () => {
     });
     setAnchorEl(null);
   };
+
   return (
     <Fragment>
       <Button
@@ -47,24 +52,25 @@ const LanguageFooter: FC<LanguageProps> = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "15px 20px",
-          borderRadius: "8px",
-          marginTop: "30px",
+          padding: "12px 18px",
+          borderRadius: "6px",
+          marginTop: "25px",
+          fontSize: "16px",
+          minWidth: "220px",
+          height: "45px",
+          "& .MuiSvgIcon-root": {
+            fontSize: "22px",
+          }
         }}
         disableFocusRipple
         disableRipple
-        fullWidth
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Image
-            src={`/images/flags/${
-              languages.find((item) => item.code == currentLocale)?.code
-            }.svg`}
-            width={25}
-            height={15}
-            alt={
-              languages.find((item) => item.code == currentLocale)?.label ?? ""
-            }
+            src={`/images/flags/${languages.find((item) => item.code == currentLocale)?.code}.svg`}
+            width={22}
+            height={14}
+            alt={languages.find((item) => item.code == currentLocale)?.label ?? ""}
             style={{ marginRight: "10px" }}
           />
           {languages.find((item) => item.code == currentLocale)?.label}
@@ -77,14 +83,15 @@ const LanguageFooter: FC<LanguageProps> = () => {
             key={item.code}
             onClick={() => handleClickChangeLanguage(item.code)}
             selected={locale == item.code}
+            sx={{ fontSize: "16px", minHeight: "45px", minWidth: "220px" }}
           >
             <Image
               src={`/images/flags/${item.code}.svg`}
-              width={20}
-              height={18}
+              width={22}
+              height={14}
               alt={item.label}
               style={{
-                marginRight: "7px",
+                marginRight: "10px",
               }}
             />
             {item.label}
@@ -94,4 +101,5 @@ const LanguageFooter: FC<LanguageProps> = () => {
     </Fragment>
   );
 };
+
 export default LanguageFooter;
