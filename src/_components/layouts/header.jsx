@@ -31,6 +31,7 @@ const Header = () => {
               />
               {t("open_hours")}
             </p>
+            <Language />
             <a className="phone" href="tel:+33 6 51 08 49 94">
               <Image
                 src="/images/phone-icon.png"
@@ -103,7 +104,6 @@ const Header = () => {
 
             <Grid className="col-lg-3 col-5 d-none d-lg-block">
               <Grid className="header-button">
-                <Language />
                 <Link href="/reservation" className="button theme">
                   {t("Réservez")}
                 </Link>
