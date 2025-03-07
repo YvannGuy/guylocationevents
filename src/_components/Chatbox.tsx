@@ -40,7 +40,7 @@ export default function ChatBox() {
   const presetQuestions = [
     t("bonjour"),
     t("quels sont vos horaires"),
-    t("quels types d'équipements sono proposez-vous"),
+    t("quels types déquipements sono proposez-vous"),
     t("comment fonctionne la location"),
     t("comment réserver"),
     t("avez-vous un service technicien"),
@@ -77,6 +77,7 @@ export default function ChatBox() {
         body: JSON.stringify({ message: text }),
       });
       const data = await response.json();
+      console.log(data, "data");
       const botMessage: Message = { sender: "bot", text: data.reply };
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {

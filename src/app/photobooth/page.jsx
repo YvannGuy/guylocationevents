@@ -11,85 +11,45 @@ import PublicLayout from "@/_components/layouts";
 import { Fragment } from "react";
 import CtaShort from "@/_components/single-page/cta";
 import Image from "next/image";
-import Link from "next/link";
-import EastIcon from "@mui/icons-material/East";
-import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import SliderBlock from "@/_components/single-page/product-gallary";
 import { useTranslations } from "next-intl";
-const slides = [
-  {
-    backgroundImage: "/images/catalog-bg.png",
-    title: "Pack Premium",
-  },
-];
-
-const items = [
-  {
-    fullImage: "/images/slider/image1.webp",
-    thumbnail: "/images/slider/image1.webp",
-  },
-  {
-    fullImage: "/images/slider/image2.webp",
-    thumbnail: "/images/slider/image2.webp",
-  },
-  {
-    fullImage: "/images/slider/image3.webp",
-    thumbnail: "/images/slider/image3.webp",
-  },
-  {
-    fullImage: "/images/slider/image4.webp",
-    thumbnail: "/images/slider/image4.webp",
-  },
-  {
-    fullImage: "/images/slider/image5.webp",
-    thumbnail: "/images/slider/image5.webp",
-  },
-  {
-    fullImage: "/images/slider/image6.webp",
-    thumbnail: "/images/slider/image6.webp",
-  },
-];
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 18,
-  },
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
-
-// Data for two columns and four rows
+import CatalogList from "@/_components/home/catelog-llist";
 
 const ProductDetails = () => {
   const t = useTranslations();
-  const rows = [
-    { name: t("Weight"), value: "5710kg" },
-    { name: t("Rated power"), value: "36.9kW / 2200rpm" },
-    { name: t("Standard bucket capacity"), value: "0.2m³" },
-    { name: t("Standard bucket width"), value: "775mm" },
-    { name: t("Operation Hydraulic Pressure"), value: "24.5Mpa" },
-    { name: t("Maximum Digging Force"), value: "37.4kN" },
-    { name: t("Gradeability"), value: "30°" },
-    { name: t("Pressure To The Ground"), value: "31.4kPa" },
-    { name: t("Walking Speed"), value: "2.8 / 4.7 km/h" },
-    { name: t("Maximum Hauling Force"), value: "44kN" },
+  const packages = [
+    {
+      image: "/images/packstandard1.jpg",
+      slug: "/pack-standard",
+      alt: t(
+        "20-50 Personnes, Idéal pour les petites soirées privées, anniversaires ou réunions professionnelles"
+      ),
+      title: t(
+        "20-50 Personnes, Idéal pour les petites soirées privées, anniversaires ou réunions professionnelles"
+      ),
+      tag: t("PACK STANDARD"),
+    },
+    {
+      image: "/images/packessentiel.jpg",
+      slug: "/pack-essentiel",
+      alt: t(
+        "50-100 Personnes Idéal pour des séminaires petits concerts ou fêtes privé"
+      ),
+      title: t(
+        "50-100 Personnes Idéal pour des séminaires petits concerts ou fêtes privé"
+      ),
+      tag: t("PACK ESSENTIEL"),
+    },
+    {
+      image: "/images/packconfort.jpg",
+      slug: "/pack-confort",
+      alt: t(
+        "100-150 personnes L’équilibre parfait entre puissance et qualité pour des événements de taille moyenne"
+      ),
+      title: t(
+        "100-150 personnes L’équilibre parfait entre puissance et qualité pour des événements de taille moyenne"
+      ),
+      tag: t("PACK CONFORT"),
+    },
   ];
   return (
     <Fragment>
@@ -141,107 +101,8 @@ const ProductDetails = () => {
             </Grid>
           </Grid>
 
-          <section className="product-details">
-            <Grid className="container">
-              <Grid className="row">
-                <Grid className="col-lg-8">
-                  {/* product image */}
-                  <SliderBlock items={items} />
-                  {/* product image */}
-                  <Grid className="product-content">
-                    <h2 className="name">
-                      {t("Caterpillar 345 GC Excavator")}
-                    </h2>
-                    <Grid className="description-box">
-                      <h3 className="common-title">
-                        {t("Description")}
-                        <span className="border border-short"></span>
-                        <span className="border border-long"></span>
-                        <span className="border border-middle"></span>
-                      </h3>
-                      <h4>
-                        {t("Best Yanmar powered hydraulic excavator for rent")}.
-                      </h4>
-                      <p>
-                        {t(
-                          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolore mque laud antium totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto be atae vitae dicta sunt explicabo Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit sed quia consequuntur magni dolores"
-                        )}
-                      </p>
-                      <p>
-                        {t(
-                          "Eos qui ratione voluptatem sequi nesciunt Neque porro  es qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi"
-                        )}
-                      </p>
+          <CatalogList cards={packages} />
 
-                      <ul className="product-key-points">
-                        <li>{t("Nostrud exercitation ullamco laboris")}</li>
-                        <li>
-                          {t("Ut aliquip ex ea reprehenderitin voluptate")}
-                        </li>
-                        <li>
-                          {t("Adipisicing elit sed eiusmod tempor incididunt")}
-                        </li>
-                        <li>
-                          {t("Labore dolore magna aliqua veniam nostrud")}
-                        </li>
-                      </ul>
-                    </Grid>
-                    <Grid className="specification-box">
-                      <h3 className="common-title">
-                        {t("Specification")}
-                        <span className="border border-short"></span>
-                        <span className="border border-long"></span>
-                        <span className="border border-middle"></span>
-                      </h3>
-
-                      <TableContainer component={Paper}>
-                        <Table
-                          sx={{ minWidth: 400 }}
-                          aria-label="customized table"
-                        >
-                          <TableBody>
-                            {rows.map((row, index) => (
-                              <StyledTableRow key={index}>
-                                <StyledTableCell component="th" scope="row">
-                                  {row.name}
-                                </StyledTableCell>
-                                <StyledTableCell align="left">
-                                  {row.value}
-                                </StyledTableCell>
-                              </StyledTableRow>
-                            ))}
-                          </TableBody>
-                        </Table>
-                      </TableContainer>
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid className="col-lg-4 col-12">
-                  <aside className="details-sidebar-wrap">
-                    <div className="details-sidebar">
-                      <Grid className="price-tag">
-                        <h5>
-                          <span className="border border-short"></span>
-                          <span className="border border-long"></span>
-                          À PARTIR DE 350€
-                          <span className="border border-short-right"></span>
-                          <span className="border border-long-right"></span>
-                        </h5>
-                        <p>{t("Per Day")}</p>
-                      </Grid>
-                      <Grid className="book-btn">
-                        <Link href="/reservation" className="view-more-btn">
-                          {t("Book Now")}
-                          <EastIcon />
-                        </Link>
-                      </Grid>
-                    </div>
-                  </aside>
-                </Grid>
-              </Grid>
-            </Grid>
-          </section>
-          {/* Product details START END */}
           <CtaShort />
         </div>
       </PublicLayout>

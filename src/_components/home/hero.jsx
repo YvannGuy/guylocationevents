@@ -41,7 +41,7 @@ const CommonHero = ({ slides, isHigher }) => {
                   />
                   <Grid container className="hero-content">
                     <Grid container className="container">
-                      <Grid item xs={12} md={12} className="text-main">
+                      <Grid size={{ xs: 12 }} className="text-main">
                         {slide.subtitle && (
                           <span className="tags">{slide.subtitle}</span>
                         )}

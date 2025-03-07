@@ -371,6 +371,10 @@ section.hero-area {
             width: 100%;
             z-index: 1;
           }
+          .text-main {
+            width: 100%;
+            text-align: center;
+          }
 
           .hero-content {
             h1 {
@@ -380,6 +384,7 @@ section.hero-area {
             .main-title {
               max-width: 805px;
               color: $themeColor;
+              margin: auto;
             }
 
             span {
@@ -409,6 +414,7 @@ section.hero-area {
     .hero-wrapper {
       .text-main {
         width: 100%;
+        text-align: center;
       }
 
       h1 {
