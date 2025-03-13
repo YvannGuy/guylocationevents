@@ -18,37 +18,26 @@ const ProductDetails = () => {
   const t = useTranslations();
   const packages = [
     {
-      image: "/images/packstandard1.jpg",
-      slug: "/pack-standard",
+      image: "/images/photoboothprint.jpg",
+      slug: "/photobooth-print",
       alt: t(
-        "20-50 Personnes, Idéal pour les petites soirées privées, anniversaires ou réunions professionnelles"
+        "Photobooth Professionnel avec Impression Souvenirs Instantanés et Expérience Unique"
       ),
       title: t(
-        "20-50 Personnes, Idéal pour les petites soirées privées, anniversaires ou réunions professionnelles"
+        "Photobooth Professionnel avec Impression Souvenirs Instantanés et Expérience Unique"
       ),
-      tag: t("PACK STANDARD"),
+      tag: t("Photobooth Print"),
     },
     {
-      image: "/images/packessentiel.jpg",
-      slug: "/pack-essentiel",
+      image: "/images/photoboothring.jpg",
+      slug: "/photobooth-ring",
       alt: t(
-        "50-100 Personnes Idéal pour des séminaires petits concerts ou fêtes privé"
+        "Photobooth Professionnel Animation Interactive pour vos Événements"
       ),
       title: t(
-        "50-100 Personnes Idéal pour des séminaires petits concerts ou fêtes privé"
+        "Photobooth Professionnel Animation Interactive pour vos Événements"
       ),
-      tag: t("PACK ESSENTIEL"),
-    },
-    {
-      image: "/images/packconfort.jpg",
-      slug: "/pack-confort",
-      alt: t(
-        "100-150 personnes L’équilibre parfait entre puissance et qualité pour des événements de taille moyenne"
-      ),
-      title: t(
-        "100-150 personnes L’équilibre parfait entre puissance et qualité pour des événements de taille moyenne"
-      ),
-      tag: t("PACK CONFORT"),
+      tag: t("Photobooth Ring"),
     },
   ];
   return (
