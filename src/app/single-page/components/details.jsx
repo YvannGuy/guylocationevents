@@ -421,7 +421,7 @@ const ProductDetailsInfo = (props) => {
           value: "Housse de protection et installation rapide",
         },
       ],
-      price: "195.00€ TTC",
+      price: "À partir de 620€ TTC",
       unite: t("Par Jour Week-end"),
       description: t(
         "Créez des souvenirs inoubliables avec notre Photobooth Professionnel avec Impression Idéal pour les mariages, anniversaires soirées dentreprise événements privés ou professionnels ce photobooth permet à vos invités de capturer des moments fun et de repartir avec leurs photos imprimées en quelques secondes"
@@ -489,7 +489,7 @@ const ProductDetailsInfo = (props) => {
           value: "Housse de protection fournie pour faciliter le déplacement",
         },
       ],
-      price: "195.00€ TTC",
+      price: "À partir de 310€ TTC",
       unite: t("Par Jour Week-end"),
       description: t(
         "Ajoutez une touche fun et immersive à vos événements avec notre Photobooth Professionnel Idéal pour les mariages, anniversaires soirées dentreprise lancements de produits et autres événements il permet à vos invités de capturer des souvenirs uniques et de les partager instantanément"
