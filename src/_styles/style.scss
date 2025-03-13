@@ -524,7 +524,12 @@ section.hero-area {
 
         img {
           width: 100%;
-          object-fit: contain;
+          object-fit: cover;
+          height: 475px;
+
+          @media (max-width: 1200px) {
+            height: 400px;
+          }
         }
       }
 

@@ -13,8 +13,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Thumbs } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -41,11 +39,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const ProductDetailsInfo = (props) => {
   const t = useTranslations();
-  const [thumbsSwiper, setThumbsSwiper] = React.useState(null);
-
   const packages = [
     {
-      image: "/images/packstandard1.jpg",
+      image: "/images/products/bigpackstandard.jpg",
       slug: "/pack-standard",
       title: t(
         "Pack Sonorisation Professionnelle Mac Mah AS 108 avec Housses Supports Mixeur Promix 8 et Câbles XLR"
@@ -101,36 +97,9 @@ const ProductDetailsInfo = (props) => {
           "Utilisation Idéal pour des événements allant de petites réunions à des conférences"
         ),
       ],
-
-      images: [
-        {
-          fullImage: "/images/packstandard1.jpg",
-          thumbnail: "/images/packstandard1.jpg",
-        },
-        {
-          fullImage: "/images/packessentiel.jpg",
-          thumbnail: "/images/packessentiel.jpg",
-        },
-        {
-          fullImage: "/images/packgrandevent.jpg",
-          thumbnail: "/images/packgrandevent.jpg",
-        },
-        {
-          fullImage: "/images/packpremium.jpg",
-          thumbnail: "/images/packpremium.jpg",
-        },
-        {
-          fullImage: "/images/packprestige.jpg",
-          thumbnail: "/images/packprestige.jpg",
-        },
-        {
-          fullImage: "/images/packvideo.jpg",
-          thumbnail: "/images/packvideo.jpg",
-        },
-      ],
     },
     {
-      image: "/images/packessentiel.jpg",
+      image: "/images/products/bickpessentiel.jpg",
       slug: "/pack-essentiel",
       title: t(
         "Pack Sonorisation Professionnel Mac Mah AS 115 avec Housses Supports Mixeur Promix 8 et Câbles XLR"
@@ -185,35 +154,9 @@ const ProductDetailsInfo = (props) => {
         ),
         t("Connectivité Bluetooth 50 pour un streaming audio sans fil"),
       ],
-      images: [
-        {
-          fullImage: "/images/packstandard1.jpg",
-          thumbnail: "/images/packstandard1.jpg",
-        },
-        {
-          fullImage: "/images/packessentiel.jpg",
-          thumbnail: "/images/packessentiel.jpg",
-        },
-        {
-          fullImage: "/images/packgrandevent.jpg",
-          thumbnail: "/images/packgrandevent.jpg",
-        },
-        {
-          fullImage: "/images/packpremium.jpg",
-          thumbnail: "/images/packpremium.jpg",
-        },
-        {
-          fullImage: "/images/packprestige.jpg",
-          thumbnail: "/images/packprestige.jpg",
-        },
-        {
-          fullImage: "/images/packvideo.jpg",
-          thumbnail: "/images/packvideo.jpg",
-        },
-      ],
     },
     {
-      image: "/images/packconfort.jpg",
+      image: "/images/products/bickpconfort.jpg",
       slug: "/pack-confort",
       title: t(
         "Pack Sonorisation Professionnelle FBT X-LITE 115A avec Caisson X-SUB 118SA Housses Supports et Mixeur Promix 8"
@@ -265,35 +208,9 @@ const ProductDetailsInfo = (props) => {
           "Caisson de basse puissant FBT X-SUB 118SA pour des basses profondes et un SPL de 136 dB"
         ),
       ],
-      images: [
-        {
-          fullImage: "/images/packstandard1.jpg",
-          thumbnail: "/images/packstandard1.jpg",
-        },
-        {
-          fullImage: "/images/packessentiel.jpg",
-          thumbnail: "/images/packessentiel.jpg",
-        },
-        {
-          fullImage: "/images/packgrandevent.jpg",
-          thumbnail: "/images/packgrandevent.jpg",
-        },
-        {
-          fullImage: "/images/packpremium.jpg",
-          thumbnail: "/images/packpremium.jpg",
-        },
-        {
-          fullImage: "/images/packprestige.jpg",
-          thumbnail: "/images/packprestige.jpg",
-        },
-        {
-          fullImage: "/images/packvideo.jpg",
-          thumbnail: "/images/packvideo.jpg",
-        },
-      ],
     },
     {
-      image: "/public/images/packpremium.jpg",
+      image: "/images/products/bickpremium.jpg",
       slug: "/pack-premium",
       title: t(
         "Pack Sonorisation Professionnelle FBT XLITE 115A avec Caisson XSUB 118SA Mixeur Promix 16 et Câbles XLR"
@@ -347,36 +264,9 @@ const ProductDetailsInfo = (props) => {
           "Caisson de basse FBT X-SUB 118SA pour des basses profondes et un SPL de 136 dB"
         ),
       ],
-
-      images: [
-        {
-          fullImage: "/images/packstandard1.jpg",
-          thumbnail: "/images/packstandard1.jpg",
-        },
-        {
-          fullImage: "/images/packessentiel.jpg",
-          thumbnail: "/images/packessentiel.jpg",
-        },
-        {
-          fullImage: "/images/packgrandevent.jpg",
-          thumbnail: "/images/packgrandevent.jpg",
-        },
-        {
-          fullImage: "/images/packpremium.jpg",
-          thumbnail: "/images/packpremium.jpg",
-        },
-        {
-          fullImage: "/images/packprestige.jpg",
-          thumbnail: "/images/packprestige.jpg",
-        },
-        {
-          fullImage: "/images/packvideo.jpg",
-          thumbnail: "/images/packvideo.jpg",
-        },
-      ],
     },
     {
-      image: "/images/packprestige.jpg",
+      image: "/images/products/bickprestige.jpg",
       slug: "/pack-prestige",
       title: t(
         "Pack Sonorisation Haut de Gamme FBT XLITE 115A avec Caisson XSUB 118SA Mixeur Promix 16 et Supports Professionnels"
@@ -436,36 +326,9 @@ const ProductDetailsInfo = (props) => {
           "Caisson de basse FBT XSUB 118SA pour des basses profondes et puissantes"
         ),
       ],
-
-      images: [
-        {
-          fullImage: "/images/packstandard1.jpg",
-          thumbnail: "/images/packstandard1.jpg",
-        },
-        {
-          fullImage: "/images/packessentiel.jpg",
-          thumbnail: "/images/packessentiel.jpg",
-        },
-        {
-          fullImage: "/images/packgrandevent.jpg",
-          thumbnail: "/images/packgrandevent.jpg",
-        },
-        {
-          fullImage: "/images/packpremium.jpg",
-          thumbnail: "/images/packpremium.jpg",
-        },
-        {
-          fullImage: "/images/packprestige.jpg",
-          thumbnail: "/images/packprestige.jpg",
-        },
-        {
-          fullImage: "/images/packvideo.jpg",
-          thumbnail: "/images/packvideo.jpg",
-        },
-      ],
     },
     {
-      image: "/images/packgd.jpg",
+      image: "/images/products/bickgrandevent.jpg",
       slug: "/pack-grand-event",
       title: t(
         "Pack Sonorisation Haute Performance FBT XLITE 115A Mac Mah AS 115 avec Caisson X-SUB 118SA Mixeur Promix 16 et Supports Professionnels"
@@ -526,31 +389,125 @@ const ProductDetailsInfo = (props) => {
           "Caisson de basse FBT X-SUB 118SA pour des basses profondes et un son puissant"
         ),
       ],
-      images: [
+    },
+
+    {
+      image: "/images/products/bickphotoboothprint.jpg",
+      slug: "/photobooth-print",
+      title: t(
+        "Photobooth Professionnel avec Impression Souvenirs Instantanés et Expérience Unique"
+      ),
+      tag: t("Photobooth Print"),
+      specifications: [
         {
-          fullImage: "/images/packstandard1.jpg",
-          thumbnail: "/images/packstandard1.jpg",
+          name: t("Appareil photo"),
+          value:
+            "Reflex numérique haute définition pour des clichés professionnels",
         },
         {
-          fullImage: "/images/packessentiel.jpg",
-          thumbnail: "/images/packessentiel.jpg",
+          name: t("Éclairage"),
+          value: "Anneau LED ajustable pour un rendu optimal",
         },
         {
-          fullImage: "/images/packgrandevent.jpg",
-          thumbnail: "/images/packgrandevent.jpg",
+          name: t("Partage numérique"),
+          value: "Envoi par e-mail, QR code ou réseaux sociaux",
         },
         {
-          fullImage: "/images/packpremium.jpg",
-          thumbnail: "/images/packpremium.jpg",
+          name: t("Connectivité"),
+          value: "WiFi et USB pour récupération des fichiers",
         },
         {
-          fullImage: "/images/packprestige.jpg",
-          thumbnail: "/images/packprestige.jpg",
+          name: t("Transport"),
+          value: "Housse de protection et installation rapide",
+        },
+      ],
+      price: "195.00€ TTC",
+      unite: t("Par Jour Week-end"),
+      description: t(
+        "Créez des souvenirs inoubliables avec notre Photobooth Professionnel avec Impression Idéal pour les mariages, anniversaires soirées dentreprise événements privés ou professionnels ce photobooth permet à vos invités de capturer des moments fun et de repartir avec leurs photos imprimées en quelques secondes"
+      ),
+      description2: t(
+        "Avec son écran tactile intuitif son appareil photo haute résolution et son imprimante instantanée il garantit une expérience fluide rapide et immersive Son design élégant et compact sadapte à tous les événements et sa personnalisation permet dajouter cadres filtres et logos pour une touche unique"
+      ),
+      subtitle: t(
+        "Un photobooth fun et interactif qui imprime instantanément les souvenirs de vos invités"
+      ),
+      informations: [
+        t(
+          "Impression instantanée Vos invités repartent avec un souvenir papier en quelques secondes"
+        ),
+        t(
+          "Écran tactile Interface fluide et intuitive pour une utilisation sans effort"
+        ),
+        t(
+          "Haute qualité photo Appareil photo HD pour des images nettes et lumineuses"
+        ),
+        t(
+          "Éclairage LED professionnel Assure des clichés parfaits dans toutes les conditions"
+        ),
+        t(
+          "Partage numérique Envoi par email QR code ou réseaux sociaux en complément de limpression"
+        ),
+        t(
+          "Personnalisation avancée Ajoutez des cadres filtres et logos pour une expérience unique"
+        ),
+        t("Installation rapide et facile Transportable et plug play"),
+      ],
+    },
+
+    {
+      image: "/images/products/bickring.jpg",
+      slug: "/photobooth-ring",
+      title: t(
+        "Photobooth Professionnel Animation Interactive pour vos Événements"
+      ),
+      tag: t("Photobooth Print"),
+      specifications: [
+        {
+          name: t("Appareil photo"),
+          value:
+            "Haute définition avec capteur optimisé pour faible luminosité",
         },
         {
-          fullImage: "/images/packvideo.jpg",
-          thumbnail: "/images/packvideo.jpg",
+          name: t("Éclairage"),
+          value: "Anneau LED ajustable pour des clichés professionnels",
         },
+        {
+          name: t("Écran tactile"),
+          value: "Interface fluide et intuitive pour une utilisation facile",
+        },
+        {
+          name: t("Partage en ligne"),
+          value: "Envoi par e-mail, QR code et réseaux sociaux",
+        },
+        {
+          name: t("Connectivité"),
+          value: "WiFi et USB pour récupération des fichiers",
+        },
+        {
+          name: t("Transport"),
+          value: "Housse de protection fournie pour faciliter le déplacement",
+        },
+      ],
+      price: "195.00€ TTC",
+      unite: t("Par Jour Week-end"),
+      description: t(
+        "Ajoutez une touche fun et immersive à vos événements avec notre Photobooth Professionnel Idéal pour les mariages, anniversaires soirées dentreprise lancements de produits et autres événements il permet à vos invités de capturer des souvenirs uniques et de les partager instantanément"
+      ),
+      description2: t(
+        "Notre photobooth est équipé dun écran tactile interactif dun appareil photo haute résolution et dun éclairage LED professionnel pour des clichés parfaits dans toutes les conditions Grâce à sa connectivité WiFi vos invités peuvent envoyer leurs photos par email ou les partager directement sur les réseaux sociaux en quelques secondes"
+      ),
+      subtitle: t(
+        "Un photobooth 100 digital et interactif pour des souvenirs inoubliables"
+      ),
+      informations: [
+        t("Photobooth professionnel avec écran tactile 10 interactif"),
+        t("Appareil photo HD pour des images nettes et lumineuses"),
+        t("Éclairage LED intégré pour un rendu optimal même en basse lumière"),
+        t("Partage instantané envoi des photos par e-mail ou QR code"),
+        t("Personnalisation Filtres et cadres pour une expérience unique"),
+        t("Galerie en ligne accès aux photos après lévénement"),
+        t("Installation rapide Plug Play aucun réglage compliqué"),
       ],
     },
   ];
@@ -559,7 +516,7 @@ const ProductDetailsInfo = (props) => {
     props?.slug !== "pack-video"
       ? packages.find((item) => item.slug == `/${props?.slug}`)
       : {
-          image: "/images/packvideo.jpg",
+          image: "/images/products/bickpvideo.jpg",
           slug: "/pack-video",
           title: t(
             "Pack Vidéo Complet Epson EB-S27 avec Écran Portatif et Trépied Stable"
@@ -600,32 +557,6 @@ const ProductDetailsInfo = (props) => {
             t(
               "Écran de grande taille pour une visibilité maximale lors de vos événements"
             ),
-          ],
-          images: [
-            {
-              fullImage: "/images/packstandard1.jpg",
-              thumbnail: "/images/packstandard1.jpg",
-            },
-            {
-              fullImage: "/images/packessentiel.jpg",
-              thumbnail: "/images/packessentiel.jpg",
-            },
-            {
-              fullImage: "/images/packgrandevent.jpg",
-              thumbnail: "/images/packgrandevent.jpg",
-            },
-            {
-              fullImage: "/images/packpremium.jpg",
-              thumbnail: "/images/packpremium.jpg",
-            },
-            {
-              fullImage: "/images/packprestige.jpg",
-              thumbnail: "/images/packprestige.jpg",
-            },
-            {
-              fullImage: "/images/packvideo.jpg",
-              thumbnail: "/images/packvideo.jpg",
-            },
           ],
         };
   return (
@@ -681,43 +612,13 @@ const ProductDetailsInfo = (props) => {
             <Grid className="col-lg-8 col-12">
               {/* product image */}
               <Grid className="block-gallery">
-                {/* Main Slider */}
-                <Swiper
-                  modules={[Pagination, Thumbs]}
-                  pagination={{ clickable: true }}
-                  thumbs={{ swiper: thumbsSwiper }}
-                  spaceBetween={10}
-                  slidesPerView={1}
-                  className="images-slider"
-                >
-                  {packageData.images?.map((item, index) => (
-                    <SwiperSlide key={index} className="full-image">
-                      <img
-                        src={item.fullImage}
-                        alt={`Slide ${index + 1}`}
-                        className="w-full"
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-                <Swiper
-                  modules={[Thumbs]}
-                  onSwiper={setThumbsSwiper}
-                  spaceBetween={20}
-                  slidesPerView={5}
-                  watchSlidesProgress
-                  className="thumbnails-slider mt-4"
-                >
-                  {packageData.images?.map((item, index) => (
-                    <SwiperSlide key={index} className="thumbnile-image">
-                      <img
-                        src={item.thumbnail}
-                        alt={`Thumbnail ${index + 1}`}
-                        className="cursor-pointer"
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+                <Image
+                  src={packageData.image}
+                  className="w-full"
+                  width={800}
+                  height={475}
+                  alt={packageData.title}
+                />
               </Grid>
               {/* product image */}
               <Grid className="product-content">
