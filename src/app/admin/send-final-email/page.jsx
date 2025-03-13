@@ -11,7 +11,6 @@ const SendFinalEmailForm = () => {
 
   // Données existantes
   const packs = [
-    { id: "test-product", name: "Produit Test", price: 100, stripePriceId: "price_1Qx9qNGKCVzDExz8SqSZSMeX" },
     { id: "pack1", name: t("Pack Standard"), price: 8000, icon: "📋", stripePriceId: "price_1QwVRfGKCVzDExz8KO4ujxPa" },
     { id: "pack2", name: t("Pack Essentiel"), price: 10500, icon: "✅", stripePriceId: "price_1QwVT4GKCVzDExz87s7E1Mei" },
     { id: "pack3", name: t("Pack Confort"), price: 12500, icon: "🛋️", stripePriceId: "price_1QwVU1GKCVzDExz8tfhjhIeX" },
@@ -19,7 +18,8 @@ const SendFinalEmailForm = () => {
     { id: "pack5", name: t("Pack Prestige"), price: 17500, icon: "👑", stripePriceId: "price_1QwVWOGKCVzDExz8I4Gd3P5F" },
     { id: "pack6", name: t("Pack Grand Événement"), price: 19500, icon: "🎉", stripePriceId: "price_1QwVXKGKCVzDExz8SNRzMiE9" },
     { id: "pack7", name: t("Pack Vidéo"), price: 5000, icon: "🎥", stripePriceId: "price_1QwVYCGKCVzDExz8wlZ4GIlE" },
-    { id: "pack8", name: t("Photobooth"), price: 49900, icon: "📸", stripePriceId: "prod_RqBxX425yBJxh7" },
+    { id: "pack8", name: t("Photobooth ring"), price: 31000, icon: "📸", stripePriceId: "price_1R2JPHGKCVzDExz8MJV7kSq9" },
+    { id: "pack9", name: t("Photobooth print"), price: 62000, icon: "📸", stripePriceId: "price_1R2JOdGKCVzDExz8q3BvFaNb" },
   ];
 
   const options = [
@@ -29,6 +29,10 @@ const SendFinalEmailForm = () => {
     { id: "delivery-idf", name: t("Livraison Île-de-France"), price: 8000, icon: "🚚", stripePriceId: "price_1QwVdeGKCVzDExz85oQIiWSw" },
     { id: "micro-wired", name: t("Micro filaire"), price: 1000, icon: "🎤", quantity: true, stripePriceId: "price_1QwVe2GKCVzDExz876SePe0h" },
     { id: "micro-wireless", name: t("Micro sans fil"), price: 2000, icon: "🎙️", quantity: true, stripePriceId: "price_1QwVeHGKCVzDExz8GN7Hwn9s" },
+    { id: "insurance", name: t("assurance dégradation"), price: 4500, icon: "🎙️", quantity: true, stripePriceId: "price_1R2JTcGKCVzDExz8ypv6QhsC" },
+    { id: "delivery", name: t("Livraison installation et reprise"), price: 18000, icon: "🎙️", quantity: true, stripePriceId: "price_1R2JUiGKCVzDExz8MHwVjX1Q" },
+    { id: "delivery-premium", name: t("Livraison premium"), price: 25000, icon: "🎙️", quantity: true, stripePriceId: "price_1R2JVcGKCVzDExz87KpLBl1L" },
+    { id: "graphic-design", name: t("Graphiste dedié"), price: 4500, icon: "🎙️", quantity: true, stripePriceId: "price_1R2JWtGKCVzDExz8g5kQZdap" },
   ];
 
   // États du formulaire
