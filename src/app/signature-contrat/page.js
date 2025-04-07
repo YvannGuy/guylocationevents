@@ -32,7 +32,7 @@ const ContractPage = () => {
 
   // Générer le PDF en y intégrant la signature, le nom et le champ "Fait à :"
   const generateSignedContract = async (signatureDataUrl, clientName, location) => {
-    const pdfUrl = "/pdf/Assurance_shurgard.pdf";
+    const pdfUrl = "/pdf/gh-2.pdf";
     const existingPdfBytes = await fetch(pdfUrl).then((res) => res.arrayBuffer());
     const pdfDoc = await PDFDocument.load(existingPdfBytes);
     
@@ -138,7 +138,7 @@ const ContractPage = () => {
         <h1 className="text-3xl font-semibold text-center text-gray-900">Contrat à signer</h1>
         <div className="my-6">
           <iframe
-            src="/pdf/Assurance_shurgard.pdf"
+            src="/pdf/gh-2.pdf"
             width="100%"
             height="600px"
             ref={contractPdfRef}
