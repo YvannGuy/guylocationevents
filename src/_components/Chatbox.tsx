@@ -43,7 +43,7 @@ export default function ChatBox() {
     t("quels types déquipements sono proposez-vous"),
     t("comment fonctionne la location"),
     t("comment réserver"),
-    t("avez-vous un service technicien"),
+    t("avez-vous un service technicien?"),
   ];
 
   const scrollToBottom = () => {
