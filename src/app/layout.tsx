@@ -14,6 +14,7 @@ import ClientLayouts from "@/_components/client-layout";
 
 // ✅ SEO Optimisé
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.guylocationevents.com"),
   title: {
     template: "%s | Guy Location Events",
     default: "Guy Location Events - Location Sono, Vidéo & Photobooth",
