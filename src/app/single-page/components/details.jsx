@@ -510,6 +510,41 @@ const ProductDetailsInfo = (props) => {
         t("Installation rapide Plug Play aucun réglage compliqué"),
       ],
     },
+    {
+      image: "/images/products/bickpremium.jpg",
+      slug: "/pack-premium-11",
+      title: t(
+        "Pack Premium - Solution économique pour petits événements"
+      ),
+      tag: t("PACK PREMIUM"),
+      specifications: [
+        { name: t("Enceintes"), value: "Enceintes professionnelles (x2)" },
+        { name: t("Mixeur"), value: "Mixeur 8 canaux" },
+        { name: t("Câbles"), value: "Câbles XLR et alimentation" },
+        { name: t("Supports"), value: "Supports d'enceintes" },
+        { name: t("Housses"), value: "Housses de protection" },
+        { name: t("Puissance"), value: "Adaptée aux petits événements" },
+      ],
+      price: "118.00€ TTC",
+      unite: t("Par Jour Week-end"),
+      description: t(
+        "Le Pack Premium est une solution économique parfaite pour les petits événements. Ce pack offre un excellent rapport qualité-prix avec des enceintes professionnelles, un mixeur 8 canaux et tous les accessoires nécessaires pour une installation simple et efficace."
+      ),
+      description2: t(
+        "Idéal pour les événements intimes, les réunions de famille ou les petites célébrations, ce pack garantit une qualité sonore professionnelle à un prix accessible. L'équipement est livré avec des housses de protection et des supports pour faciliter le transport et l'installation."
+      ),
+      subtitle: t(
+        "Une solution économique et professionnelle pour vos petits événements"
+      ),
+      informations: [
+        t("Enceintes professionnelles avec mixeur 8 canaux"),
+        t("Câbles et accessoires inclus pour une installation complète"),
+        t("Housses de protection et supports d'enceintes"),
+        t("Parfait pour les événements de 20-50 personnes"),
+        t("Installation simple et rapide"),
+        t("Rapport qualité-prix exceptionnel"),
+      ],
+    },
   ];
 
   const packageData =

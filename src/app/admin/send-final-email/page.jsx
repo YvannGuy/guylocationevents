@@ -21,6 +21,7 @@ const SendFinalEmailForm = () => {
     { id: "pack8", name: t("Photobooth ring"), price: 31000, icon: "📸", stripePriceId: "price_1R2JPHGKCVzDExz8MJV7kSq9" },
     { id: "pack9", name: t("Photobooth print"), price: 62000, icon: "📸", stripePriceId: "price_1R2JOdGKCVzDExz8q3BvFaNb" },
     { id: "pack10", name: t("Pack Sono + Dj booth"), price: 15500, icon: "📋", stripePriceId: "price_1RvzH0GKCVzDExz8rTZDC6wd" },
+    { id: "pack11", name: t("Pack Premium Basic"), price: 11800, icon: "💎", stripePriceId: "price_1S2dBjGKCVzDExz8LLDIJ6EN" },
   ];
 
   const options = [

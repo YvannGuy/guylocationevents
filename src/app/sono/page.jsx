@@ -74,6 +74,17 @@ const CatalogPage = () => {
       ),
       tag: t("PACK GRAND EVENT"),
     },
+    {
+      image: "/images/packpremium.jpg",
+      slug: "/pack-premium-11",
+      alt: t(
+        "Pack Premium - Solution économique pour petits événements"
+      ),
+      title: t(
+        "Pack Premium - Solution économique pour petits événements"
+      ),
+      tag: t("PACK PREMIUM"),
+    },
   ];
   return (
     <Fragment>
