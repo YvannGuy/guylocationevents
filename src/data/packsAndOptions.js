@@ -10,6 +10,7 @@ export const packs = [
     { id: "pack9", name: "Photobooth print", price: 62000, stripePriceId: "price_1R2JOdGKCVzDExz8q3BvFaNb" },
     { id: "pack10", name: "Pack Sono + Dj booth", price: 15500, stripePriceId: "price_1RvzH0GKCVzDExz8rTZDC6wd" },
     { id: "pack11", name: "Pack Premium Basic", price: 11800, stripePriceId: "price_1S2dBjGKCVzDExz8LLDIJ6EN" },
+    { id: "pack12", name: "Remise - 30 euros", price: 5000, stripePriceId: "price_1S2pGLGKCVzDExz8wBl6XpRw" },
   ];
   
   export const options = [
