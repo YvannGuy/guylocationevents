@@ -2,7 +2,7 @@ export const packs = [
     { id: "pack1", name: "Pack Standard", price: 8000, stripePriceId: "price_1QwVRfGKCVzDExz8KO4ujxPa" },
     { id: "pack2", name: "Pack Essentiel", price: 10500, stripePriceId: "price_1QwVT4GKCVzDExz87s7E1Mei" },
     { id: "pack3", name: "Pack Confort", price: 12500, stripePriceId: "price_1QwVU1GKCVzDExz8tfhjhIeX" },
-    { id: "pack4", name: "Pack Premium", price: 13500, stripePriceId: "price_1QwVUxGKCVzDExz8WsQ3j9wu" },
+    { id: "pack4", name: "Pack Premium", price: 13900, stripePriceId: "price_1RzjvyGKCVzDExz88H5mHpTU" },
     { id: "pack5", name: "Pack Prestige", price: 17500, stripePriceId: "price_1QwVWOGKCVzDExz8I4Gd3P5F" },
     { id: "pack6", name: "Pack Grand Événement", price: 19500, stripePriceId: "price_1QwVXKGKCVzDExz8SNRzMiE9" },
     { id: "pack7", name: "Pack Vidéo", price: 5000, stripePriceId: "price_1QwVYCGKCVzDExz8wlZ4GIlE" },
