@@ -100,10 +100,20 @@ const CatalogPage = () => {
                       )}
                     </p>
 
-                    <h3>3. {t("DURÉE ET RETARD")}</h3>
+                    <h3>3. {t("DURÉE, RÉCUPÉRATION ET RESTITUTION")}</h3>
                     <p>
                       {t(
-                        "Les durées de location sont fixées dans le contrat Tout retard de restitution sera facturé au tarif d'une journée supplémentaire par jour de retard"
+                        "Les durées de location sont fixées dans le contrat"
+                      )}
+                    </p>
+                    <p>
+                      {t(
+                        "Récupération : le client s'engage à être présent et disponible à l'heure convenue pour la remise du matériel. Tout retard de récupération sera facturé au tarif d'une journée supplémentaire."
+                      )}
+                    </p>
+                    <p>
+                      {t(
+                        "Restitution : le client s'engage à restituer le matériel à l'heure fixée dans le contrat. Tout retard de restitution sera facturé au tarif d'une journée supplémentaire par jour de retard."
                       )}
                     </p>
 
