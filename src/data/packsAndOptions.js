@@ -11,6 +11,8 @@ export const packs = [
     { id: "pack10", name: "Pack Sono + Dj booth", price: 15500, stripePriceId: "price_1RvzH0GKCVzDExz8rTZDC6wd" },
     { id: "pack11", name: "Pack Premium Basic", price: 11800, stripePriceId: "price_1S2dBjGKCVzDExz8LLDIJ6EN" },
     { id: "pack12", name: "Remise - 30 euros", price: 5000, stripePriceId: "price_1S2pGLGKCVzDExz8wBl6XpRw" },
+    { id: "pack13", name: "Enceinte", price: 5000, stripePriceId: "price_1SBK08GKCVzDExz8EkCW6orj" },
+    { id: "pack14", name: "Caisson de basse", price: 10000, stripePriceId: "price_1SBK0PGKCVzDExz80PpBUM1c" },
   ];
   
   export const options = [

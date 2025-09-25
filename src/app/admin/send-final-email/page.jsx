@@ -23,6 +23,8 @@ const SendFinalEmailForm = () => {
     { id: "pack10", name: t("Pack Sono + Dj booth"), price: 15500, icon: "📋", stripePriceId: "price_1RvzH0GKCVzDExz8rTZDC6wd" },
     { id: "pack11", name: t("Pack Premium Basic"), price: 11800, icon: "💎", stripePriceId: "price_1S2dBjGKCVzDExz8LLDIJ6EN" },
     { id: "pack12", name: t("Remise - 30 euros"), price: 5000, icon: "💰", stripePriceId: "price_1S2pGLGKCVzDExz8wBl6XpRw" },
+    { id: "pack13", name: t("Enceinte"), price: 5000, icon: "🔊", stripePriceId: "price_1SBK08GKCVzDExz8EkCW6orj" },
+    { id: "pack14", name: t("Caisson de basse"), price: 10000, icon: "🎵", stripePriceId: "price_1SBK0PGKCVzDExz80PpBUM1c" },
   ];
 
   const options = [
