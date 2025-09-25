@@ -56,6 +56,11 @@ const SendFinalEmailForm = () => {
   const [participants, setParticipants] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
   const [deposit, setDeposit] = useState(50000); // caution
+  
+  // États pour les produits personnalisés
+  const [customProducts, setCustomProducts] = useState([]);
+  const [newProductName, setNewProductName] = useState("");
+  const [newProductPrice, setNewProductPrice] = useState("");
 
   const handleSubmitPassword = (e) => {
     e.preventDefault();
@@ -83,7 +88,26 @@ const SendFinalEmailForm = () => {
     }
   };
 
-  // Calcule la liste d'articles (packs + options) pour afficher dans le tableau
+  // Fonctions pour gérer les produits personnalisés
+  const addCustomProduct = () => {
+    if (newProductName.trim() && newProductPrice && parseFloat(newProductPrice) > 0) {
+      const product = {
+        id: `custom_${Date.now()}`,
+        name: newProductName.trim(),
+        price: Math.round(parseFloat(newProductPrice) * 100), // Convertir en centimes
+        quantity: 1
+      };
+      setCustomProducts([...customProducts, product]);
+      setNewProductName("");
+      setNewProductPrice("");
+    }
+  };
+
+  const removeCustomProduct = (productId) => {
+    setCustomProducts(customProducts.filter(p => p.id !== productId));
+  };
+
+  // Calcule la liste d'articles (packs + options + produits personnalisés) pour afficher dans le tableau
   const getAllItemsForInvoice = () => {
     const items = [];
 
@@ -122,6 +146,16 @@ const SendFinalEmailForm = () => {
           total: linePrice,
         });
       }
+    });
+
+    // Produits personnalisés
+    customProducts.forEach((product) => {
+      items.push({
+        description: product.name,
+        price: product.price,
+        quantity: product.quantity,
+        total: product.price * product.quantity,
+      });
     });
 
     return items;
@@ -406,8 +440,13 @@ const SendFinalEmailForm = () => {
       return acc + optionTotal;
     }, 0);
 
+    // Ajouter les produits personnalisés
+    total += customProducts.reduce((acc, product) => {
+      return acc + (product.price * product.quantity);
+    }, 0);
+
     setTotalAmount(total);
-  }, [selectedPacks, selectedOptions, packQuantities, technicianHours, optionQuantities]);
+  }, [selectedPacks, selectedOptions, packQuantities, technicianHours, optionQuantities, customProducts]);
 
   const resetForm = () => {
     setFullName("");
@@ -424,6 +463,9 @@ const SendFinalEmailForm = () => {
     setTechnicianHours(1);
     setParticipants(0);
     setDeposit(50000);
+    setCustomProducts([]);
+    setNewProductName("");
+    setNewProductPrice("");
   };
 
   const getDeliveryLabel = () => {
@@ -466,6 +508,8 @@ const SendFinalEmailForm = () => {
       optionQuantities,
       technicianHours,
       participants,
+      customProducts,
+      mainPaymentAmount: totalAmount,
     };
 
     try {
@@ -683,6 +727,84 @@ const SendFinalEmailForm = () => {
                   ))}
                 </div>
               </section>
+
+              {/* Section Produits personnalisés */}
+              <section className="p-6 bg-gray-50 rounded-2xl">
+                <h2 className="text-lg font-semibold text-gray-900 mb-6">
+                  {t("Produits personnalisés")}
+                </h2>
+                
+                {/* Formulaire d'ajout */}
+                <div className="mb-6 p-4 bg-white rounded-xl border border-gray-200">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {t("Nom du produit")}
+                      </label>
+                      <input
+                        type="text"
+                        value={newProductName}
+                        onChange={(e) => setNewProductName(e.target.value)}
+                        placeholder={t("Ex: Éclairage spécial")}
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FF7755] focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {t("Prix (€)")}
+                      </label>
+                      <input
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        value={newProductPrice}
+                        onChange={(e) => setNewProductPrice(e.target.value)}
+                        placeholder="150.00"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#FF7755] focus:border-transparent outline-none transition-all"
+                      />
+                    </div>
+                    <button
+                      type="button"
+                      onClick={addCustomProduct}
+                      className="bg-[#FF7755] hover:bg-[#FF6644] text-white py-3 px-6 rounded-xl font-medium transition-colors duration-200"
+                    >
+                      {t("Ajouter")}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Liste des produits personnalisés */}
+                {customProducts.length > 0 && (
+                  <div className="space-y-3">
+                    <h3 className="text-md font-medium text-gray-700">
+                      {t("Produits ajoutés")}
+                    </h3>
+                    {customProducts.map((product) => (
+                      <div
+                        key={product.id}
+                        className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200"
+                      >
+                        <div className="flex items-center space-x-3">
+                          <span className="text-lg">🛍️</span>
+                          <div>
+                            <p className="font-medium text-gray-900">{product.name}</p>
+                            <p className="text-sm text-gray-600">
+                              {(product.price / 100).toFixed(2)}€
+                            </p>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => removeCustomProduct(product.id)}
+                          className="text-red-500 hover:text-red-700 p-2 rounded-lg hover:bg-red-50 transition-colors"
+                        >
+                          ❌
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </section>
             </div>
 
             {/* Récapitulatif à droite */}
@@ -769,6 +891,14 @@ const SendFinalEmailForm = () => {
                         : t("Non inclus")
                     }
                   />
+                  {customProducts.length > 0 && (
+                    <AppleSummaryItem
+                      label={t("Produits personnalisés")}
+                      value={customProducts.map(product => 
+                        `${product.name} (${(product.price / 100).toFixed(2)}€)`
+                      ).join(", ")}
+                    />
+                  )}
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-gray-100">

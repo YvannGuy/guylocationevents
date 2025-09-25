@@ -24,6 +24,7 @@ export async function POST(req) {
       selectedOptions,
       packQuantities,
       optionQuantities,
+      customProducts,    // produits personnalisés
       mainPaymentAmount, // montant principal en centimes (ex: 1000 pour 10€)
     } = await req.json();
 
@@ -64,6 +65,18 @@ export async function POST(req) {
         quantity = optionQuantities[optionId] || 1;
       }
       return { price: option.stripePriceId, quantity };
+    })).concat((customProducts || []).map(product => {
+      // Pour les produits personnalisés, on utilise price_data au lieu de price
+      return {
+        price_data: {
+          currency: 'eur',
+          product_data: {
+            name: product.name,
+          },
+          unit_amount: product.price, // déjà en centimes
+        },
+        quantity: product.quantity,
+      };
     }));
 
     // Création de la session Checkout pour le paiement principal uniquement
@@ -100,7 +113,10 @@ export async function POST(req) {
                 option?.quantity ? optionQuantities[optionId] || 1 : 1;
       return acc + (option?.price || 0) * qty;
     }, 0);
-    const totalProductsDisplay = totalProductsAmount + totalFromOptions;
+    const totalFromCustomProducts = (customProducts || []).reduce((acc, product) => {
+      return acc + (product.price * product.quantity);
+    }, 0);
+    const totalProductsDisplay = totalProductsAmount + totalFromOptions + totalFromCustomProducts;
 
     // Préparation du payload pour l'insertion dans la table "final_reservations"
     const reservationPayload = {
@@ -191,6 +207,7 @@ export async function POST(req) {
 <table width="100%" style="border-collapse:collapse;font-size:14px;">
 ${selectedPacks.map((id)=>{const p=packs.find((x)=>x.id===id);const q=packQuantities[id]||1;const t=(p?.price||0)*q;return`<tr><td style="padding:5px 0;">${p?.name||id} (x${q})</td><td style="padding:5px 0;text-align:right;font-weight:500;">${(t/100).toFixed(2)} €</td></tr>`}).join('')}
 ${selectedOptions.map((id)=>{const o=options.find((x)=>x.id===id);let t=0;let label=o?.name||id;if(id==="technician-management"){t=(o?.price||0)*technicianHours;label+=" ("+technicianHours+"h)"}else if(o?.quantity){const qty=optionQuantities[id]||1;t=(o?.price||0)*qty;label+=" (x"+qty+")"}else{t=o?.price||0}return`<tr><td style="padding:5px 0;">${label}</td><td style="padding:5px 0;text-align:right;font-weight:500;">${(t/100).toFixed(2)} €</td></tr>`}).join('')}
+${(customProducts || []).map((product)=>{const t=product.price*product.quantity;return`<tr><td style="padding:5px 0;">${product.name} (x${product.quantity})</td><td style="padding:5px 0;text-align:right;font-weight:500;">${(t/100).toFixed(2)} €</td></tr>`}).join('')}
 </table>
 <h2 style="font-size:18px;font-weight:bold;margin:20px 0 10px;">Paiement</h2>
 <table width="100%" style="border-collapse:collapse;font-size:14px;">
