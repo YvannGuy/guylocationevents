@@ -10,7 +10,7 @@ export async function POST(req) {
     await resend.emails.send({
       from: process.env.RESEND_EMAIL_FROM,
       to: process.env.RESEND_EMAIL_TO,
-      subject: "🚨 DEMANDE URGENTE - Guy Location Events",
+      subject: "🚨 DEMANDE URGENTE - Snd rush",
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px;">
           <h2 style="color: #e27431; font-size: 24px; margin-bottom: 20px;">Nouvelle demande urgente</h2>

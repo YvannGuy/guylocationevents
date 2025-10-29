@@ -28,9 +28,9 @@ export async function POST(req) {
         const resend = new Resend(process.env.RESEND_API_KEY);
 
         const response = await resend.emails.send({
-            from: "Guy Location Events <contact@guylocationevents.com>",
+            from: "Snd rush <contact@sndrush.com>",
             to: ["devisclients@guylocationevents.com"],
-            subject: "🎉 Nouvelle réservation - Guy Location Events",
+            subject: "🎉 Nouvelle réservation - Snd rush",
             html: `
       <div style="font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f8f9fb; padding: 40px 0;">
         <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 600px; width: 100%; background-color: #ffffff; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden;">
@@ -128,7 +128,7 @@ export async function POST(req) {
           <!-- Footer -->
           <tr>
             <td style="padding: 20px; text-align: center; color: #999999; font-size: 13px;">
-              <p style="margin: 0;">© ${new Date().getFullYear()} Guy Location Events. Tous droits réservés.</p>
+              <p style="margin: 0;">© ${new Date().getFullYear()} Snd rush. Tous droits réservés.</p>
               <p style="margin: 4px 0 0; font-size: 12px;">Contact : devis@guy-location-events.com</p>
             </td>
           </tr>

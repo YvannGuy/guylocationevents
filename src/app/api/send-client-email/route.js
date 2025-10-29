@@ -61,11 +61,11 @@ export async function POST(req) {
       </p>
       <p style="font-size:16px;line-height:1.5;margin:20px 0 0;">
         Pour toute question ou information complémentaire, n'hésitez pas à nous contacter à l'adresse 
-        <a href="mailto:contact@guylocationevents.com" style="color:#ff6600;text-decoration:none;">contact@guylocationevents.com</a>.
+        <a href="mailto:contact@sndrush.com" style="color:#ff6600;text-decoration:none;">contact@sndrush.com</a>.
       </p>
       <p style="font-size:16px;line-height:1.5;margin:20px 0 0;">
         Cordialement,<br>
-        <strong>Guy Location Events</strong><br /><br />
+        <strong>Snd rush</strong><br /><br />
         Votre évènement, Notre passion
       </p>
     </div>
@@ -78,7 +78,7 @@ export async function POST(req) {
 
     // Envoi de l'e-mail via Resend avec attachements
     await resend.emails.send({
-      from: "Guy location events <contact@guylocationevents.com>",
+      from: "Snd rush <contact@sndrush.com>",
       to: email,
       subject: "Votre contrat et votre facture",
       html: emailContent,

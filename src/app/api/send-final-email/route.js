@@ -218,7 +218,7 @@ ${deposit>0?`<tr><td style="padding:5px 0;">Caution</td><td style="padding:5px 0
 <a href="${mainSession.url}" style="display:inline-block;background:#ff6600;color:#000;font-size:14px;font-weight:bold;padding:12px 24px;border-radius:8px;text-decoration:none;">Valider ma réservation</a>
 </div>
 <p style="font-size:12px;color:#888;text-align:center;margin:0 0 20px;">Pour garantir une expérience de réservation optimale, nous vous recommandons de vérifier que votre connexion internet est stable, que vous disposez de la somme requise pour la caution, et que tous vos documents essentiels sont préalablement rassemblés pour un téléchargement rapide.</p>
-<p style="font-size:14px;line-height:1.5;text-align:center;margin:0;">Merci de faire confiance à <strong>Guy Location Events pour votre événement.<br>Questions : <a href="mailto:contact@guylocationevents.com" style="color:#ff6600;text-decoration:none;">contact@guylocationevents.com</a>.</p>
+<p style="font-size:14px;line-height:1.5;text-align:center;margin:0;">Merci de faire confiance à <strong>Snd rush pour votre événement.<br>Questions : <a href="mailto:contact@sndrush.com" style="color:#ff6600;text-decoration:none;">contact@sndrush.com</a>.</p>
 </div>
 </div>
 </div>
@@ -229,9 +229,9 @@ ${deposit>0?`<tr><td style="padding:5px 0;">Caution</td><td style="padding:5px 0
  `;
 
     await resend.emails.send({
-      from: "Guy Location Events <contact@guylocationevents.com>",
+      from: "Snd rush <contact@sndrush.com>",
       to: email,
-      subject: "Confirmation de réservation - Guy Location Events",
+      subject: "Confirmation de réservation - Snd rush",
       html: emailContent,
     });
 
